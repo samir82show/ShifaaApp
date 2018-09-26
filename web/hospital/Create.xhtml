@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateHospitalTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateHospitalLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{hospitalController.selected.id}" title="#{bundle.CreateHospitalTitle_id}" />
+                    <h:outputLabel value="#{bundle.CreateHospitalLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{hospitalController.selected.name}" title="#{bundle.CreateHospitalTitle_name}" />
+                    <h:outputLabel value="#{bundle.CreateHospitalLabel_image}" for="image" />
+                    <h:inputText id="image" value="#{hospitalController.selected.image}" title="#{bundle.CreateHospitalTitle_image}" />
+                    <h:outputLabel value="#{bundle.CreateHospitalLabel_phoneNo}" for="phoneNo" />
+                    <h:inputText id="phoneNo" value="#{hospitalController.selected.phoneNo}" title="#{bundle.CreateHospitalTitle_phoneNo}" />
+                    <h:outputLabel value="#{bundle.CreateHospitalLabel_location}" for="location" />
+                    <h:inputText id="location" value="#{hospitalController.selected.location}" title="#{bundle.CreateHospitalTitle_location}" />
+                    <h:outputLabel value="#{bundle.CreateHospitalLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{hospitalController.selected.email}" title="#{bundle.CreateHospitalTitle_email}" />
+                    <h:outputLabel value="#{bundle.CreateHospitalLabel_locationMap}" for="locationMap" />
+                    <h:inputText id="locationMap" value="#{hospitalController.selected.locationMap}" title="#{bundle.CreateHospitalTitle_locationMap}" />
+                    <h:outputLabel value="#{bundle.CreateHospitalLabel_workingDaysHours}" for="workingDaysHours" />
+                    <h:inputText id="workingDaysHours" value="#{hospitalController.selected.workingDaysHours}" title="#{bundle.CreateHospitalTitle_workingDaysHours}" />
+                    <h:outputLabel value="#{bundle.CreateHospitalLabel_area}" for="area" />
+                    <h:selectOneMenu id="area" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_area}" >
+                        <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{hospitalController.create}" value="#{bundle.CreateHospitalSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{hospitalController.prepareList}" value="#{bundle.CreateHospitalShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateHospitalIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

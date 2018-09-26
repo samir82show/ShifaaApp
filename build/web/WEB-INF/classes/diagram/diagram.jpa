@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" ptype="MONOLITH" ppkg="entity" epkg="domain" v="4.8.2" rws="_15363502350142" Pws="_15363502350142" cws="_15363502350142" persistenceUnitName="ShifaaAppPU" sm="false" xs="false" id="_15363502350101" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:entity compositePrimaryKeyClass="ClinicPK" abs="false" class="Clinic" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_15363502409573">
+        <jpa:ath>sawad</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_15363502593086">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:one-to-many orp="false" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_153635096932872" connected-attribute-id="_153747293369884" v="true" xvt="" name="doctors" id="_153747293370285">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:one-to-many>
+            <jpa:many-to-many own="true" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_153635052291523" connected-attribute-id="_153635075918748" v="true" xvt="" name="clinicServices" id="_153635075918647">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-many>
+            <jpa:many-to-many collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_153747244152461" connected-attribute-id="_153747285749881" v="true" xvt="" name="hospitals" id="_153747285750282">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-many>
+            <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_15363502410124">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Clinic.findAll">
+            <jpa:query>Select e from Clinic e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Clinic.findByName">
+            <jpa:query>Select c from Clinic c where c.name=:name</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Clinic.findByPhones">
+            <jpa:query>Select c from Clinic c where c.phones=:phones</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Clinic.findByImage">
+            <jpa:query>Select c from Clinic c where c.image=:image</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="AreaPK" abs="false" class="Area" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_15363503185148">
+        <jpa:ath>sawad</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153635032710811">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:one-to-many orp="false" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_153747244152461" connected-attribute-id="_153747263359777" v="true" xvt="" name="hospitals" id="_153747263359778">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:one-to-many>
+            <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_15363503185159">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Area.findAll">
+            <jpa:query>Select e from Area e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Area.findByName">
+            <jpa:query>Select a from Area a where a.name=:name</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="UserAuthPK" abs="false" class="UserAuth" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153635033430412">
+        <jpa:ath>sawad</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="username" id="_153635035601515">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="password" id="_153635037013916">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="email" id="_153635037486417">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_153747244152461" v="true" xvt="" name="hospital" id="_153747255566775">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-one>
+            <jpa:many-to-many own="true" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_153635039068418" connected-attribute-id="_153635074182345" v="true" xvt="" name="groupAuths" id="_153635074182144">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-many>
+            <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_153635033430513">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="UserAuth.findAll">
+            <jpa:query>Select e from UserAuth e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="UserAuth.findByUsername">
+            <jpa:query>Select u from UserAuth u where u.username=:username</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="UserAuth.findByPassword">
+            <jpa:query>Select u from UserAuth u where u.password=:password</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="UserAuth.findByEmail">
+            <jpa:query>Select u from UserAuth u where u.email=:email</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="GroupAuthPK" abs="false" class="GroupAuth" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153635039068418">
+        <jpa:ath>sawad</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="groupname" id="_153635040063221">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:many-to-many collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_153635033430412" connected-attribute-id="_153635074182144" v="true" xvt="" name="userAuths" id="_153635074182345">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-many>
+            <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_153635039068419">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="GroupAuth.findAll">
+            <jpa:query>Select e from GroupAuth e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="GroupAuth.findByGroupname">
+            <jpa:query>Select g from GroupAuth g where g.groupname=:groupname</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ClinicServicePK" abs="false" class="ClinicService" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153635052291523">
+        <jpa:ath>sawad</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153635054412926">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="image" id="_153635054706127">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="Double" v="true" xvt="" name="price" id="_153790151574054">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:many-to-many collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_15363502409573" connected-attribute-id="_153635075918647" v="true" xvt="" name="clinics" id="_153635075918748">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-many>
+            <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_153635052291624">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="ClinicService.findAll">
+            <jpa:query>Select e from ClinicService e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ClinicService.findByName">
+            <jpa:query>Select c from ClinicService c where c.name=:name</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ClinicService.findByImage">
+            <jpa:query>Select c from ClinicService c where c.image=:image</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ClinicService.findByPrice">
+            <jpa:query>Select c from ClinicService c where c.price=:price</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="InsurancePK" abs="false" class="Insurance" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153635056565528">
+        <jpa:ath>sawad</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153635061772631">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="image" id="_153635062648932">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:many-to-many own="true" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_153747244152461" connected-attribute-id="_153789960191626" v="true" xvt="" name="hospitals" id="_153789960191325">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-many>
+            <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_153635056565629">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Insurance.findAll">
+            <jpa:query>Select e from Insurance e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Insurance.findByName">
+            <jpa:query>Select i from Insurance i where i.name=:name</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Insurance.findByImage">
+            <jpa:query>Select i from Insurance i where i.image=:image</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="DoctorPK" abs="false" class="Doctor" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153635096932872">
+        <jpa:ath>sawad</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153635102092975">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="image" id="_153635102405476">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="qualifications" id="_153635118780577">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_15363502409573" connected-attribute-id="_153747293370285" v="true" xvt="" name="clinic" id="_153747293369884">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_153635096932973">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Doctor.findAll">
+            <jpa:query>Select e from Doctor e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Doctor.findByName">
+            <jpa:query>Select d from Doctor d where d.name=:name</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Doctor.findByImage">
+            <jpa:query>Select d from Doctor d where d.image=:image</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Doctor.findByQualifications">
+            <jpa:query>Select d from Doctor d where d.qualifications=:qualifications</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="HospitalPK" abs="false" class="Hospital" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153747244152461">
+        <jpa:ath>sawad</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153747245450664">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="image" id="_153747268630579">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="phoneNo" id="_153789995109027">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="location" id="_153789996340528">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="email" id="_153789997150529">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="locationMap" id="_153789998860530">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="workingDaysHours" id="_153789999877931">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_15363503185148" connected-attribute-id="_153747263359778" v="true" xvt="" name="area" id="_153747263359777">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-one>
+            <jpa:many-to-many own="true" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_15363502409573" connected-attribute-id="_153747285750282" v="true" xvt="" name="clinics" id="_153747285749881">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-many>
+            <jpa:many-to-many collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_153635056565528" connected-attribute-id="_153789960191325" v="true" xvt="" name="insurances" id="_153789960191626">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-many>
+            <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_153747244155362">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Hospital.findAll">
+            <jpa:query>Select e from Hospital e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Hospital.findByName">
+            <jpa:query>Select h from Hospital h where h.name=:name</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Hospital.findByImage">
+            <jpa:query>Select h from Hospital h where h.image=:image</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Hospital.findByPhoneNo">
+            <jpa:query>Select h from Hospital h where h.phoneNo=:phoneNo</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Hospital.findByLocation">
+            <jpa:query>Select h from Hospital h where h.location=:location</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Hospital.findByEmail">
+            <jpa:query>Select h from Hospital h where h.email=:email</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Hospital.findByLocationMap">
+            <jpa:query>Select h from Hospital h where h.locationMap=:locationMap</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Hospital.findByWorkingDaysHours">
+            <jpa:query>Select h from Hospital h where h.workingDaysHours=:workingDaysHours</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="AppointmentPK" abs="false" class="Appointment" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153790056728532">
+        <jpa:ath>sawad</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153790085313643">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="phone" id="_153790086391944">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="email" id="_153790086964245">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="gender" id="_153790087533046">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="DOB" id="_153790088137647">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="description" id="_153790113734750">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="preferredDoctorGender" id="_153790118224151">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="morningOrEvening" id="_153790123088553">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_153747244152461" v="true" xvt="" name="hospital" id="_153790109104349">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-one>
+            <jpa:many-to-many own="true" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_153790170337555" v="true" xvt="" name="daysOfWeeks" id="_153790177236063">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-many>
+            <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_153790056729733">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Appointment.findAll">
+            <jpa:query>Select e from Appointment e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Appointment.findByName">
+            <jpa:query>Select a from Appointment a where a.name=:name</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Appointment.findByPhone">
+            <jpa:query>Select a from Appointment a where a.phone=:phone</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Appointment.findByEmail">
+            <jpa:query>Select a from Appointment a where a.email=:email</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Appointment.findByGender">
+            <jpa:query>Select a from Appointment a where a.gender=:gender</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Appointment.findByDOB">
+            <jpa:query>Select a from Appointment a where a.DOB=:DOB</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Appointment.findByDescription">
+            <jpa:query>Select a from Appointment a where a.description=:description</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Appointment.findByPreferredDoctorGender">
+            <jpa:query>Select a from Appointment a where a.preferredDoctorGender=:preferredDoctorGender</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Appointment.findByAppointmentDate">
+            <jpa:query>Select a from Appointment a where a.appointmentDate=:appointmentDate</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Appointment.findByMorningOrEvening">
+            <jpa:query>Select a from Appointment a where a.morningOrEvening=:morningOrEvening</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="GuestPK" abs="false" class="Guest" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153790058351835">
+        <jpa:ath>sawad</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153790063400238">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="phone" id="_153790063792239">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="email" id="_153790064383340">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="gender" id="_153790065015141">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" xvt="" name="DOB" id="_153790065556742">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="password" id="_153794230674332">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_153790058351936">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Guest.findAll">
+            <jpa:query>Select e from Guest e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Guest.findByName">
+            <jpa:query>Select g from Guest g where g.name=:name</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Guest.findByPhone">
+            <jpa:query>Select g from Guest g where g.phone=:phone</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Guest.findByEmail">
+            <jpa:query>Select g from Guest g where g.email=:email</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Guest.findByGender">
+            <jpa:query>Select g from Guest g where g.gender=:gender</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Guest.findByDOB">
+            <jpa:query>Select g from Guest g where g.DOB=:DOB</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Guest.findByPassword">
+            <jpa:query>Select g from Guest g where g.password=:password</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="DaysOfWeekPK" abs="false" class="DaysOfWeek" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153790170337555">
+        <jpa:ath>sawad</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153790172609258">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_153790170337656">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="DaysOfWeek.findAll">
+            <jpa:query>Select e from DaysOfWeek e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="DaysOfWeek.findByName">
+            <jpa:query>Select d from DaysOfWeek d where d.name=:name</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:snp loc="BEFORE_PACKAGE" e="true">/**
+ * This file was generated by the Jeddict
+ */</jpa:snp>
+    <jpa:wsl>
+        <jpa:ws n="Main" id="_15363502350142">
+            <i ref="_15363503185148" x="92" y="514"/>
+            <i ref="_153635096932872" x="653" y="52"/>
+            <i ref="_153747244152461" x="291" y="220"/>
+            <i ref="_153790056728532" x="72" y="203"/>
+            <i ref="_15363502409573" x="482" y="183"/>
+            <i ref="_153635039068418" x="482" y="52"/>
+            <i ref="_153790170337555" x="-109" y="178"/>
+            <i ref="_153790058351835" x="92" y="-6"/>
+            <i ref="_153635056565528" x="482" y="367"/>
+            <i ref="_153635033430412" x="307" y="-6"/>
+            <i ref="_153635052291523" x="670" y="298"/>
+        </jpa:ws>
+    </jpa:wsl>
+</jpa:entity-mappings>

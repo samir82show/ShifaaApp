@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAppointmentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAppointmentLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{appointmentController.selected.id}" title="#{bundle.EditAppointmentTitle_id}" />
+                    <h:outputLabel value="#{bundle.EditAppointmentLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{appointmentController.selected.name}" title="#{bundle.EditAppointmentTitle_name}" />
+                    <h:outputLabel value="#{bundle.EditAppointmentLabel_phone}" for="phone" />
+                    <h:inputText id="phone" value="#{appointmentController.selected.phone}" title="#{bundle.EditAppointmentTitle_phone}" />
+                    <h:outputLabel value="#{bundle.EditAppointmentLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{appointmentController.selected.email}" title="#{bundle.EditAppointmentTitle_email}" />
+                    <h:outputLabel value="#{bundle.EditAppointmentLabel_gender}" for="gender" />
+                    <h:inputText id="gender" value="#{appointmentController.selected.gender}" title="#{bundle.EditAppointmentTitle_gender}" />
+                    <h:outputLabel value="#{bundle.EditAppointmentLabel_DOB}" for="DOB" />
+                    <h:inputText id="DOB" value="#{appointmentController.selected.DOB}" title="#{bundle.EditAppointmentTitle_DOB}" />
+                    <h:outputLabel value="#{bundle.EditAppointmentLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{appointmentController.selected.description}" title="#{bundle.EditAppointmentTitle_description}" />
+                    <h:outputLabel value="#{bundle.EditAppointmentLabel_preferredDoctorGender}" for="preferredDoctorGender" />
+                    <h:inputText id="preferredDoctorGender" value="#{appointmentController.selected.preferredDoctorGender}" title="#{bundle.EditAppointmentTitle_preferredDoctorGender}" />
+                    <h:outputLabel value="#{bundle.EditAppointmentLabel_morningOrEvening}" for="morningOrEvening" />
+                    <h:inputText id="morningOrEvening" value="#{appointmentController.selected.morningOrEvening}" title="#{bundle.EditAppointmentTitle_morningOrEvening}" />
+                    <h:outputLabel value="#{bundle.EditAppointmentLabel_hospital}" for="hospital" />
+                    <h:selectOneMenu id="hospital" value="#{appointmentController.selected.hospital}" title="#{bundle.EditAppointmentTitle_hospital}" >
+                        <f:selectItems value="#{hospitalController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{appointmentController.update}" value="#{bundle.EditAppointmentSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAppointmentViewLink}"/>
+                <br />
+                <h:commandLink action="#{appointmentController.prepareList}" value="#{bundle.EditAppointmentShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAppointmentIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
