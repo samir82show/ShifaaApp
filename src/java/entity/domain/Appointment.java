@@ -3,8 +3,10 @@
  */
 package entity.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +19,7 @@ import javax.persistence.ManyToOne;
  * @author sawad
  */
 @Entity
-public class Appointment {
+public class Appointment implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -52,6 +54,9 @@ public class Appointment {
 
     @ManyToMany
     private List<DaysOfWeek> daysOfWeeks;
+
+    public Appointment() {
+    }
 
     public Long getId() {
         return this.id;
@@ -150,6 +155,31 @@ public class Appointment {
 
     public void removeDaysOfWeek(DaysOfWeek daysOfWeek) {
         getDaysOfWeeks().remove(daysOfWeek);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 59 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Appointment other = (Appointment) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
 
 }

@@ -3,8 +3,10 @@
  */
 package entity.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +18,7 @@ import javax.persistence.ManyToMany;
  * @author sawad
  */
 @Entity
-public class GroupAuth {
+public class GroupAuth implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,6 +34,10 @@ public class GroupAuth {
         return this.id;
     }
 
+    public GroupAuth() {
+    }
+
+    
     public void setId(Long id) {
         this.id = id;
     }
@@ -61,6 +67,44 @@ public class GroupAuth {
 
     public void removeUserAuth(UserAuth userAuth) {
         getUserAuths().remove(userAuth);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 59 * hash + Objects.hashCode(this.id);
+        hash = 59 * hash + Objects.hashCode(this.groupname);
+        hash = 59 * hash + Objects.hashCode(this.userAuths);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final GroupAuth other = (GroupAuth) obj;
+        if (!Objects.equals(this.groupname, other.groupname)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.userAuths, other.userAuths)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "GroupAuth{" + "groupname=" + groupname + '}';
     }
 
 }

@@ -3,8 +3,10 @@
  */
 package entity.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +18,7 @@ import javax.persistence.ManyToMany;
  * @author sawad
  */
 @Entity
-public class Insurance {
+public class Insurance implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,6 +35,9 @@ public class Insurance {
 
     public Long getId() {
         return this.id;
+    }
+
+    public Insurance() {
     }
 
     public void setId(Long id) {
@@ -74,6 +79,48 @@ public class Insurance {
     public void removeHospital(Hospital hospital) {
         getHospitals().remove(hospital);
         hospital.getInsurances().remove(this);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 43 * hash + Objects.hashCode(this.id);
+        hash = 43 * hash + Objects.hashCode(this.name);
+        hash = 43 * hash + Objects.hashCode(this.image);
+        hash = 43 * hash + Objects.hashCode(this.hospitals);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Insurance other = (Insurance) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.image, other.image)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.hospitals, other.hospitals)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Insurance{" + "name=" + name + '}';
     }
 
 }

@@ -3,8 +3,10 @@
  */
 package entity.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +18,7 @@ import javax.persistence.OneToMany;
  * @author sawad
  */
 @Entity
-public class Area {
+public class Area implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,6 +29,9 @@ public class Area {
 
     @OneToMany(mappedBy = "area")
     private List<Hospital> hospitals;
+
+    public Area() {
+    }
 
     public Long getId() {
         return this.id;
@@ -64,5 +69,37 @@ public class Area {
         getHospitals().remove(hospital);
         hospital.setArea(null);
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Area other = (Area) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Area{" + "name=" + name + '}';
+    }
+    
+    
 
 }

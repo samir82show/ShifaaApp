@@ -3,6 +3,8 @@
  */
 package entity.domain;
 
+import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +16,7 @@ import javax.persistence.ManyToOne;
  * @author sawad
  */
 @Entity
-public class Doctor {
+public class Doctor implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,6 +33,9 @@ public class Doctor {
 
     @ManyToOne
     private Clinic clinic;
+
+    public Doctor() {
+    }
 
     public Long getId() {
         return this.id;
@@ -70,6 +75,52 @@ public class Doctor {
 
     public void setClinic(Clinic clinic) {
         this.clinic = clinic;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 83 * hash + Objects.hashCode(this.id);
+        hash = 83 * hash + Objects.hashCode(this.name);
+        hash = 83 * hash + Objects.hashCode(this.image);
+        hash = 83 * hash + Objects.hashCode(this.qualifications);
+        hash = 83 * hash + Objects.hashCode(this.clinic);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Doctor other = (Doctor) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.image, other.image)) {
+            return false;
+        }
+        if (!Objects.equals(this.qualifications, other.qualifications)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.clinic, other.clinic)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Doctor{" + "name=" + name + ", clinic=" + clinic + '}';
     }
 
 }

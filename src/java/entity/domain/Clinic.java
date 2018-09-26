@@ -3,8 +3,10 @@
  */
 package entity.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +19,7 @@ import javax.persistence.OneToMany;
  * @author sawad
  */
 @Entity
-public class Clinic {
+public class Clinic implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,6 +36,9 @@ public class Clinic {
 
     @ManyToMany(mappedBy = "clinics")
     private List<Hospital> hospitals;
+
+    public Clinic() {
+    }
 
     public Long getId() {
         return this.id;
@@ -110,6 +115,52 @@ public class Clinic {
 
     public void removeHospital(Hospital hospital) {
         getHospitals().remove(hospital);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.id);
+        hash = 29 * hash + Objects.hashCode(this.name);
+        hash = 29 * hash + Objects.hashCode(this.doctors);
+        hash = 29 * hash + Objects.hashCode(this.clinicServices);
+        hash = 29 * hash + Objects.hashCode(this.hospitals);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Clinic other = (Clinic) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.doctors, other.doctors)) {
+            return false;
+        }
+        if (!Objects.equals(this.clinicServices, other.clinicServices)) {
+            return false;
+        }
+        if (!Objects.equals(this.hospitals, other.hospitals)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Clinic{" + "name=" + name + '}';
     }
 
 }

@@ -3,8 +3,10 @@
  */
 package entity.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +19,7 @@ import javax.persistence.ManyToOne;
  * @author sawad
  */
 @Entity
-public class UserAuth {
+public class UserAuth implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,6 +39,9 @@ public class UserAuth {
 
     @ManyToMany
     private List<GroupAuth> groupAuths;
+
+    public UserAuth() {
+    }
 
     public Long getId() {
         return this.id;
@@ -97,6 +102,56 @@ public class UserAuth {
     public void removeGroupAuth(GroupAuth groupAuth) {
         getGroupAuths().remove(groupAuth);
         groupAuth.getUserAuths().remove(this);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.id);
+        hash = 29 * hash + Objects.hashCode(this.username);
+        hash = 29 * hash + Objects.hashCode(this.password);
+        hash = 29 * hash + Objects.hashCode(this.email);
+        hash = 29 * hash + Objects.hashCode(this.hospital);
+        hash = 29 * hash + Objects.hashCode(this.groupAuths);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final UserAuth other = (UserAuth) obj;
+        if (!Objects.equals(this.username, other.username)) {
+            return false;
+        }
+        if (!Objects.equals(this.password, other.password)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.hospital, other.hospital)) {
+            return false;
+        }
+        if (!Objects.equals(this.groupAuths, other.groupAuths)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "UserAuth{" + "username=" + username + '}';
     }
 
 }

@@ -3,6 +3,7 @@
  */
 package entity.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
@@ -17,7 +18,7 @@ import javax.persistence.ManyToOne;
  * @author sawad
  */
 @Entity
-public class Hospital {
+public class Hospital implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -52,6 +53,9 @@ public class Hospital {
 
     @ManyToMany(mappedBy = "hospitals")
     private List<Insurance> insurances;
+
+    public Hospital() {
+    }
 
     public Long getId() {
         return this.id;
@@ -163,6 +167,11 @@ public class Hospital {
 
     public void removeInsurance(Insurance insurance) {
         getInsurances().remove(insurance);
+    }
+
+    @Override
+    public String toString() {
+        return "Hospital{" + "name=" + name + ", area=" + area + '}';
     }
 
 }
