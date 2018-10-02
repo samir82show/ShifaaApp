@@ -16,7 +16,7 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateAppointmentLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{appointmentController.selected.id}" title="#{bundle.CreateAppointmentTitle_id}" />
+                    <h:inputText disabled="true" id="id" value="#{appointmentController.selected.id}" title="#{bundle.CreateAppointmentTitle_id}" />
                     <h:outputLabel value="#{bundle.CreateAppointmentLabel_name}" for="name" />
                     <h:inputText id="name" value="#{appointmentController.selected.name}" title="#{bundle.CreateAppointmentTitle_name}" />
                     <h:outputLabel value="#{bundle.CreateAppointmentLabel_phone}" for="phone" />

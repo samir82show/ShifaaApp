@@ -97,7 +97,7 @@ public class Area implements Serializable {
 
     @Override
     public String toString() {
-        return "Area{" + "name=" + name + '}';
+        return name;
     }
     
     
