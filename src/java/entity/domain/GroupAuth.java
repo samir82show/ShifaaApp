@@ -30,14 +30,13 @@ public class GroupAuth implements Serializable {
     @ManyToMany(mappedBy = "groupAuths")
     private List<UserAuth> userAuths;
 
+    public GroupAuth() {
+    }
+
     public Long getId() {
         return this.id;
     }
 
-    public GroupAuth() {
-    }
-
-    
     public void setId(Long id) {
         this.id = id;
     }
@@ -71,10 +70,10 @@ public class GroupAuth implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 59 * hash + Objects.hashCode(this.id);
-        hash = 59 * hash + Objects.hashCode(this.groupname);
-        hash = 59 * hash + Objects.hashCode(this.userAuths);
+        int hash = 5;
+        hash = 37 * hash + Objects.hashCode(this.id);
+        hash = 37 * hash + Objects.hashCode(this.groupname);
+        hash = 37 * hash + Objects.hashCode(this.userAuths);
         return hash;
     }
 
@@ -104,7 +103,7 @@ public class GroupAuth implements Serializable {
 
     @Override
     public String toString() {
-        return "GroupAuth{" + "groupname=" + groupname + '}';
+        return groupname;
     }
 
 }

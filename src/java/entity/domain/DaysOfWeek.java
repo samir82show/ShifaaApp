@@ -45,9 +45,9 @@ public class DaysOfWeek implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 59 * hash + Objects.hashCode(this.id);
-        hash = 59 * hash + Objects.hashCode(this.name);
+        int hash = 3;
+        hash = 83 * hash + Objects.hashCode(this.id);
+        hash = 83 * hash + Objects.hashCode(this.name);
         return hash;
     }
 

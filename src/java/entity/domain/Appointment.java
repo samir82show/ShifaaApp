@@ -159,8 +159,8 @@ public class Appointment implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 59 * hash + Objects.hashCode(this.id);
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.id);
         return hash;
     }
 

@@ -16,25 +16,22 @@ import javax.persistence.ManyToOne;
  * @author sawad
  */
 @Entity
-public class Doctor implements Serializable {
+public class ClinicServicePrice implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Basic
-    private String name;
+    private String price;
 
-    @Basic
-    private String image;
-
-    @Basic
-    private String qualifications;
+    @ManyToOne
+    private ClinicService clinicService;
 
     @ManyToOne
     private Clinic clinic;
 
-    public Doctor() {
+    public ClinicServicePrice() {
     }
 
     public Long getId() {
@@ -45,28 +42,20 @@ public class Doctor implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return this.name;
+    public String getPrice() {
+        return this.price;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPrice(String price) {
+        this.price = price;
     }
 
-    public String getImage() {
-        return this.image;
+    public ClinicService getClinicService() {
+        return this.clinicService;
     }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getQualifications() {
-        return this.qualifications;
-    }
-
-    public void setQualifications(String qualifications) {
-        this.qualifications = qualifications;
+    public void setClinicService(ClinicService clinicService) {
+        this.clinicService = clinicService;
     }
 
     public Clinic getClinic() {
@@ -81,9 +70,8 @@ public class Doctor implements Serializable {
     public int hashCode() {
         int hash = 5;
         hash = 97 * hash + Objects.hashCode(this.id);
-        hash = 97 * hash + Objects.hashCode(this.name);
-        hash = 97 * hash + Objects.hashCode(this.image);
-        hash = 97 * hash + Objects.hashCode(this.qualifications);
+        hash = 97 * hash + Objects.hashCode(this.price);
+        hash = 97 * hash + Objects.hashCode(this.clinicService);
         hash = 97 * hash + Objects.hashCode(this.clinic);
         return hash;
     }
@@ -99,28 +87,20 @@ public class Doctor implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Doctor other = (Doctor) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.image, other.image)) {
-            return false;
-        }
-        if (!Objects.equals(this.qualifications, other.qualifications)) {
+        final ClinicServicePrice other = (ClinicServicePrice) obj;
+        if (!Objects.equals(this.price, other.price)) {
             return false;
         }
         if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.clinicService, other.clinicService)) {
             return false;
         }
         if (!Objects.equals(this.clinic, other.clinic)) {
             return false;
         }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return name;
     }
 
 }

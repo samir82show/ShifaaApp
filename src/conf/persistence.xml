@@ -14,6 +14,7 @@
     <class>entity.domain.Appointment</class>
     <class>entity.domain.Guest</class>
     <class>entity.domain.DaysOfWeek</class>
+    <class>entity.domain.ClinicServicePrice</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="eclipselink.logging.level" value="FINE"/>

@@ -107,12 +107,12 @@ public class UserAuth implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.id);
-        hash = 29 * hash + Objects.hashCode(this.username);
-        hash = 29 * hash + Objects.hashCode(this.password);
-        hash = 29 * hash + Objects.hashCode(this.email);
-        hash = 29 * hash + Objects.hashCode(this.hospital);
-        hash = 29 * hash + Objects.hashCode(this.groupAuths);
+        hash = 59 * hash + Objects.hashCode(this.id);
+        hash = 59 * hash + Objects.hashCode(this.username);
+        hash = 59 * hash + Objects.hashCode(this.password);
+        hash = 59 * hash + Objects.hashCode(this.email);
+        hash = 59 * hash + Objects.hashCode(this.hospital);
+        hash = 59 * hash + Objects.hashCode(this.groupAuths);
         return hash;
     }
 

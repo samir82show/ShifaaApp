@@ -33,11 +33,11 @@ public class Insurance implements Serializable {
     @ManyToMany
     private List<Hospital> hospitals;
 
-    public Long getId() {
-        return this.id;
+    public Insurance() {
     }
 
-    public Insurance() {
+    public Long getId() {
+        return this.id;
     }
 
     public void setId(Long id) {
@@ -84,10 +84,10 @@ public class Insurance implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 43 * hash + Objects.hashCode(this.id);
-        hash = 43 * hash + Objects.hashCode(this.name);
-        hash = 43 * hash + Objects.hashCode(this.image);
-        hash = 43 * hash + Objects.hashCode(this.hospitals);
+        hash = 37 * hash + Objects.hashCode(this.id);
+        hash = 37 * hash + Objects.hashCode(this.name);
+        hash = 37 * hash + Objects.hashCode(this.image);
+        hash = 37 * hash + Objects.hashCode(this.hospitals);
         return hash;
     }
 
@@ -120,7 +120,7 @@ public class Insurance implements Serializable {
 
     @Override
     public String toString() {
-        return "Insurance{" + "name=" + name + '}';
+        return name;
     }
 
 }

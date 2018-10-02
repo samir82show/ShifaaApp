@@ -31,8 +31,8 @@ public class Clinic implements Serializable {
     @OneToMany(mappedBy = "clinic")
     private List<Doctor> doctors;
 
-    @ManyToMany
-    private List<ClinicService> clinicServices;
+    @OneToMany(mappedBy = "clinic")
+    private List<ClinicServicePrice> clinicServicePrices;
 
     @ManyToMany(mappedBy = "clinics")
     private List<Hospital> hospitals;
@@ -77,25 +77,25 @@ public class Clinic implements Serializable {
         doctor.setClinic(null);
     }
 
-    public List<ClinicService> getClinicServices() {
-        if (clinicServices == null) {
-            clinicServices = new ArrayList<>();
+    public List<ClinicServicePrice> getClinicServicePrices() {
+        if (clinicServicePrices == null) {
+            clinicServicePrices = new ArrayList<>();
         }
-        return this.clinicServices;
+        return this.clinicServicePrices;
     }
 
-    public void setClinicServices(List<ClinicService> clinicServices) {
-        this.clinicServices = clinicServices;
+    public void setClinicServicePrices(List<ClinicServicePrice> clinicServicePrices) {
+        this.clinicServicePrices = clinicServicePrices;
     }
 
-    public void addClinicService(ClinicService clinicService) {
-        getClinicServices().add(clinicService);
-        clinicService.getClinics().add(this);
+    public void addClinicServicePrice(ClinicServicePrice clinicServicePrice) {
+        getClinicServicePrices().add(clinicServicePrice);
+        clinicServicePrice.setClinic(this);
     }
 
-    public void removeClinicService(ClinicService clinicService) {
-        getClinicServices().remove(clinicService);
-        clinicService.getClinics().remove(this);
+    public void removeClinicServicePrice(ClinicServicePrice clinicServicePrice) {
+        getClinicServicePrices().remove(clinicServicePrice);
+        clinicServicePrice.setClinic(null);
     }
 
     public List<Hospital> getHospitals() {
@@ -120,11 +120,11 @@ public class Clinic implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.id);
-        hash = 29 * hash + Objects.hashCode(this.name);
-        hash = 29 * hash + Objects.hashCode(this.doctors);
-        hash = 29 * hash + Objects.hashCode(this.clinicServices);
-        hash = 29 * hash + Objects.hashCode(this.hospitals);
+        hash = 53 * hash + Objects.hashCode(this.id);
+        hash = 53 * hash + Objects.hashCode(this.name);
+        hash = 53 * hash + Objects.hashCode(this.doctors);
+        hash = 53 * hash + Objects.hashCode(this.clinicServicePrices);
+        hash = 53 * hash + Objects.hashCode(this.hospitals);
         return hash;
     }
 
@@ -149,7 +149,7 @@ public class Clinic implements Serializable {
         if (!Objects.equals(this.doctors, other.doctors)) {
             return false;
         }
-        if (!Objects.equals(this.clinicServices, other.clinicServices)) {
+        if (!Objects.equals(this.clinicServicePrices, other.clinicServicePrices)) {
             return false;
         }
         if (!Objects.equals(this.hospitals, other.hospitals)) {
@@ -163,4 +163,5 @@ public class Clinic implements Serializable {
         return name;
     }
 
+    
 }

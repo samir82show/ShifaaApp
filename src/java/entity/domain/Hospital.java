@@ -15,9 +15,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-/**
- * @author sawad
- */
 @Entity
 public class Hospital implements Serializable {
 
@@ -172,8 +169,18 @@ public class Hospital implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 37 * hash + Objects.hashCode(this.id);
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.id);
+        hash = 53 * hash + Objects.hashCode(this.name);
+        hash = 53 * hash + Objects.hashCode(this.image);
+        hash = 53 * hash + Objects.hashCode(this.phoneNo);
+        hash = 53 * hash + Objects.hashCode(this.location);
+        hash = 53 * hash + Objects.hashCode(this.email);
+        hash = 53 * hash + Objects.hashCode(this.locationMap);
+        hash = 53 * hash + Objects.hashCode(this.workingDaysHours);
+        hash = 53 * hash + Objects.hashCode(this.area);
+        hash = 53 * hash + Objects.hashCode(this.clinics);
+        hash = 53 * hash + Objects.hashCode(this.insurances);
         return hash;
     }
 
@@ -189,7 +196,37 @@ public class Hospital implements Serializable {
             return false;
         }
         final Hospital other = (Hospital) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.image, other.image)) {
+            return false;
+        }
+        if (!Objects.equals(this.phoneNo, other.phoneNo)) {
+            return false;
+        }
+        if (!Objects.equals(this.location, other.location)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.locationMap, other.locationMap)) {
+            return false;
+        }
+        if (!Objects.equals(this.workingDaysHours, other.workingDaysHours)) {
+            return false;
+        }
         if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.area, other.area)) {
+            return false;
+        }
+        if (!Objects.equals(this.clinics, other.clinics)) {
+            return false;
+        }
+        if (!Objects.equals(this.insurances, other.insurances)) {
             return false;
         }
         return true;
@@ -197,10 +234,7 @@ public class Hospital implements Serializable {
 
     @Override
     public String toString() {
-        return name;
+        return "Hospital{" + "name=" + name + ", area=" + area + '}';
     }
 
-    
-
-    
 }

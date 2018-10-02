@@ -104,14 +104,14 @@ public class Guest implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 23 * hash + Objects.hashCode(this.id);
-        hash = 23 * hash + Objects.hashCode(this.name);
-        hash = 23 * hash + Objects.hashCode(this.phone);
-        hash = 23 * hash + Objects.hashCode(this.email);
-        hash = 23 * hash + Objects.hashCode(this.gender);
-        hash = 23 * hash + Objects.hashCode(this.DOB);
-        hash = 23 * hash + Objects.hashCode(this.password);
+        int hash = 5;
+        hash = 53 * hash + Objects.hashCode(this.id);
+        hash = 53 * hash + Objects.hashCode(this.name);
+        hash = 53 * hash + Objects.hashCode(this.phone);
+        hash = 53 * hash + Objects.hashCode(this.email);
+        hash = 53 * hash + Objects.hashCode(this.gender);
+        hash = 53 * hash + Objects.hashCode(this.DOB);
+        hash = 53 * hash + Objects.hashCode(this.password);
         return hash;
     }
 
