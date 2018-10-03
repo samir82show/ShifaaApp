@@ -7,7 +7,6 @@ import facade.ClinicFacade;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -141,6 +140,7 @@ public class ClinicController implements Serializable {
 
     public String prepareEdit() {
         current = (Clinic) getItems().getRowData();
+        prevImage = current.getImage();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }

@@ -13,14 +13,14 @@
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:form>
+            <h:form enctype="multipart/form-data">
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.EditClinicLabel_id}" for="id" />
                     <h:inputText id="id" value="#{clinicController.selected.id}" title="#{bundle.EditClinicTitle_id}" />
                     <h:outputLabel value="#{bundle.EditClinicLabel_name}" for="name" />
                     <h:inputText id="name" value="#{clinicController.selected.name}" title="#{bundle.EditClinicTitle_name}" />
                     <h:outputLabel value="#{bundle.EditClinicLabel_image}" for="image" />
-                    <h:inputText id="image" value="#{clinicController.selected.image}" title="#{bundle.EditClinicTitle_image}" />
+                    <h:inputFile id="image" value="#{clinicController.image}" title="#{bundle.EditClinicTitle_image}" />
                 </h:panelGrid>
                 <h:commandLink action="#{clinicController.update}" value="#{bundle.EditClinicSaveLink}"/>
                 <br />
