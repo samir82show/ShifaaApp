@@ -7,7 +7,7 @@
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="#{bundles.ViewClinicServicePriceTitle}"></h:outputText>
+            <h:outputText value="#{bundle.ViewClinicServicePriceTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
@@ -15,27 +15,27 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputText value="#{bundles.ViewClinicServicePriceLabel_id}"/>
-                    <h:outputText value="#{clinicServicePriceController.selected.id}" title="#{bundles.ViewClinicServicePriceTitle_id}"/>
-                    <h:outputText value="#{bundles.ViewClinicServicePriceLabel_price}"/>
-                    <h:outputText value="#{clinicServicePriceController.selected.price}" title="#{bundles.ViewClinicServicePriceTitle_price}"/>
-                    <h:outputText value="#{bundles.ViewClinicServicePriceLabel_clinicService}"/>
-                    <h:outputText value="#{clinicServicePriceController.selected.clinicService}" title="#{bundles.ViewClinicServicePriceTitle_clinicService}"/>
-                    <h:outputText value="#{bundles.ViewClinicServicePriceLabel_clinic}"/>
-                    <h:outputText value="#{clinicServicePriceController.selected.clinic}" title="#{bundles.ViewClinicServicePriceTitle_clinic}"/>
+                    <h:outputText value="#{bundle.ViewClinicServicePriceLabel_id}"/>
+                    <h:outputText value="#{clinicServicePriceController.selected.id}" title="#{bundle.ViewClinicServicePriceTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewClinicServicePriceLabel_price}"/>
+                    <h:outputText value="#{clinicServicePriceController.selected.price}" title="#{bundle.ViewClinicServicePriceTitle_price}"/>
+                    <h:outputText value="#{bundle.ViewClinicServicePriceLabel_clinicService}"/>
+                    <h:outputText value="#{clinicServicePriceController.selected.clinicService}" title="#{bundle.ViewClinicServicePriceTitle_clinicService}"/>
+                    <h:outputText value="#{bundle.ViewClinicServicePriceLabel_clinic}"/>
+                    <h:outputText value="#{clinicServicePriceController.selected.clinic}" title="#{bundle.ViewClinicServicePriceTitle_clinic}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{clinicServicePriceController.destroyAndView}" value="#{bundles.ViewClinicServicePriceDestroyLink}"/>
+                <h:commandLink action="#{clinicServicePriceController.destroyAndView}" value="#{bundle.ViewClinicServicePriceDestroyLink}"/>
                 <br />
                 <br />
-                <h:link outcome="Edit" value="#{bundles.ViewClinicServicePriceEditLink}"/>
+                <h:link outcome="Edit" value="#{bundle.ViewClinicServicePriceEditLink}"/>
                 <br />
-                <h:commandLink action="#{clinicServicePriceController.prepareCreate}" value="#{bundles.ViewClinicServicePriceCreateLink}" />
+                <h:commandLink action="#{clinicServicePriceController.prepareCreate}" value="#{bundle.ViewClinicServicePriceCreateLink}" />
                 <br />
-                <h:commandLink action="#{clinicServicePriceController.prepareList}" value="#{bundles.ViewClinicServicePriceShowAllLink}"/>
+                <h:commandLink action="#{clinicServicePriceController.prepareList}" value="#{bundle.ViewClinicServicePriceShowAllLink}"/>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{bundles.ViewClinicServicePriceIndexLink}"/>
+                <h:link outcome="/index" value="#{bundle.ViewClinicServicePriceIndexLink}"/>
 
             </h:form>
         </ui:define>

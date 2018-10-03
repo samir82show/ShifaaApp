@@ -1,17 +1,17 @@
 package entity.domain;
 
-import entity.domain.Clinic;
+import entity.domain.ClinicServicePrice;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-09-30T11:47:09")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-10-03T14:12:52")
 @StaticMetamodel(ClinicService.class)
 public class ClinicService_ { 
 
     public static volatile SingularAttribute<ClinicService, String> image;
-    public static volatile ListAttribute<ClinicService, Clinic> clinics;
+    public static volatile ListAttribute<ClinicService, ClinicServicePrice> clinicServicePrices;
     public static volatile SingularAttribute<ClinicService, Double> price;
     public static volatile SingularAttribute<ClinicService, String> name;
     public static volatile SingularAttribute<ClinicService, Long> id;

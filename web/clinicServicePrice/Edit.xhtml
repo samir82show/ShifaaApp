@@ -7,7 +7,7 @@
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="#{bundles.EditClinicServicePriceTitle}"></h:outputText>
+            <h:outputText value="#{bundle.EditClinicServicePriceTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
@@ -15,28 +15,28 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundles.EditClinicServicePriceLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{clinicServicePriceController.selected.id}" title="#{bundles.EditClinicServicePriceTitle_id}" />
-                    <h:outputLabel value="#{bundles.EditClinicServicePriceLabel_price}" for="price" />
-                    <h:inputText id="price" value="#{clinicServicePriceController.selected.price}" title="#{bundles.EditClinicServicePriceTitle_price}" />
-                    <h:outputLabel value="#{bundles.EditClinicServicePriceLabel_clinicService}" for="clinicService" />
-                    <h:selectOneMenu id="clinicService" value="#{clinicServicePriceController.selected.clinicService}" title="#{bundles.EditClinicServicePriceTitle_clinicService}" >
+                    <h:outputLabel value="#{bundle.EditClinicServicePriceLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{clinicServicePriceController.selected.id}" title="#{bundle.EditClinicServicePriceTitle_id}" />
+                    <h:outputLabel value="#{bundle.EditClinicServicePriceLabel_price}" for="price" />
+                    <h:inputText id="price" value="#{clinicServicePriceController.selected.price}" title="#{bundle.EditClinicServicePriceTitle_price}" />
+                    <h:outputLabel value="#{bundle.EditClinicServicePriceLabel_clinicService}" for="clinicService" />
+                    <h:selectOneMenu id="clinicService" value="#{clinicServicePriceController.selected.clinicService}" title="#{bundle.EditClinicServicePriceTitle_clinicService}" >
                         <f:selectItems value="#{clinicServiceController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
-                    <h:outputLabel value="#{bundles.EditClinicServicePriceLabel_clinic}" for="clinic" />
-                    <h:selectOneMenu id="clinic" value="#{clinicServicePriceController.selected.clinic}" title="#{bundles.EditClinicServicePriceTitle_clinic}" >
+                    <h:outputLabel value="#{bundle.EditClinicServicePriceLabel_clinic}" for="clinic" />
+                    <h:selectOneMenu id="clinic" value="#{clinicServicePriceController.selected.clinic}" title="#{bundle.EditClinicServicePriceTitle_clinic}" >
                         <f:selectItems value="#{clinicController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
-                <h:commandLink action="#{clinicServicePriceController.update}" value="#{bundles.EditClinicServicePriceSaveLink}"/>
+                <h:commandLink action="#{clinicServicePriceController.update}" value="#{bundle.EditClinicServicePriceSaveLink}"/>
                 <br />
                 <br />
-                <h:link outcome="View" value="#{bundles.EditClinicServicePriceViewLink}"/>
+                <h:link outcome="View" value="#{bundle.EditClinicServicePriceViewLink}"/>
                 <br />
-                <h:commandLink action="#{clinicServicePriceController.prepareList}" value="#{bundles.EditClinicServicePriceShowAllLink}" immediate="true"/>
+                <h:commandLink action="#{clinicServicePriceController.prepareList}" value="#{bundle.EditClinicServicePriceShowAllLink}" immediate="true"/>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{bundles.EditClinicServicePriceIndexLink}" />
+                <h:link outcome="/index" value="#{bundle.EditClinicServicePriceIndexLink}" />
             </h:form>
         </ui:define>
     </ui:composition>

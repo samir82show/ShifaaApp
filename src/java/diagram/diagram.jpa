@@ -7,6 +7,7 @@
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="image" id="_153855023212635"/>
             <jpa:one-to-many orp="false" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_153635096932872" connected-attribute-id="_153747293369884" v="true" xvt="" name="doctors" id="_153747293370285">
                 <jpa:xwm/>
                 <jpa:xm/>
@@ -34,8 +35,11 @@
         <jpa:nq e="false" name="Clinic.findByImage">
             <jpa:query>Select c from Clinic c where c.image=:image</jpa:query>
         </jpa:nq>
+        <jpa:nq e="false" name="Clinic.findByImage">
+            <jpa:query>Select c from Clinic c where c.image=:image</jpa:query>
+        </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="AreaPK" abs="false" class="Area" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_15363503185148">
+    <jpa:entity compositePrimaryKeyClass="AreaPK" abs="false" class="Area" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_15363503185148">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153635032710811">
@@ -59,7 +63,7 @@
             <jpa:query>Select a from Area a where a.name=:name</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="UserAuthPK" abs="false" class="UserAuth" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153635033430412">
+    <jpa:entity compositePrimaryKeyClass="UserAuthPK" abs="false" class="UserAuth" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153635033430412">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" xvt="" name="username" id="_153635035601515">
@@ -101,7 +105,7 @@
             <jpa:query>Select u from UserAuth u where u.email=:email</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="GroupAuthPK" abs="false" class="GroupAuth" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153635039068418">
+    <jpa:entity compositePrimaryKeyClass="GroupAuthPK" abs="false" class="GroupAuth" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153635039068418">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" xvt="" name="groupname" id="_153635040063221">
@@ -125,7 +129,7 @@
             <jpa:query>Select g from GroupAuth g where g.groupname=:groupname</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="ClinicServicePK" abs="false" class="ClinicService" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153635052291523">
+    <jpa:entity compositePrimaryKeyClass="ClinicServicePK" abs="false" class="ClinicService" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153635052291523">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153635054412926">
@@ -160,7 +164,7 @@
             <jpa:query>Select c from ClinicService c where c.price=:price</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="InsurancePK" abs="false" class="Insurance" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153635056565528">
+    <jpa:entity compositePrimaryKeyClass="InsurancePK" abs="false" class="Insurance" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153635056565528">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153635061772631">
@@ -191,7 +195,7 @@
             <jpa:query>Select i from Insurance i where i.image=:image</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="DoctorPK" abs="false" class="Doctor" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153635096932872">
+    <jpa:entity compositePrimaryKeyClass="DoctorPK" abs="false" class="Doctor" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153635096932872">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153635102092975">
@@ -229,7 +233,7 @@
             <jpa:query>Select d from Doctor d where d.qualifications=:qualifications</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="HospitalPK" abs="false" class="Hospital" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153747244152461">
+    <jpa:entity compositePrimaryKeyClass="HospitalPK" abs="false" class="Hospital" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153747244152461">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153747245450664">
@@ -303,7 +307,7 @@
             <jpa:query>Select h from Hospital h where h.workingDaysHours=:workingDaysHours</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="AppointmentPK" abs="false" class="Appointment" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153790056728532">
+    <jpa:entity compositePrimaryKeyClass="AppointmentPK" abs="false" class="Appointment" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153790056728532">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153790085313643">
@@ -383,7 +387,7 @@
             <jpa:query>Select a from Appointment a where a.morningOrEvening=:morningOrEvening</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="GuestPK" abs="false" class="Guest" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153790058351835">
+    <jpa:entity compositePrimaryKeyClass="GuestPK" abs="false" class="Guest" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153790058351835">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153790063400238">
@@ -439,7 +443,7 @@
             <jpa:query>Select g from Guest g where g.password=:password</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="DaysOfWeekPK" abs="false" class="DaysOfWeek" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153790170337555">
+    <jpa:entity compositePrimaryKeyClass="DaysOfWeekPK" abs="false" class="DaysOfWeek" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153790170337555">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153790172609258">
@@ -459,7 +463,7 @@
             <jpa:query>Select d from DaysOfWeek d where d.name=:name</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="ClinicServicePricePK" abs="false" class="ClinicServicePrice" v="true" xre="false" m="false" rootElement="_15363502350101" id="_153850468337432">
+    <jpa:entity compositePrimaryKeyClass="ClinicServicePricePK" abs="false" class="ClinicServicePrice" v="true" gen="false" xre="false" m="false" rootElement="_15363502350101" id="_153850468337432">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" name="price" id="_153850470053435"/>
