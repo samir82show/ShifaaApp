@@ -140,10 +140,6 @@
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
-            <jpa:basic attribute-type="Double" v="true" xvt="" name="price" id="_153790151574054">
-                <jpa:xwm/>
-                <jpa:xm/>
-            </jpa:basic>
             <jpa:one-to-many collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_153850468337432" connected-attribute-id="_153850473423939" v="true" name="clinicServicePrices" id="_153850473424040"/>
             <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_153635052291624">
                 <jpa:xwm/>

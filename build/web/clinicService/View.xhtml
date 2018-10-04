@@ -20,9 +20,7 @@
                     <h:outputText value="#{bundle.ViewClinicServiceLabel_name}"/>
                     <h:outputText value="#{clinicServiceController.selected.name}" title="#{bundle.ViewClinicServiceTitle_name}"/>
                     <h:outputText value="#{bundle.ViewClinicServiceLabel_image}"/>
-                    <h:outputText value="#{clinicServiceController.selected.image}" title="#{bundle.ViewClinicServiceTitle_image}"/>
-                    <h:outputText value="#{bundle.ViewClinicServiceLabel_price}"/>
-                    <h:outputText value="#{clinicServiceController.selected.price}" title="#{bundle.ViewClinicServiceTitle_price}"/>
+                    <img src="#{clinicServiceController.selected.image}" alt="" style="height: 100px; width: 100px;"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{clinicServiceController.destroyAndView}" value="#{bundle.ViewClinicServiceDestroyLink}"/>

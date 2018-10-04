@@ -36,13 +36,7 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListClinicServiceTitle_image}"/>
                             </f:facet>
-                            <h:outputText value="#{item.image}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListClinicServiceTitle_price}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.price}"/>
+                            <img src="#{item.image}" alt="" style="height: 100px; width: 100px;"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
