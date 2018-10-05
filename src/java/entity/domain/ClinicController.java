@@ -42,7 +42,7 @@ public class ClinicController implements Serializable {
     private int selectedItemIndex;
     @PostConstruct
     public void init() {
-        applicationPath = "C:\\Users\\sawad\\Documents\\NetBeansProjects\\ShifaaApp\\web\\resources\\images\\";
+        applicationPath = "D:\\new project\\ShifaaApp\\web\\resources\\images\\";
         appInternalPath = "../resources/images/";
     }
 
