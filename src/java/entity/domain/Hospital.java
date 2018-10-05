@@ -14,7 +14,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
+/**
+ * @author sawad
+ */
 @Entity
 public class Hospital implements Serializable {
 
@@ -45,6 +49,9 @@ public class Hospital implements Serializable {
 
     @ManyToOne
     private Area area;
+
+    @OneToMany(mappedBy = "hospital")
+    private List<ClinicServicePrice> clinicServicePrices;
 
     @ManyToMany
     private List<Clinic> clinics;
@@ -127,6 +134,27 @@ public class Hospital implements Serializable {
         this.area = area;
     }
 
+    public List<ClinicServicePrice> getClinicServicePrices() {
+        if (clinicServicePrices == null) {
+            clinicServicePrices = new ArrayList<>();
+        }
+        return this.clinicServicePrices;
+    }
+
+    public void setClinicServicePrices(List<ClinicServicePrice> clinicServicePrices) {
+        this.clinicServicePrices = clinicServicePrices;
+    }
+
+    public void addClinicServicePrice(ClinicServicePrice clinicServicePrice) {
+        getClinicServicePrices().add(clinicServicePrice);
+        clinicServicePrice.setHospital(this);
+    }
+
+    public void removeClinicServicePrice(ClinicServicePrice clinicServicePrice) {
+        getClinicServicePrices().remove(clinicServicePrice);
+        clinicServicePrice.setHospital(null);
+    }
+
     public List<Clinic> getClinics() {
         if (clinics == null) {
             clinics = new ArrayList<>();
@@ -169,18 +197,19 @@ public class Hospital implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.id);
-        hash = 53 * hash + Objects.hashCode(this.name);
-        hash = 53 * hash + Objects.hashCode(this.image);
-        hash = 53 * hash + Objects.hashCode(this.phoneNo);
-        hash = 53 * hash + Objects.hashCode(this.location);
-        hash = 53 * hash + Objects.hashCode(this.email);
-        hash = 53 * hash + Objects.hashCode(this.locationMap);
-        hash = 53 * hash + Objects.hashCode(this.workingDaysHours);
-        hash = 53 * hash + Objects.hashCode(this.area);
-        hash = 53 * hash + Objects.hashCode(this.clinics);
-        hash = 53 * hash + Objects.hashCode(this.insurances);
+        int hash = 3;
+        hash = 29 * hash + Objects.hashCode(this.id);
+        hash = 29 * hash + Objects.hashCode(this.name);
+        hash = 29 * hash + Objects.hashCode(this.image);
+        hash = 29 * hash + Objects.hashCode(this.phoneNo);
+        hash = 29 * hash + Objects.hashCode(this.location);
+        hash = 29 * hash + Objects.hashCode(this.email);
+        hash = 29 * hash + Objects.hashCode(this.locationMap);
+        hash = 29 * hash + Objects.hashCode(this.workingDaysHours);
+        hash = 29 * hash + Objects.hashCode(this.area);
+        hash = 29 * hash + Objects.hashCode(this.clinicServicePrices);
+        hash = 29 * hash + Objects.hashCode(this.clinics);
+        hash = 29 * hash + Objects.hashCode(this.insurances);
         return hash;
     }
 
@@ -223,6 +252,9 @@ public class Hospital implements Serializable {
         if (!Objects.equals(this.area, other.area)) {
             return false;
         }
+        if (!Objects.equals(this.clinicServicePrices, other.clinicServicePrices)) {
+            return false;
+        }
         if (!Objects.equals(this.clinics, other.clinics)) {
             return false;
         }
@@ -234,7 +266,7 @@ public class Hospital implements Serializable {
 
     @Override
     public String toString() {
-        return "Hospital{" + "name=" + name + ", area=" + area + '}';
+        return name + ", " + area;
     }
 
 }

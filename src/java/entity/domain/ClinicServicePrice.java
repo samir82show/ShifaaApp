@@ -3,8 +3,6 @@
  */
 package entity.domain;
 
-import java.io.Serializable;
-import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +14,7 @@ import javax.persistence.ManyToOne;
  * @author sawad
  */
 @Entity
-public class ClinicServicePrice implements Serializable {
+public class ClinicServicePrice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,14 +23,17 @@ public class ClinicServicePrice implements Serializable {
     @Basic
     private String price;
 
+    @Basic
+    private String discount;
+
     @ManyToOne
     private ClinicService clinicService;
 
     @ManyToOne
     private Clinic clinic;
 
-    public ClinicServicePrice() {
-    }
+    @ManyToOne
+    private Hospital hospital;
 
     public Long getId() {
         return this.id;
@@ -48,6 +49,14 @@ public class ClinicServicePrice implements Serializable {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getDiscount() {
+        return this.discount;
+    }
+
+    public void setDiscount(String discount) {
+        this.discount = discount;
     }
 
     public ClinicService getClinicService() {
@@ -66,41 +75,12 @@ public class ClinicServicePrice implements Serializable {
         this.clinic = clinic;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.id);
-        hash = 97 * hash + Objects.hashCode(this.price);
-        hash = 97 * hash + Objects.hashCode(this.clinicService);
-        hash = 97 * hash + Objects.hashCode(this.clinic);
-        return hash;
+    public Hospital getHospital() {
+        return this.hospital;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final ClinicServicePrice other = (ClinicServicePrice) obj;
-        if (!Objects.equals(this.price, other.price)) {
-            return false;
-        }
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.clinicService, other.clinicService)) {
-            return false;
-        }
-        if (!Objects.equals(this.clinic, other.clinic)) {
-            return false;
-        }
-        return true;
+    public void setHospital(Hospital hospital) {
+        this.hospital = hospital;
     }
 
 }

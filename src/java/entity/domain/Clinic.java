@@ -6,6 +6,7 @@ package entity.domain;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -127,4 +128,55 @@ public class Clinic implements Serializable {
         getHospitals().remove(hospital);
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 37 * hash + Objects.hashCode(this.id);
+        hash = 37 * hash + Objects.hashCode(this.name);
+        hash = 37 * hash + Objects.hashCode(this.image);
+        hash = 37 * hash + Objects.hashCode(this.doctors);
+        hash = 37 * hash + Objects.hashCode(this.clinicServicePrices);
+        hash = 37 * hash + Objects.hashCode(this.hospitals);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Clinic other = (Clinic) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.image, other.image)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.doctors, other.doctors)) {
+            return false;
+        }
+        if (!Objects.equals(this.clinicServicePrices, other.clinicServicePrices)) {
+            return false;
+        }
+        if (!Objects.equals(this.hospitals, other.hospitals)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+
+    
 }

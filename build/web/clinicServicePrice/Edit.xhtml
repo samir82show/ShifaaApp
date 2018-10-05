@@ -19,6 +19,8 @@
                     <h:inputText id="id" value="#{clinicServicePriceController.selected.id}" title="#{bundle.EditClinicServicePriceTitle_id}" />
                     <h:outputLabel value="#{bundle.EditClinicServicePriceLabel_price}" for="price" />
                     <h:inputText id="price" value="#{clinicServicePriceController.selected.price}" title="#{bundle.EditClinicServicePriceTitle_price}" />
+                    <h:outputLabel value="#{bundle.EditClinicServicePriceLabel_discount}" for="discount" />
+                    <h:inputText id="discount" value="#{clinicServicePriceController.selected.discount}" title="#{bundle.EditClinicServicePriceTitle_discount}" />
                     <h:outputLabel value="#{bundle.EditClinicServicePriceLabel_clinicService}" for="clinicService" />
                     <h:selectOneMenu id="clinicService" value="#{clinicServicePriceController.selected.clinicService}" title="#{bundle.EditClinicServicePriceTitle_clinicService}" >
                         <f:selectItems value="#{clinicServiceController.itemsAvailableSelectOne}"/>
@@ -26,6 +28,10 @@
                     <h:outputLabel value="#{bundle.EditClinicServicePriceLabel_clinic}" for="clinic" />
                     <h:selectOneMenu id="clinic" value="#{clinicServicePriceController.selected.clinic}" title="#{bundle.EditClinicServicePriceTitle_clinic}" >
                         <f:selectItems value="#{clinicController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditClinicServicePriceLabel_hospital}" for="hospital" />
+                    <h:selectOneMenu id="hospital" value="#{clinicServicePriceController.selected.hospital}" title="#{bundle.EditClinicServicePriceTitle_hospital}" >
+                        <f:selectItems value="#{hospitalController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
                 <h:commandLink action="#{clinicServicePriceController.update}" value="#{bundle.EditClinicServicePriceSaveLink}"/>
