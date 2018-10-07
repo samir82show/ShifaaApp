@@ -20,7 +20,7 @@
                     <h:outputText value="#{bundle.ViewInsuranceLabel_name}"/>
                     <h:outputText value="#{insuranceController.selected.name}" title="#{bundle.ViewInsuranceTitle_name}"/>
                     <h:outputText value="#{bundle.ViewInsuranceLabel_image}"/>
-                    <h:outputText value="#{insuranceController.selected.image}" title="#{bundle.ViewInsuranceTitle_image}"/>
+                    <img src="#{insuranceController.selected.image}" alt="" style="height: 100px; width: 100px;"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{insuranceController.destroyAndView}" value="#{bundle.ViewInsuranceDestroyLink}"/>

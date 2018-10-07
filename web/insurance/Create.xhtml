@@ -13,14 +13,14 @@
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:form>
+            <h:form enctype="multipart/form-data">
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateInsuranceLabel_id}" for="id" />
                     <h:inputText id="id" value="#{insuranceController.selected.id}" title="#{bundle.CreateInsuranceTitle_id}" />
                     <h:outputLabel value="#{bundle.CreateInsuranceLabel_name}" for="name" />
                     <h:inputText id="name" value="#{insuranceController.selected.name}" title="#{bundle.CreateInsuranceTitle_name}" />
                     <h:outputLabel value="#{bundle.CreateInsuranceLabel_image}" for="image" />
-                    <h:inputText id="image" value="#{insuranceController.selected.image}" title="#{bundle.CreateInsuranceTitle_image}" />
+                    <h:inputFile  id="image" value="#{insuranceController.image}" title="#{bundle.CreateInsuranceTitle_image}" />
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{insuranceController.create}" value="#{bundle.CreateInsuranceSaveLink}" />

@@ -1,11 +1,18 @@
 package entity.domain;
 
+import entity.domain.util.Helper;
 import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import facade.InsuranceFacade;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -16,11 +23,17 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.mail.MessagingException;
+import javax.servlet.http.Part;
 
 @Named("insuranceController")
 @SessionScoped
 public class InsuranceController implements Serializable {
 
+    private Part image;
+    private String prevImage;
+    private String applicationPath;
+    private String appInternalPath;
     private Insurance current;
     private DataModel items = null;
     @EJB
@@ -28,7 +41,47 @@ public class InsuranceController implements Serializable {
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
+    @PostConstruct
+    public void init() {
+        applicationPath = "C:\\Users\\sawad\\Documents\\NetBeansProjects\\ShifaaApp\\web\\resources\\images\\";
+        appInternalPath = "../resources/images/";
+    }
+
+    public Part getImage() {
+        return image;
+    }
+
+    public void setImage(Part image) {
+        this.image = image;
+    }
+
     public InsuranceController() {
+    }
+
+    public int doUpload() throws MessagingException {
+        if (!image.getSubmittedFileName().equals("")) {
+            String imgName = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date()) + image.getSubmittedFileName();
+            String fileFullPath = Helper.getAbsPath(applicationPath, "insurances") + imgName;
+            try {
+                InputStream inputStream = image.getInputStream();
+                File file = new File(fileFullPath);
+                file.createNewFile();
+                FileOutputStream fileOutputStream = new FileOutputStream(file);
+                byte[] buffer = new byte[4096];
+                int length;
+                while ((length = inputStream.read(buffer)) > 0) {
+                    fileOutputStream.write(buffer, 0, length);
+                }
+                fileOutputStream.close();
+                inputStream.close();
+            } catch (Exception e) {
+                System.out.println("Unable to save file due to ......." + e.getMessage());
+                return 1;
+            }
+            fileFullPath = Helper.getAppPath(appInternalPath, "insurances") + imgName;
+            current.setImage(fileFullPath);
+        }
+        return 0;
     }
 
     public Insurance getSelected() {
@@ -78,32 +131,48 @@ public class InsuranceController implements Serializable {
         return "Create";
     }
 
-    public String create() {
-        try {
-            getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("InsuranceCreated"));
-            return prepareCreate();
-        } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
-            return null;
+    public String create() throws MessagingException {
+        if (0 == doUpload()) {
+            try {
+                getFacade().create(current);
+                JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("InsuranceCreated"));
+                return prepareCreate();
+            } catch (Exception e) {
+                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+                return null;
+            }
+        } else {
+            System.out.println("create function ........... Clinic is not added.");
         }
+        return "/failed_to_create";
+
     }
 
     public String prepareEdit() {
         current = (Insurance) getItems().getRowData();
+        prevImage = current.getImage();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
 
-    public String update() {
-        try {
-            getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("InsuranceUpdated"));
-            return "View";
-        } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
-            return null;
+    public String update() throws MessagingException {
+        if (prevImage != null) {
+            new File(prevImage
+                    .replace(Helper.getAppPath(appInternalPath, "insurances"),
+                            Helper.getAbsPath(applicationPath, "insurances"))
+            ).delete();
         }
+        if (0 == doUpload()) {
+            try {
+                getFacade().edit(current);
+                JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("InsuranceUpdated"));
+                return "View";
+            } catch (Exception e) {
+                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+                return null;
+            }
+        }
+        return "/failed_to_create";
     }
 
     public String destroy() {
@@ -130,6 +199,12 @@ public class InsuranceController implements Serializable {
 
     private void performDestroy() {
         try {
+            if (current.getImage() != null) {
+                new File(current.getImage()
+                        .replace(Helper.getAppPath(appInternalPath, "insurances"),
+                                Helper.getAbsPath(applicationPath, "insurances"))
+                ).delete();
+            }
             getFacade().remove(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("InsuranceDeleted"));
         } catch (Exception e) {

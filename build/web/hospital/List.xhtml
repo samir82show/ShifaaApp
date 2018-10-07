@@ -36,7 +36,7 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListHospitalTitle_image}"/>
                             </f:facet>
-                            <h:outputText value="#{item.image}"/>
+                            <img src="#{item.image}" alt="" style="height: 100px; width: 100px;"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
@@ -72,7 +72,7 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListHospitalTitle_area}"/>
                             </f:facet>
-                            <h:outputText value="#{item.area}"/>
+                            <h:outputText value="#{item.area.getName()}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
