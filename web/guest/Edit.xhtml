@@ -28,7 +28,7 @@
                     <h:outputLabel value="#{bundle.EditGuestLabel_DOB}" for="DOB" />
                     <h:inputText id="DOB" value="#{guestController.selected.DOB}" title="#{bundle.EditGuestTitle_DOB}" />
                     <h:outputLabel value="#{bundle.EditGuestLabel_password}" for="password" />
-                    <h:inputText id="password" value="#{guestController.selected.password}" title="#{bundle.EditGuestTitle_password}" />
+                    <h:inputSecret id="password" value="#{guestController.selected.password}" title="#{bundle.EditGuestTitle_password}" />
                 </h:panelGrid>
                 <h:commandLink action="#{guestController.update}" value="#{bundle.EditGuestSaveLink}"/>
                 <br />

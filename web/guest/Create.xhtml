@@ -26,9 +26,11 @@
                     <h:outputLabel value="#{bundle.CreateGuestLabel_gender}" for="gender" />
                     <h:inputText id="gender" value="#{guestController.selected.gender}" title="#{bundle.CreateGuestTitle_gender}" />
                     <h:outputLabel value="#{bundle.CreateGuestLabel_DOB}" for="DOB" />
-                    <h:inputText id="DOB" value="#{guestController.selected.DOB}" title="#{bundle.CreateGuestTitle_DOB}" />
+                    <h:inputText autocomplete="off" class="datepicker" id="DOB" value="#{guestController.selected.DOB}" title="#{bundle.CreateGuestTitle_DOB}">
+                        <f:convertDateTime pattern="dd/mm/yyyy"/>
+                    </h:inputText>
                     <h:outputLabel value="#{bundle.CreateGuestLabel_password}" for="password" />
-                    <h:inputText id="password" value="#{guestController.selected.password}" title="#{bundle.CreateGuestTitle_password}" />
+                    <h:inputSecret id="password" value="#{guestController.selected.password}" title="#{bundle.CreateGuestTitle_password}" />
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{guestController.create}" value="#{bundle.CreateGuestSaveLink}" />
