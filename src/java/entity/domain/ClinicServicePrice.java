@@ -3,6 +3,8 @@
  */
 package entity.domain;
 
+import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +16,7 @@ import javax.persistence.ManyToOne;
  * @author sawad
  */
 @Entity
-public class ClinicServicePrice {
+public class ClinicServicePrice implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,8 +34,8 @@ public class ClinicServicePrice {
     @ManyToOne
     private Clinic clinic;
 
-    @ManyToOne
-    private Hospital hospital;
+    public ClinicServicePrice() {
+    }
 
     public Long getId() {
         return this.id;
@@ -75,12 +77,45 @@ public class ClinicServicePrice {
         this.clinic = clinic;
     }
 
-    public Hospital getHospital() {
-        return this.hospital;
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 43 * hash + Objects.hashCode(this.id);
+        hash = 43 * hash + Objects.hashCode(this.price);
+        hash = 43 * hash + Objects.hashCode(this.discount);
+        hash = 43 * hash + Objects.hashCode(this.clinicService);
+        hash = 43 * hash + Objects.hashCode(this.clinic);
+        return hash;
     }
 
-    public void setHospital(Hospital hospital) {
-        this.hospital = hospital;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ClinicServicePrice other = (ClinicServicePrice) obj;
+        if (!Objects.equals(this.price, other.price)) {
+            return false;
+        }
+        if (!Objects.equals(this.discount, other.discount)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.clinicService, other.clinicService)) {
+            return false;
+        }
+        if (!Objects.equals(this.clinic, other.clinic)) {
+            return false;
+        }
+        return true;
     }
 
 }

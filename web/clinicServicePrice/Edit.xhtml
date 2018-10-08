@@ -29,10 +29,6 @@
                     <h:selectOneMenu id="clinic" value="#{clinicServicePriceController.selected.clinic}" title="#{bundle.EditClinicServicePriceTitle_clinic}" >
                         <f:selectItems value="#{clinicController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
-                    <h:outputLabel value="#{bundle.EditClinicServicePriceLabel_hospital}" for="hospital" />
-                    <h:selectOneMenu id="hospital" value="#{clinicServicePriceController.selected.hospital}" title="#{bundle.EditClinicServicePriceTitle_hospital}" >
-                        <f:selectItems value="#{hospitalController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
                 </h:panelGrid>
                 <h:commandLink action="#{clinicServicePriceController.update}" value="#{bundle.EditClinicServicePriceSaveLink}"/>
                 <br />

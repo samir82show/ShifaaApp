@@ -2,8 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -15,18 +14,22 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewClinicServicePriceLabel_id}"/>
-                    <h:outputText value="#{clinicServicePriceController.selected.id}" title="#{bundle.ViewClinicServicePriceTitle_id}"/>
-                    <h:outputText value="#{bundle.ViewClinicServicePriceLabel_price}"/>
-                    <h:outputText value="#{clinicServicePriceController.selected.price}" title="#{bundle.ViewClinicServicePriceTitle_price}"/>
-                    <h:outputText value="#{bundle.ViewClinicServicePriceLabel_discount}"/>
-                    <h:outputText value="#{clinicServicePriceController.selected.discount}" title="#{bundle.ViewClinicServicePriceTitle_discount}"/>
-                    <h:outputText value="#{bundle.ViewClinicServicePriceLabel_clinicService}"/>
-                    <h:outputText value="#{clinicServicePriceController.selected.clinicService}" title="#{bundle.ViewClinicServicePriceTitle_clinicService}"/>
-                    <h:outputText value="#{bundle.ViewClinicServicePriceLabel_clinic}"/>
-                    <h:outputText value="#{clinicServicePriceController.selected.clinic}" title="#{bundle.ViewClinicServicePriceTitle_clinic}"/>
-                    <h:outputText value="#{bundle.ViewClinicServicePriceLabel_hospital}"/>
-                    <h:outputText value="#{clinicServicePriceController.selected.hospital}" title="#{bundle.ViewClinicServicePriceTitle_hospital}"/>
+                    <h:outputText value="#{bundle.ViewHospitalLabel_id}"/>
+                    <h:outputText value="#{hospitalController.selected.id}" title="#{bundle.ViewHospitalTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewHospitalLabel_name}"/>
+                    <h:outputText value="#{hospitalController.selected.name}" title="#{bundle.ViewHospitalTitle_name}"/>
+                    <h:outputText value="#{bundle.ViewHospitalLabel_image}"/>
+                    <img src="#{hospitalController.selected.image}" alt="" style="height: 100px; width: 100px;"/>
+                    <h:outputText value="#{bundle.ViewHospitalLabel_phoneNo}"/>
+                    <h:outputText value="#{hospitalController.selected.phoneNo}" title="#{bundle.ViewHospitalTitle_phoneNo}"/>
+                    <h:outputText value="#{bundle.ViewHospitalLabel_email}"/>
+                    <h:outputText value="#{hospitalController.selected.email}" title="#{bundle.ViewHospitalTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewHospitalLabel_locationMap}"/>
+                    <h:outputText value="#{hospitalController.selected.locationMap}" title="#{bundle.ViewHospitalTitle_locationMap}"/>
+                    <h:outputText value="#{bundle.ViewHospitalLabel_workingDaysHours}"/>
+                    <h:outputText value="#{hospitalController.selected.workingDaysHours}" title="#{bundle.ViewHospitalTitle_workingDaysHours}"/>
+                    <h:outputText value="#{bundle.ViewHospitalLabel_area}"/>
+                    <h:outputText value="#{hospitalController.selected.area.getName()}" title="#{bundle.ViewHospitalTitle_area}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{clinicServicePriceController.destroyAndView}" value="#{bundle.ViewClinicServicePriceDestroyLink}"/>

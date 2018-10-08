@@ -42,19 +42,13 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListClinicServicePriceTitle_clinicService}"/>
                             </f:facet>
-                            <h:outputText value="#{item.clinicService}"/>
+                            <h:outputText value="#{item.clinicService.getName()}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListClinicServicePriceTitle_clinic}"/>
                             </f:facet>
-                            <h:outputText value="#{item.clinic}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListClinicServicePriceTitle_hospital}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.hospital}"/>
+                            <h:outputText value="#{item.clinic.getName()}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
