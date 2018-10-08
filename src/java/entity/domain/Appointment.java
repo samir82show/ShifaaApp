@@ -35,22 +35,22 @@ public class Appointment implements Serializable {
     private String email;
 
     @Basic
-    private String gender;
-
-    @Basic
     private String DOB;
 
     @Basic
     private String description;
 
-    @Basic
-    private String preferredDoctorGender;
-
-    @Basic
-    private String morningOrEvening;
-
     @ManyToOne
     private Hospital hospital;
+
+    @ManyToOne
+    private Gender gender;
+
+    @ManyToOne
+    private Shift morningOrEvening;
+
+    @ManyToOne
+    private Gender doctorGender;
 
     @ManyToMany
     private List<DaysOfWeek> daysOfWeeks;
@@ -90,14 +90,6 @@ public class Appointment implements Serializable {
         this.email = email;
     }
 
-    public String getGender() {
-        return this.gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
     public String getDOB() {
         return this.DOB;
     }
@@ -114,28 +106,36 @@ public class Appointment implements Serializable {
         this.description = description;
     }
 
-    public String getPreferredDoctorGender() {
-        return this.preferredDoctorGender;
-    }
-
-    public void setPreferredDoctorGender(String preferredDoctorGender) {
-        this.preferredDoctorGender = preferredDoctorGender;
-    }
-
-    public String getMorningOrEvening() {
-        return this.morningOrEvening;
-    }
-
-    public void setMorningOrEvening(String morningOrEvening) {
-        this.morningOrEvening = morningOrEvening;
-    }
-
     public Hospital getHospital() {
         return this.hospital;
     }
 
     public void setHospital(Hospital hospital) {
         this.hospital = hospital;
+    }
+
+    public Gender getGender() {
+        return this.gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public Shift getMorningOrEvening() {
+        return this.morningOrEvening;
+    }
+
+    public void setMorningOrEvening(Shift morningOrEvening) {
+        this.morningOrEvening = morningOrEvening;
+    }
+
+    public Gender getDoctorGender() {
+        return this.doctorGender;
+    }
+
+    public void setDoctorGender(Gender doctorGender) {
+        this.doctorGender = doctorGender;
     }
 
     public List<DaysOfWeek> getDaysOfWeeks() {
@@ -159,8 +159,18 @@ public class Appointment implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.id);
+        int hash = 3;
+        hash = 17 * hash + Objects.hashCode(this.id);
+        hash = 17 * hash + Objects.hashCode(this.name);
+        hash = 17 * hash + Objects.hashCode(this.phone);
+        hash = 17 * hash + Objects.hashCode(this.email);
+        hash = 17 * hash + Objects.hashCode(this.DOB);
+        hash = 17 * hash + Objects.hashCode(this.description);
+        hash = 17 * hash + Objects.hashCode(this.hospital);
+        hash = 17 * hash + Objects.hashCode(this.gender);
+        hash = 17 * hash + Objects.hashCode(this.morningOrEvening);
+        hash = 17 * hash + Objects.hashCode(this.doctorGender);
+        hash = 17 * hash + Objects.hashCode(this.daysOfWeeks);
         return hash;
     }
 
@@ -176,7 +186,37 @@ public class Appointment implements Serializable {
             return false;
         }
         final Appointment other = (Appointment) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.phone, other.phone)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.DOB, other.DOB)) {
+            return false;
+        }
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
         if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.hospital, other.hospital)) {
+            return false;
+        }
+        if (!Objects.equals(this.gender, other.gender)) {
+            return false;
+        }
+        if (!Objects.equals(this.morningOrEvening, other.morningOrEvening)) {
+            return false;
+        }
+        if (!Objects.equals(this.doctorGender, other.doctorGender)) {
+            return false;
+        }
+        if (!Objects.equals(this.daysOfWeeks, other.daysOfWeeks)) {
             return false;
         }
         return true;
