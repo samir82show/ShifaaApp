@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -34,14 +35,14 @@ public class Guest implements Serializable {
     private String email;
 
     @Basic
-    private String gender;
-
-    @Basic
     @Temporal(TemporalType.DATE)
     private Date DOB;
 
     @Basic
     private String password;
+
+    @ManyToOne
+    private Gender gender;
 
     public Guest() {
     }
@@ -78,14 +79,6 @@ public class Guest implements Serializable {
         this.email = email;
     }
 
-    public String getGender() {
-        return this.gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
     public Date getDOB() {
         return this.DOB;
     }
@@ -102,16 +95,24 @@ public class Guest implements Serializable {
         this.password = password;
     }
 
+    public Gender getGender() {
+        return this.gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 53 * hash + Objects.hashCode(this.id);
-        hash = 53 * hash + Objects.hashCode(this.name);
-        hash = 53 * hash + Objects.hashCode(this.phone);
-        hash = 53 * hash + Objects.hashCode(this.email);
-        hash = 53 * hash + Objects.hashCode(this.gender);
-        hash = 53 * hash + Objects.hashCode(this.DOB);
-        hash = 53 * hash + Objects.hashCode(this.password);
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.name);
+        hash = 97 * hash + Objects.hashCode(this.phone);
+        hash = 97 * hash + Objects.hashCode(this.email);
+        hash = 97 * hash + Objects.hashCode(this.DOB);
+        hash = 97 * hash + Objects.hashCode(this.password);
+        hash = 97 * hash + Objects.hashCode(this.gender);
         return hash;
     }
 
@@ -136,9 +137,6 @@ public class Guest implements Serializable {
         if (!Objects.equals(this.email, other.email)) {
             return false;
         }
-        if (!Objects.equals(this.gender, other.gender)) {
-            return false;
-        }
         if (!Objects.equals(this.password, other.password)) {
             return false;
         }
@@ -148,12 +146,15 @@ public class Guest implements Serializable {
         if (!Objects.equals(this.DOB, other.DOB)) {
             return false;
         }
+        if (!Objects.equals(this.gender, other.gender)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Guest{" + "id=" + id + ", name=" + name + '}';
+        return "Guest{" + "name=" + name + '}';
     }
 
 }

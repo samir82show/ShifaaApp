@@ -25,7 +25,9 @@
                     <h:inputText autocomplete="off" id="email" value="#{appointmentController.selected.email}" title="#{bundle.CreateAppointmentTitle_email}" />
                     <h:message for="email"/>
                     <h:outputLabel value="#{bundle.CreateAppointmentLabel_DOB}" for="DOB" />
-                    <h:inputText autocomplete="off" class="datepicker" id="DOB" value="#{appointmentController.selected.DOB}" title="#{bundle.CreateAppointmentTitle_DOB}" />
+                    <h:inputText autocomplete="off" class="datepicker" id="DOB" value="#{appointmentController.selected.DOB}" title="#{bundle.CreateAppointmentTitle_DOB}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </h:inputText>
                     <h:message for="DOB"/>
                     <h:outputLabel value="#{bundle.CreateAppointmentLabel_hospital}" for="hospital" />
                     <h:selectOneMenu id="hospital" value="#{appointmentController.selected.hospital}" title="#{bundle.CreateAppointmentTitle_hospital}" >

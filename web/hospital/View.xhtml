@@ -23,8 +23,6 @@
                     <img src="#{hospitalController.selected.image}" alt="" style="height: 100px; width: 100px;"/>
                     <h:outputText value="#{bundle.ViewHospitalLabel_phoneNo}"/>
                     <h:outputText value="#{hospitalController.selected.phoneNo}" title="#{bundle.ViewHospitalTitle_phoneNo}"/>
-                    <h:outputText value="#{bundle.ViewHospitalLabel_location}"/>
-                    <h:outputText value="#{hospitalController.selected.location}" title="#{bundle.ViewHospitalTitle_location}"/>
                     <h:outputText value="#{bundle.ViewHospitalLabel_email}"/>
                     <h:outputText value="#{hospitalController.selected.email}" title="#{bundle.ViewHospitalTitle_email}"/>
                     <h:outputText value="#{bundle.ViewHospitalLabel_locationMap}"/>
@@ -32,7 +30,7 @@
                     <h:outputText value="#{bundle.ViewHospitalLabel_workingDaysHours}"/>
                     <h:outputText value="#{hospitalController.selected.workingDaysHours}" title="#{bundle.ViewHospitalTitle_workingDaysHours}"/>
                     <h:outputText value="#{bundle.ViewHospitalLabel_area}"/>
-                    <h:outputText value="#{hospitalController.selected.area}" title="#{bundle.ViewHospitalTitle_area}"/>
+                    <h:outputText value="#{hospitalController.selected.area.getName()}" title="#{bundle.ViewHospitalTitle_area}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{hospitalController.destroyAndView}" value="#{bundle.ViewHospitalDestroyLink}"/>

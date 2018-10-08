@@ -14,19 +14,21 @@
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form enctype="multipart/form-data">
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateDoctorLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{doctorController.selected.id}" title="#{bundle.CreateDoctorTitle_id}" />
+                <h:panelGrid columns="3">
                     <h:outputLabel value="#{bundle.CreateDoctorLabel_name}" for="name" />
-                    <h:inputText id="name" value="#{doctorController.selected.name}" title="#{bundle.CreateDoctorTitle_name}" />
+                    <h:inputText autocomplete="off" id="name" value="#{doctorController.selected.name}" title="#{bundle.CreateDoctorTitle_name}" />
+                    <h:message for="name"/>
                     <h:outputLabel value="#{bundle.CreateDoctorLabel_image}" for="image" />
-                    <h:inputFile id="image" value="#{doctorController.image}" title="#{bundle.CreateDoctorTitle_image}" />
+                    <h:inputFile autocomplete="off" id="image" value="#{doctorController.image}" title="#{bundle.CreateDoctorTitle_image}" />
+                    <h:message for="image"/>
                     <h:outputLabel value="#{bundle.CreateDoctorLabel_qualifications}" for="qualifications" />
-                    <h:inputText id="qualifications" value="#{doctorController.selected.qualifications}" title="#{bundle.CreateDoctorTitle_qualifications}" />
+                    <h:inputTextarea id="qualifications" value="#{doctorController.selected.qualifications}" title="#{bundle.CreateDoctorTitle_qualifications}" />
+                    <h:message for="qualifications"/>
                     <h:outputLabel value="#{bundle.CreateDoctorLabel_clinic}" for="clinic" />
                     <h:selectOneMenu id="clinic" value="#{doctorController.selected.clinic}" title="#{bundle.CreateDoctorTitle_clinic}" >
                         <f:selectItems value="#{clinicController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
+                    <h:message for="clinic"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{doctorController.create}" value="#{bundle.CreateDoctorSaveLink}" />

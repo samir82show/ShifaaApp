@@ -36,9 +36,6 @@ public class Hospital implements Serializable {
     private String phoneNo;
 
     @Basic
-    private String location;
-
-    @Basic
     private String email;
 
     @Basic
@@ -92,14 +89,6 @@ public class Hospital implements Serializable {
 
     public void setPhoneNo(String phoneNo) {
         this.phoneNo = phoneNo;
-    }
-
-    public String getLocation() {
-        return this.location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
     }
 
     public String getEmail() {
@@ -197,19 +186,8 @@ public class Hospital implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 29 * hash + Objects.hashCode(this.id);
-        hash = 29 * hash + Objects.hashCode(this.name);
-        hash = 29 * hash + Objects.hashCode(this.image);
-        hash = 29 * hash + Objects.hashCode(this.phoneNo);
-        hash = 29 * hash + Objects.hashCode(this.location);
-        hash = 29 * hash + Objects.hashCode(this.email);
-        hash = 29 * hash + Objects.hashCode(this.locationMap);
-        hash = 29 * hash + Objects.hashCode(this.workingDaysHours);
-        hash = 29 * hash + Objects.hashCode(this.area);
-        hash = 29 * hash + Objects.hashCode(this.clinicServicePrices);
-        hash = 29 * hash + Objects.hashCode(this.clinics);
-        hash = 29 * hash + Objects.hashCode(this.insurances);
+        int hash = 5;
+        hash = 17 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -225,40 +203,7 @@ public class Hospital implements Serializable {
             return false;
         }
         final Hospital other = (Hospital) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.image, other.image)) {
-            return false;
-        }
-        if (!Objects.equals(this.phoneNo, other.phoneNo)) {
-            return false;
-        }
-        if (!Objects.equals(this.location, other.location)) {
-            return false;
-        }
-        if (!Objects.equals(this.email, other.email)) {
-            return false;
-        }
-        if (!Objects.equals(this.locationMap, other.locationMap)) {
-            return false;
-        }
-        if (!Objects.equals(this.workingDaysHours, other.workingDaysHours)) {
-            return false;
-        }
         if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.area, other.area)) {
-            return false;
-        }
-        if (!Objects.equals(this.clinicServicePrices, other.clinicServicePrices)) {
-            return false;
-        }
-        if (!Objects.equals(this.clinics, other.clinics)) {
-            return false;
-        }
-        if (!Objects.equals(this.insurances, other.insurances)) {
             return false;
         }
         return true;

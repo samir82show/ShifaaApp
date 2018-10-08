@@ -244,10 +244,6 @@
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
-            <jpa:basic attribute-type="String" v="true" xvt="" name="location" id="_153789996340528">
-                <jpa:xwm/>
-                <jpa:xm/>
-            </jpa:basic>
             <jpa:basic attribute-type="String" v="true" xvt="" name="email" id="_153789997150529">
                 <jpa:xwm/>
                 <jpa:xm/>
@@ -304,7 +300,7 @@
             <jpa:query>Select h from Hospital h where h.workingDaysHours=:workingDaysHours</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="AppointmentPK" abs="false" class="Appointment" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153790056728532">
+    <jpa:entity compositePrimaryKeyClass="AppointmentPK" abs="false" class="Appointment" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153790056728532">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153790085313643">
@@ -384,7 +380,7 @@
             <jpa:query>Select a from Appointment a where a.morningOrEvening=:morningOrEvening</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="GuestPK" abs="false" class="Guest" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153790058351835">
+    <jpa:entity compositePrimaryKeyClass="GuestPK" abs="false" class="Guest" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153790058351835">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153790063400238">
@@ -399,10 +395,6 @@
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
-            <jpa:basic attribute-type="String" v="true" xvt="" name="gender" id="_153790065015141">
-                <jpa:xwm/>
-                <jpa:xm/>
-            </jpa:basic>
             <jpa:basic attribute-type="java.util.Date" v="true" xvt="" name="DOB" id="_153790065556742">
                 <jpa:xwm/>
                 <jpa:xm/>
@@ -412,6 +404,7 @@
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_153898569105336" v="true" name="gender" id="_153899603254255"/>
             <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_153790058351936">
                 <jpa:xwm/>
                 <jpa:xm/>
@@ -485,7 +478,7 @@
             <jpa:query>Select c from ClinicServicePrice c where c.discount=:discount</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="GenderPK" abs="false" class="Gender" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153898569105336">
+    <jpa:entity compositePrimaryKeyClass="GenderPK" abs="false" class="Gender" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153898569105336">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153898576742739">
@@ -505,7 +498,7 @@
             <jpa:query>Select c from Gender c where c.name=:name</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="ShiftPK" abs="false" class="Shift" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153898591247446">
+    <jpa:entity compositePrimaryKeyClass="ShiftPK" abs="false" class="Shift" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153898591247446">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153898592591049">

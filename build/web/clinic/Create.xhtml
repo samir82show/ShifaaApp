@@ -13,13 +13,13 @@
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form enctype="multipart/form-data">
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateClinicLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{clinicController.selected.id}" title="#{bundle.CreateClinicTitle_id}" />
+                <h:panelGrid columns="3">
                     <h:outputLabel value="#{bundle.CreateClinicLabel_name}" for="name" />
-                    <h:inputText id="name" value="#{clinicController.selected.name}" title="#{bundle.CreateClinicTitle_name}" />
+                    <h:inputText autocomplete="off" id="name" value="#{clinicController.selected.name}" title="#{bundle.CreateClinicTitle_name}" />
+                    <h:message for="name"/>
                     <h:outputLabel value="#{bundle.CreateClinicLabel_image}" for="image" />
                     <h:inputFile id="image" value="#{clinicController.image}" title="#{bundle.CreateClinicTitle_image}"/>
+                    <h:message for="name"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{clinicController.create}" value="#{bundle.CreateClinicSaveLink}" />

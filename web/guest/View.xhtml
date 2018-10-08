@@ -23,12 +23,14 @@
                     <h:outputText value="#{guestController.selected.phone}" title="#{bundle.ViewGuestTitle_phone}"/>
                     <h:outputText value="#{bundle.ViewGuestLabel_email}"/>
                     <h:outputText value="#{guestController.selected.email}" title="#{bundle.ViewGuestTitle_email}"/>
-                    <h:outputText value="#{bundle.ViewGuestLabel_gender}"/>
-                    <h:outputText value="#{guestController.selected.gender}" title="#{bundle.ViewGuestTitle_gender}"/>
                     <h:outputText value="#{bundle.ViewGuestLabel_DOB}"/>
-                    <h:outputText value="#{guestController.selected.DOB}" title="#{bundle.ViewGuestTitle_DOB}"/>
+                    <h:outputText value="#{guestController.selected.DOB}" title="#{bundle.ViewGuestTitle_DOB}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </h:outputText>
                     <h:outputText value="#{bundle.ViewGuestLabel_password}"/>
                     <h:outputText value="#{guestController.selected.password}" title="#{bundle.ViewGuestTitle_password}"/>
+                    <h:outputText value="#{bundle.ViewGuestLabel_gender}"/>
+                    <h:outputText value="#{guestController.selected.gender.getName() }" title="#{bundle.ViewGuestTitle_gender}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{guestController.destroyAndView}" value="#{bundle.ViewGuestDestroyLink}"/>

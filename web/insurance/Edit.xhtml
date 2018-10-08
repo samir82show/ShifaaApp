@@ -14,13 +14,16 @@
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form enctype="multipart/form-data">
-                <h:panelGrid columns="2">
+                <h:panelGrid columns="3">
                     <h:outputLabel value="#{bundle.EditInsuranceLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{insuranceController.selected.id}" title="#{bundle.EditInsuranceTitle_id}" />
+                    <h:inputText disabled="true" id="id" value="#{insuranceController.selected.id}" title="#{bundle.EditInsuranceTitle_id}" />
+                    <h:message for="id"/>
                     <h:outputLabel value="#{bundle.EditInsuranceLabel_name}" for="name" />
-                    <h:inputText id="name" value="#{insuranceController.selected.name}" title="#{bundle.EditInsuranceTitle_name}" />
+                    <h:inputText autocomplete="off" id="name" value="#{insuranceController.selected.name}" title="#{bundle.EditInsuranceTitle_name}" />
+                    <h:message for="id"/>
                     <h:outputLabel value="#{bundle.EditInsuranceLabel_image}" for="image" />
                     <h:inputFile id="image" value="#{insuranceController.image}" title="#{bundle.EditInsuranceTitle_image}" />
+                    <h:message for="id"/>
                 </h:panelGrid>
                 <h:commandLink action="#{insuranceController.update}" value="#{bundle.EditInsuranceSaveLink}"/>
                 <br />

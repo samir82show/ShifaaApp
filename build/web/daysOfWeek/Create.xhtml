@@ -14,11 +14,13 @@
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form>
-                <h:panelGrid columns="2">
+                <h:panelGrid columns="3">
                     <h:outputLabel value="#{bundle.CreateDaysOfWeekLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{daysOfWeekController.selected.id}" title="#{bundle.CreateDaysOfWeekTitle_id}" />
+                    <h:inputText autocomplete="off" id="id" value="#{daysOfWeekController.selected.id}" title="#{bundle.CreateDaysOfWeekTitle_id}" />
+                    <h:message for="id"/>
                     <h:outputLabel value="#{bundle.CreateDaysOfWeekLabel_name}" for="name" />
-                    <h:inputText id="name" value="#{daysOfWeekController.selected.name}" title="#{bundle.CreateDaysOfWeekTitle_name}" />
+                    <h:inputText autocomplete="off" id="name" value="#{daysOfWeekController.selected.name}" title="#{bundle.CreateDaysOfWeekTitle_name}" />
+                    <h:message for="name"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{daysOfWeekController.create}" value="#{bundle.CreateDaysOfWeekSaveLink}" />

@@ -15,29 +15,31 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="3">
+                    <h:outputLabel value="#{bundle.EditGuestLabel_id}" for="id" />
+                    <h:inputText disabled="true" id="id" value="#{guestController.selected.id}" title="#{bundle.EditGuestTitle_id}" />
+                    <h:message for="id"/>
+                    <h:outputLabel value="#{bundle.EditGuestLabel_email}" for="email" />
+                    <h:inputText autocomplete="off" id="email" value="#{guestController.selected.email}" title="#{bundle.EditGuestTitle_email}" />
+                    <h:message for="email"/>
                     <h:outputLabel value="#{bundle.EditGuestLabel_name}" for="name" />
-                    <h:inputText id="name" value="#{guestController.selected.name}" title="#{bundle.EditGuestTitle_name}" />
+                    <h:inputText autocomplete="off" id="name" value="#{guestController.selected.name}" title="#{bundle.EditGuestTitle_name}" />
                     <h:message for="name"/>
                     <h:outputLabel value="#{bundle.EditGuestLabel_password}" for="password" />
-                    <h:inputSecret id="password" value="#{guestController.selected.password}" title="#{bundle.EditRepeatGuestTitle_password}" />
+                    <h:inputSecret id="password" value="#{guestController.selected.password}" title="#{bundle.EditGuestTitle_password}" />
                     <h:message for="password"/>
-                    <h:outputLabel value="#{bundle.EditGuestLabel_email}" for="email" />
-                    <h:inputText id="email" value="#{guestController.selected.email}" title="#{bundle.EditGuestTitle_email}" />
-                    <h:message for="email"/>
                     <h:outputLabel value="#{bundle.EditGuestLabel_phone}" for="phone" />
-                    <h:inputText id="phone" value="#{guestController.selected.phone}" title="#{bundle.EditGuestTitle_phone}" />
+                    <h:inputText autocomplete="off" id="phone" value="#{guestController.selected.phone}" title="#{bundle.EditGuestTitle_phone}" />
                     <h:message for="phone"/>
-                    <h:outputLabel value="#{bundle.EditGuestLabel_gender}" for="gender" />
-                    <h:selectOneRadio id="gender" value="#{guestController.selected.gender}" title="#{bundle.EditGuestTitle_gender}">
-                        <f:selectItem itemValue="0" itemLabel="Female" />
-                        <f:selectItem itemValue="1" itemLabel="Male" />
-                    </h:selectOneRadio>
-                    <h:message for="gender"/>
                     <h:outputLabel value="#{bundle.EditGuestLabel_DOB}" for="DOB" />
-                    <h:inputText autocomplete="off" class="datepicker" id="DOB" value="#{guestController.selected.DOB}" title="#{bundle.CreateGuestTitle_DOB}">
+                    <h:inputText class="datepicker" autocomplete="off" id="DOB" value="#{guestController.selected.DOB}" title="#{bundle.EditGuestTitle_DOB}">
                         <f:convertDateTime pattern="dd/MM/yyyy"/>
                     </h:inputText>
                     <h:message for="DOB"/>
+                    <h:outputLabel value="#{bundle.EditGuestLabel_gender}" for="gender" />
+                    <h:selectOneRadio id="gender" value="#{guestController.selected.gender}" title="#{bundle.EditGuestTitle_gender}" >
+                        <f:selectItems value="#{genderController.itemsAvailableSelectMany}"/>
+                    </h:selectOneRadio>
+                    <h:message for="gender"/>
                 </h:panelGrid>
                 <h:commandLink action="#{guestController.update}" value="#{bundle.EditGuestSaveLink}"/>
                 <br />

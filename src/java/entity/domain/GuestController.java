@@ -30,7 +30,6 @@ public class GuestController implements Serializable {
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
-
     public GuestController() {
     }
 
