@@ -229,7 +229,7 @@
             <jpa:query>Select d from Doctor d where d.qualifications=:qualifications</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="HospitalPK" abs="false" class="Hospital" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153747244152461">
+    <jpa:entity compositePrimaryKeyClass="HospitalPK" abs="false" class="Hospital" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153747244152461">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153747245450664">
@@ -304,7 +304,7 @@
             <jpa:query>Select h from Hospital h where h.workingDaysHours=:workingDaysHours</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="AppointmentPK" abs="false" class="Appointment" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153790056728532">
+    <jpa:entity compositePrimaryKeyClass="AppointmentPK" abs="false" class="Appointment" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153790056728532">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153790085313643">
@@ -319,6 +319,10 @@
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="gender" id="_153790087533046">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
             <jpa:basic attribute-type="String" v="true" xvt="" name="DOB" id="_153790088137647">
                 <jpa:xwm/>
                 <jpa:xm/>
@@ -327,19 +331,15 @@
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="preferredDoctorGender" id="_153790118224151">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="morningOrEvening" id="_153790123088553">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
             <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_153747244152461" v="true" xvt="" name="hospital" id="_153790109104349">
-                <jpa:xwm/>
-                <jpa:xm/>
-            </jpa:many-to-one>
-            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_153898569105336" v="true" xvt="" name="gender" id="_153898587039445">
-                <jpa:xwm/>
-                <jpa:xm/>
-            </jpa:many-to-one>
-            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_153898591247446" v="true" xvt="" name="morningOrEvening" id="_153898593686451">
-                <jpa:xwm/>
-                <jpa:xm/>
-            </jpa:many-to-one>
-            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_153898569105336" v="true" xvt="" name="doctorGender" id="_153898598696553">
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:many-to-one>
@@ -460,7 +460,7 @@
             <jpa:query>Select d from DaysOfWeek d where d.name=:name</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="ClinicServicePricePK" abs="false" class="ClinicServicePrice" v="true" gen="false" xre="false" m="false" rootElement="_15363502350101" id="_153850468337432">
+    <jpa:entity compositePrimaryKeyClass="ClinicServicePricePK" abs="false" class="ClinicServicePrice" v="true" xre="false" m="false" rootElement="_15363502350101" id="_153850468337432">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" name="price" id="_153850470053435"/>
@@ -485,46 +485,6 @@
             <jpa:query>Select c from ClinicServicePrice c where c.discount=:discount</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="GenderPK" abs="false" class="Gender" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153898569105336">
-        <jpa:ath>sawad</jpa:ath>
-        <jpa:attributes>
-            <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153898576742739">
-                <jpa:xwm/>
-                <jpa:xm/>
-            </jpa:basic>
-            <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_153898569108037">
-                <jpa:xwm/>
-                <jpa:xm/>
-                <jpa:generated-value strategy="AUTO"/>
-            </jpa:id>
-        </jpa:attributes>
-        <jpa:nq e="false" name="Gender.findAll">
-            <jpa:query>Select e from Gender e</jpa:query>
-        </jpa:nq>
-        <jpa:nq e="false" name="Gender.findByName">
-            <jpa:query>Select c from Gender c where c.name=:name</jpa:query>
-        </jpa:nq>
-    </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="ShiftPK" abs="false" class="Shift" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153898591247446">
-        <jpa:ath>sawad</jpa:ath>
-        <jpa:attributes>
-            <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153898592591049">
-                <jpa:xwm/>
-                <jpa:xm/>
-            </jpa:basic>
-            <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_153898591247947">
-                <jpa:xwm/>
-                <jpa:xm/>
-                <jpa:generated-value strategy="AUTO"/>
-            </jpa:id>
-        </jpa:attributes>
-        <jpa:nq e="false" name="Shift.findAll">
-            <jpa:query>Select e from Shift e</jpa:query>
-        </jpa:nq>
-        <jpa:nq e="false" name="Shift.findByName">
-            <jpa:query>Select s from Shift s where s.name=:name</jpa:query>
-        </jpa:nq>
-    </jpa:entity>
     <jpa:snp loc="BEFORE_PACKAGE" e="true">/**
  * This file was generated by the Jeddict
  */</jpa:snp>
@@ -532,18 +492,16 @@
         <jpa:ws n="Main" id="_15363502350142">
             <i ref="_153850468337432" x="685" y="414"/>
             <i ref="_15363503185148" x="92" y="514"/>
-            <i ref="_153747244152461" x="291" y="220"/>
-            <i ref="_153635039068418" x="482" y="52"/>
-            <i ref="_153898591247446" x="-108" y="331"/>
-            <i ref="_153635052291523" x="910" y="233"/>
-            <i ref="_153898569105336" x="-76" y="535"/>
             <i ref="_153635096932872" x="685" y="52"/>
+            <i ref="_153747244152461" x="291" y="220"/>
             <i ref="_153790056728532" x="72" y="209"/>
             <i ref="_15363502409573" x="482" y="191"/>
+            <i ref="_153635039068418" x="482" y="52"/>
             <i ref="_153790170337555" x="-109" y="178"/>
             <i ref="_153790058351835" x="92" y="-6"/>
             <i ref="_153635056565528" x="486" y="388"/>
             <i ref="_153635033430412" x="307" y="-6"/>
+            <i ref="_153635052291523" x="910" y="233"/>
         </jpa:ws>
     </jpa:wsl>
 </jpa:entity-mappings>
