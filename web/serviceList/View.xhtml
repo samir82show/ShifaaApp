@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewServiceListTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewServiceListLabel_id}"/>
+                    <h:outputText value="#{serviceListController.selected.id}" title="#{bundle.ViewServiceListTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewServiceListLabel_name}"/>
+                    <h:outputText value="#{serviceListController.selected.name}" title="#{bundle.ViewServiceListTitle_name}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{serviceListController.destroyAndView}" value="#{bundle.ViewServiceListDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewServiceListEditLink}"/>
+                <br />
+                <h:commandLink action="#{serviceListController.prepareCreate}" value="#{bundle.ViewServiceListCreateLink}" />
+                <br />
+                <h:commandLink action="#{serviceListController.prepareList}" value="#{bundle.ViewServiceListShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewServiceListIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -20,24 +20,24 @@
                     <h:message for="name"/>
                     <h:outputLabel value="#{bundle.CreateHospitalLabel_image}" for="image" />
                     <h:inputFile id="image" value="#{hospitalController.image}" title="#{bundle.CreateHospitalTitle_image}" />
-                    <h:message for="name"/>
+                    <h:message for="image"/>
+                    <h:outputLabel value="#{bundle.CreateHospitalLabel_phoneNo}" for="phoneNo" />
+                    <h:inputText autocomplete="off" id="phoneNo" value="#{hospitalController.selected.phoneNo}" title="#{bundle.CreateHospitalTitle_phoneNo}" />
+                    <h:message for="phoneNo"/>
+                    <h:outputLabel value="#{bundle.CreateHospitalLabel_email}" for="email" />
+                    <h:inputText autocomplete="off" id="email" value="#{hospitalController.selected.email}" title="#{bundle.CreateHospitalTitle_email}" />
+                    <h:message for="email"/>
+                    <h:outputLabel value="#{bundle.CreateHospitalLabel_locationMap}" for="locationMap" />
+                    <h:inputText autocomplete="off" id="locationMap" value="#{hospitalController.selected.locationMap}" title="#{bundle.CreateHospitalTitle_locationMap}" />
+                    <h:message for="locationMap"/>
+                    <h:outputLabel value="#{bundle.CreateHospitalLabel_workingDaysHours}" for="workingDaysHours" />
+                    <h:inputTextarea id="workingDaysHours" value="#{hospitalController.selected.workingDaysHours}" title="#{bundle.CreateHospitalTitle_workingDaysHours}" />
+                    <h:message for="workingDaysHours"/>
                     <h:outputLabel value="#{bundle.CreateHospitalLabel_area}" for="area" />
                     <h:selectOneMenu id="area" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_area}" >
                         <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
-                    <h:message for="name"/>
-                    <h:outputLabel value="#{bundle.CreateHospitalLabel_phoneNo}" for="phoneNo" />
-                    <h:inputText autocomplete="off" id="phoneNo" value="#{hospitalController.selected.phoneNo}" title="#{bundle.CreateHospitalTitle_phoneNo}" />
-                    <h:message for="name"/>
-                    <h:outputLabel value="#{bundle.CreateHospitalLabel_email}" for="email" />
-                    <h:inputText autocomplete="off" id="email" value="#{hospitalController.selected.email}" title="#{bundle.CreateHospitalTitle_email}" />
-                    <h:message for="name"/>
-                    <h:outputLabel value="#{bundle.CreateHospitalLabel_locationMap}" for="locationMap" />
-                    <h:inputText autocomplete="off" id="locationMap" value="#{hospitalController.selected.locationMap}" title="#{bundle.CreateHospitalTitle_locationMap}" />
-                    <h:message for="name"/>
-                    <h:outputLabel value="#{bundle.CreateHospitalLabel_workingDaysHours}" for="workingDaysHours" />
-                    <h:inputTextarea id="workingDaysHours" value="#{hospitalController.selected.workingDaysHours}" title="#{bundle.CreateHospitalTitle_workingDaysHours}" />
-                    <h:message for="name"/>
+                    <h:message for="area"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{hospitalController.create}" value="#{bundle.CreateHospitalSaveLink}" />

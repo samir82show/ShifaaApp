@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -15,11 +16,21 @@
             <h:form enctype="multipart/form-data">
                 <h:panelGrid columns="3">
                     <h:outputLabel value="#{bundle.CreateClinicLabel_name}" for="name" />
-                    <h:inputText autocomplete="off" id="name" value="#{clinicController.selected.name}" title="#{bundle.CreateClinicTitle_name}" />
+                    <h:selectOneMenu id="name" value="#{clinicController.selected.name}" title="#{bundle.CreateClinicTitle_name}" >
+                        <f:selectItems value="#{clinicListController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
                     <h:message for="name"/>
                     <h:outputLabel value="#{bundle.CreateClinicLabel_image}" for="image" />
                     <h:inputFile id="image" value="#{clinicController.image}" title="#{bundle.CreateClinicTitle_image}"/>
-                    <h:message for="name"/>
+                    <h:message for="image"/>
+                    <h:outputLabel value="#{bundle.CreateClinicLabel_hospital}" for="hospital" />
+                    <h:selectOneMenu id="hospital" value="#{clinicController.selected.hospital}" title="#{bundle.CreateClinicTitle_hospital}" >
+                        <f:selectItems value="#{hospitalController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:message for="hospital"/>
+                    <h:outputLabel value="#{bundle.CreateClinicLabel_workingDaysHours}" for="workingDaysHours" />
+                    <h:inputTextarea id="workingDaysHours" value="#{clinicController.selected.workingDaysHours}" title="#{bundle.CreateClinicTitle_workingDaysHours}" />
+                    <h:message for="workingDaysHours"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{clinicController.create}" value="#{bundle.CreateClinicSaveLink}" />

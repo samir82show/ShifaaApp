@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -15,11 +16,21 @@
             <h:form enctype="multipart/form-data">
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.EditClinicServiceLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{clinicServiceController.selected.id}" title="#{bundle.EditClinicServiceTitle_id}" />
-                    <h:outputLabel value="#{bundle.EditClinicServiceLabel_name}" for="name" />
-                    <h:inputText id="name" value="#{clinicServiceController.selected.name}" title="#{bundle.EditClinicServiceTitle_name}" />
+                    <h:inputText disabled="true" id="id" value="#{clinicServiceController.selected.id}" title="#{bundle.EditClinicServiceTitle_id}" />
                     <h:outputLabel value="#{bundle.EditClinicServiceLabel_image}" for="image" />
                     <h:inputFile id="image" value="#{clinicServiceController.image}" title="#{bundle.EditClinicServiceTitle_image}" />
+                    <h:outputLabel value="#{bundle.EditClinicServiceLabel_price}" for="price" />
+                    <h:inputText id="price" value="#{clinicServiceController.selected.price}" title="#{bundle.EditClinicServiceTitle_price}" />
+                    <h:outputLabel value="#{bundle.EditClinicServiceLabel_discount}" for="discount" />
+                    <h:inputText id="discount" value="#{clinicServiceController.selected.discount}" title="#{bundle.EditClinicServiceTitle_discount}" />
+                    <h:outputLabel value="#{bundle.EditClinicServiceLabel_clinic}" for="clinic" />
+                    <h:selectOneMenu id="clinic" value="#{clinicServiceController.selected.clinic}" title="#{bundle.EditClinicServiceTitle_clinic}" >
+                        <f:selectItems value="#{clinicController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditClinicServiceLabel_name}" for="name" />
+                    <h:selectOneMenu id="name" value="#{clinicServiceController.selected.name}" title="#{bundle.EditClinicServiceTitle_name}" >
+                        <f:selectItems value="#{serviceListController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
                 </h:panelGrid>
                 <h:commandLink action="#{clinicServiceController.update}" value="#{bundle.EditClinicServiceSaveLink}"/>
                 <br />

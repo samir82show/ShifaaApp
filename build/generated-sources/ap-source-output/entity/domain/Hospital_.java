@@ -2,25 +2,22 @@ package entity.domain;
 
 import entity.domain.Area;
 import entity.domain.Clinic;
-import entity.domain.ClinicServicePrice;
 import entity.domain.Insurance;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-10-08T11:41:59")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-10-09T22:32:56")
 @StaticMetamodel(Hospital.class)
 public class Hospital_ { 
 
     public static volatile SingularAttribute<Hospital, Area> area;
     public static volatile SingularAttribute<Hospital, String> image;
-    public static volatile ListAttribute<Hospital, ClinicServicePrice> clinicServicePrices;
     public static volatile ListAttribute<Hospital, Insurance> insurances;
     public static volatile ListAttribute<Hospital, Clinic> clinics;
     public static volatile SingularAttribute<Hospital, String> workingDaysHours;
     public static volatile SingularAttribute<Hospital, String> name;
-    public static volatile SingularAttribute<Hospital, String> location;
     public static volatile SingularAttribute<Hospital, Long> id;
     public static volatile SingularAttribute<Hospital, String> locationMap;
     public static volatile SingularAttribute<Hospital, String> phoneNo;

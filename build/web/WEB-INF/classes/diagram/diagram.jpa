@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" ptype="MONOLITH" ppkg="entity" epkg="domain" v="4.8.2" rws="_15363502350142" Pws="_15363502350142" cws="_15363502350142" persistenceUnitName="ShifaaAppPU" sm="false" xs="false" id="_15363502350101" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
-    <jpa:entity compositePrimaryKeyClass="ClinicPK" abs="false" class="Clinic" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_15363502409573">
+    <jpa:entity compositePrimaryKeyClass="ClinicPK" abs="false" class="Clinic" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_15363502409573">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
-            <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_15363502593086">
+            <jpa:basic attribute-type="String" v="true" name="image" id="_153855023212635"/>
+            <jpa:basic attribute-type="String" v="true" name="workingDaysHours" id="_1539088613031113"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_153747244152461" connected-attribute-id="_153908241765250" v="true" name="hospital" id="_153908241765249"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_153908257558362" v="true" xvt="" name="name" id="_153908259357867">
                 <jpa:xwm/>
                 <jpa:xm/>
-            </jpa:basic>
-            <jpa:basic attribute-type="String" v="true" name="image" id="_153855023212635"/>
+            </jpa:many-to-one>
             <jpa:one-to-many orp="false" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_153635096932872" connected-attribute-id="_153747293369884" v="true" xvt="" name="doctors" id="_153747293370285">
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:one-to-many>
-            <jpa:one-to-many collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_153850468337432" connected-attribute-id="_153850474341242" v="true" name="clinicServicePrices" id="_153850474341343"/>
-            <jpa:many-to-many collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_153747244152461" connected-attribute-id="_153747285749881" v="true" xvt="" name="hospitals" id="_153747285750282">
-                <jpa:xwm/>
-                <jpa:xm/>
-            </jpa:many-to-many>
+            <jpa:one-to-many collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_153635052291523" connected-attribute-id="_153908248723554" v="true" name="clinicServices" id="_153908248723555"/>
             <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_15363502410124">
                 <jpa:xwm/>
                 <jpa:xm/>
@@ -37,6 +35,9 @@
         </jpa:nq>
         <jpa:nq e="false" name="Clinic.findByImage">
             <jpa:query>Select c from Clinic c where c.image=:image</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Clinic.findByWorkingDaysHours">
+            <jpa:query>Select c from Clinic c where c.workingDaysHours=:workingDaysHours</jpa:query>
         </jpa:nq>
     </jpa:entity>
     <jpa:entity compositePrimaryKeyClass="AreaPK" abs="false" class="Area" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_15363503185148">
@@ -129,18 +130,20 @@
             <jpa:query>Select g from GroupAuth g where g.groupname=:groupname</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="ClinicServicePK" abs="false" class="ClinicService" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153635052291523">
+    <jpa:entity compositePrimaryKeyClass="ClinicServicePK" abs="false" class="ClinicService" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153635052291523">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
-            <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153635054412926">
-                <jpa:xwm/>
-                <jpa:xm/>
-            </jpa:basic>
             <jpa:basic attribute-type="String" v="true" xvt="" name="image" id="_153635054706127">
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
-            <jpa:one-to-many collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_153850468337432" connected-attribute-id="_153850473423939" v="true" name="clinicServicePrices" id="_153850473424040"/>
+            <jpa:basic attribute-type="String" v="true" name="price" id="_153908245422651"/>
+            <jpa:basic attribute-type="String" v="true" name="discount" id="_153908246238752"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_15363502409573" connected-attribute-id="_153908248723555" v="true" name="clinic" id="_153908248723554"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_153908249838756" v="true" xvt="" name="name" id="_153908254302061">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_153635052291624">
                 <jpa:xwm/>
                 <jpa:xm/>
@@ -158,6 +161,12 @@
         </jpa:nq>
         <jpa:nq e="false" name="ClinicService.findByPrice">
             <jpa:query>Select c from ClinicService c where c.price=:price</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ClinicService.findByPrice">
+            <jpa:query>Select c from ClinicService c where c.price=:price</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ClinicService.findByDiscount">
+            <jpa:query>Select c from ClinicService c where c.discount=:discount</jpa:query>
         </jpa:nq>
     </jpa:entity>
     <jpa:entity compositePrimaryKeyClass="InsurancePK" abs="false" class="Insurance" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153635056565528">
@@ -229,7 +238,7 @@
             <jpa:query>Select d from Doctor d where d.qualifications=:qualifications</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="HospitalPK" abs="false" class="Hospital" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153747244152461">
+    <jpa:entity compositePrimaryKeyClass="HospitalPK" abs="false" class="Hospital" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153747244152461">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153747245450664">
@@ -260,10 +269,7 @@
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:many-to-one>
-            <jpa:many-to-many own="true" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_15363502409573" connected-attribute-id="_153747285750282" v="true" xvt="" name="clinics" id="_153747285749881">
-                <jpa:xwm/>
-                <jpa:xm/>
-            </jpa:many-to-many>
+            <jpa:one-to-many collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_15363502409573" connected-attribute-id="_153908241765249" v="true" name="clinics" id="_153908241765250"/>
             <jpa:many-to-many collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_153635056565528" connected-attribute-id="_153789960191325" v="true" xvt="" name="insurances" id="_153789960191626">
                 <jpa:xwm/>
                 <jpa:xm/>
@@ -452,27 +458,6 @@
             <jpa:query>Select d from DaysOfWeek d where d.name=:name</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="ClinicServicePricePK" abs="false" class="ClinicServicePrice" v="true" xre="false" m="false" rootElement="_15363502350101" id="_153850468337432">
-        <jpa:ath>sawad</jpa:ath>
-        <jpa:attributes>
-            <jpa:basic attribute-type="String" v="true" name="price" id="_153850470053435"/>
-            <jpa:basic attribute-type="String" v="true" name="discount" id="_153867458139935"/>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_153635052291523" connected-attribute-id="_153850473424040" v="true" name="clinicService" id="_153850473423939"/>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_15363502409573" connected-attribute-id="_153850474341343" v="true" name="clinic" id="_153850474341242"/>
-            <jpa:id attribute-type="Long" v="true" name="id" id="_153850468338633">
-                <jpa:generated-value strategy="AUTO"/>
-            </jpa:id>
-        </jpa:attributes>
-        <jpa:nq e="false" name="ClinicServicePrice.findAll">
-            <jpa:query>Select e from ClinicServicePrice e</jpa:query>
-        </jpa:nq>
-        <jpa:nq e="false" name="ClinicServicePrice.findByPrice">
-            <jpa:query>Select c from ClinicServicePrice c where c.price=:price</jpa:query>
-        </jpa:nq>
-        <jpa:nq e="false" name="ClinicServicePrice.findByDiscount">
-            <jpa:query>Select c from ClinicServicePrice c where c.discount=:discount</jpa:query>
-        </jpa:nq>
-    </jpa:entity>
     <jpa:entity compositePrimaryKeyClass="GenderPK" abs="false" class="Gender" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153898569105336">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
@@ -513,24 +498,55 @@
             <jpa:query>Select s from Shift s where s.name=:name</jpa:query>
         </jpa:nq>
     </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ServiceListPK" abs="false" class="ServiceList" v="true" gen="false" xre="false" m="false" rootElement="_15363502350101" id="_153908249838756">
+        <jpa:ath>sawad</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" id="_153908250799459"/>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_153908249841957">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="ServiceList.findAll">
+            <jpa:query>Select e from ServiceList e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ServiceList.findByName">
+            <jpa:query>Select e from ServiceList e where e.name=:name</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ClinicListPK" abs="false" class="ClinicList" v="true" gen="false" xre="false" m="false" rootElement="_15363502350101" id="_153908257558362">
+        <jpa:ath>sawad</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" id="_153908258717765"/>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_153908257558363">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="ClinicList.findAll">
+            <jpa:query>Select e from ClinicList e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ClinicList.findByName">
+            <jpa:query>Select c from ClinicList c where c.name=:name</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
     <jpa:snp loc="BEFORE_PACKAGE" e="true">/**
  * This file was generated by the Jeddict
  */</jpa:snp>
     <jpa:wsl>
         <jpa:ws n="Main" id="_15363502350142">
-            <i ref="_153850468337432" x="685" y="414"/>
             <i ref="_15363503185148" x="92" y="514"/>
             <i ref="_153747244152461" x="281" y="220"/>
             <i ref="_153635039068418" x="482" y="52"/>
             <i ref="_153898591247446" x="-108" y="331"/>
-            <i ref="_153635052291523" x="910" y="233"/>
+            <i ref="_153635052291523" x="685" y="393"/>
             <i ref="_153898569105336" x="-76" y="535"/>
+            <i ref="_153908257558362" x="664" y="239"/>
             <i ref="_153635096932872" x="685" y="52"/>
             <i ref="_153790056728532" x="72" y="209"/>
             <i ref="_15363502409573" x="486" y="209"/>
             <i ref="_153790170337555" x="-109" y="178"/>
+            <i ref="_153908249838756" x="828" y="239"/>
             <i ref="_153790058351835" x="92" y="-6"/>
-            <i ref="_153635056565528" x="486" y="423"/>
+            <i ref="_153635056565528" x="469" y="435"/>
             <i ref="_153635033430412" x="307" y="-6"/>
         </jpa:ws>
     </jpa:wsl>

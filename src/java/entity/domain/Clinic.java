@@ -12,7 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -26,19 +26,22 @@ public class Clinic implements Serializable {
     private Long id;
 
     @Basic
-    private String name;
+    private String image;
 
     @Basic
-    private String image;
+    private String workingDaysHours;
+
+    @ManyToOne
+    private Hospital hospital;
+
+    @ManyToOne
+    private ClinicList name;
 
     @OneToMany(mappedBy = "clinic")
     private List<Doctor> doctors;
 
     @OneToMany(mappedBy = "clinic")
-    private List<ClinicServicePrice> clinicServicePrices;
-
-    @ManyToMany(mappedBy = "clinics")
-    private List<Hospital> hospitals;
+    private List<ClinicService> clinicServices;
 
     public Clinic() {
     }
@@ -51,20 +54,36 @@ public class Clinic implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getImage() {
         return this.image;
     }
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getWorkingDaysHours() {
+        return this.workingDaysHours;
+    }
+
+    public void setWorkingDaysHours(String workingDaysHours) {
+        this.workingDaysHours = workingDaysHours;
+    }
+
+    public Hospital getHospital() {
+        return this.hospital;
+    }
+
+    public void setHospital(Hospital hospital) {
+        this.hospital = hospital;
+    }
+
+    public ClinicList getName() {
+        return this.name;
+    }
+
+    public void setName(ClinicList name) {
+        this.name = name;
     }
 
     public List<Doctor> getDoctors() {
@@ -88,55 +107,37 @@ public class Clinic implements Serializable {
         doctor.setClinic(null);
     }
 
-    public List<ClinicServicePrice> getClinicServicePrices() {
-        if (clinicServicePrices == null) {
-            clinicServicePrices = new ArrayList<>();
+    public List<ClinicService> getClinicServices() {
+        if (clinicServices == null) {
+            clinicServices = new ArrayList<>();
         }
-        return this.clinicServicePrices;
+        return this.clinicServices;
     }
 
-    public void setClinicServicePrices(List<ClinicServicePrice> clinicServicePrices) {
-        this.clinicServicePrices = clinicServicePrices;
+    public void setClinicServices(List<ClinicService> clinicServices) {
+        this.clinicServices = clinicServices;
     }
 
-    public void addClinicServicePrice(ClinicServicePrice clinicServicePrice) {
-        getClinicServicePrices().add(clinicServicePrice);
-        clinicServicePrice.setClinic(this);
+    public void addClinicService(ClinicService clinicService) {
+        getClinicServices().add(clinicService);
+        clinicService.setClinic(this);
     }
 
-    public void removeClinicServicePrice(ClinicServicePrice clinicServicePrice) {
-        getClinicServicePrices().remove(clinicServicePrice);
-        clinicServicePrice.setClinic(null);
-    }
-
-    public List<Hospital> getHospitals() {
-        if (hospitals == null) {
-            hospitals = new ArrayList<>();
-        }
-        return this.hospitals;
-    }
-
-    public void setHospitals(List<Hospital> hospitals) {
-        this.hospitals = hospitals;
-    }
-
-    public void addHospital(Hospital hospital) {
-        getHospitals().add(hospital);
-    }
-
-    public void removeHospital(Hospital hospital) {
-        getHospitals().remove(hospital);
+    public void removeClinicService(ClinicService clinicService) {
+        getClinicServices().remove(clinicService);
+        clinicService.setClinic(null);
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 37 * hash + Objects.hashCode(this.id);
-        hash = 37 * hash + Objects.hashCode(this.name);
-        hash = 37 * hash + Objects.hashCode(this.image);
-        hash = 37 * hash + Objects.hashCode(this.doctors);
-        hash = 37 * hash + Objects.hashCode(this.clinicServicePrices);
-        hash = 37 * hash + Objects.hashCode(this.hospitals);
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.image);
+        hash = 97 * hash + Objects.hashCode(this.workingDaysHours);
+        hash = 97 * hash + Objects.hashCode(this.hospital);
+        hash = 97 * hash + Objects.hashCode(this.name);
+        hash = 97 * hash + Objects.hashCode(this.doctors);
+        hash = 97 * hash + Objects.hashCode(this.clinicServices);
         return hash;
     }
 
@@ -152,22 +153,25 @@ public class Clinic implements Serializable {
             return false;
         }
         final Clinic other = (Clinic) obj;
-        if (!Objects.equals(this.name, other.name)) {
+        if (!Objects.equals(this.image, other.image)) {
             return false;
         }
-        if (!Objects.equals(this.image, other.image)) {
+        if (!Objects.equals(this.workingDaysHours, other.workingDaysHours)) {
             return false;
         }
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
+        if (!Objects.equals(this.hospital, other.hospital)) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
         if (!Objects.equals(this.doctors, other.doctors)) {
             return false;
         }
-        if (!Objects.equals(this.clinicServicePrices, other.clinicServicePrices)) {
-            return false;
-        }
-        if (!Objects.equals(this.hospitals, other.hospitals)) {
+        if (!Objects.equals(this.clinicServices, other.clinicServices)) {
             return false;
         }
         return true;
@@ -175,8 +179,7 @@ public class Clinic implements Serializable {
 
     @Override
     public String toString() {
-        return name;
+        return hospital + " " + name;
     }
 
-    
 }

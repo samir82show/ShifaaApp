@@ -14,10 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
-/**
- * @author sawad
- */
 @Entity
 public class Hospital implements Serializable {
 
@@ -46,7 +44,7 @@ public class Hospital implements Serializable {
     @ManyToOne
     private Area area;
 
-    @ManyToMany
+    @OneToMany(mappedBy = "hospital")
     private List<Clinic> clinics;
 
     @ManyToMany(mappedBy = "hospitals")
@@ -132,12 +130,12 @@ public class Hospital implements Serializable {
 
     public void addClinic(Clinic clinic) {
         getClinics().add(clinic);
-        clinic.getHospitals().add(this);
+        clinic.setHospital(this);
     }
 
     public void removeClinic(Clinic clinic) {
         getClinics().remove(clinic);
-        clinic.getHospitals().remove(this);
+        clinic.setHospital(null);
     }
 
     public List<Insurance> getInsurances() {
@@ -161,17 +159,8 @@ public class Hospital implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 67 * hash + Objects.hashCode(this.id);
-        hash = 67 * hash + Objects.hashCode(this.name);
-        hash = 67 * hash + Objects.hashCode(this.image);
-        hash = 67 * hash + Objects.hashCode(this.phoneNo);
-        hash = 67 * hash + Objects.hashCode(this.email);
-        hash = 67 * hash + Objects.hashCode(this.locationMap);
-        hash = 67 * hash + Objects.hashCode(this.workingDaysHours);
-        hash = 67 * hash + Objects.hashCode(this.area);
-        hash = 67 * hash + Objects.hashCode(this.clinics);
-        hash = 67 * hash + Objects.hashCode(this.insurances);
+        int hash = 7;
+        hash = 17 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -187,37 +176,15 @@ public class Hospital implements Serializable {
             return false;
         }
         final Hospital other = (Hospital) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.image, other.image)) {
-            return false;
-        }
-        if (!Objects.equals(this.phoneNo, other.phoneNo)) {
-            return false;
-        }
-        if (!Objects.equals(this.email, other.email)) {
-            return false;
-        }
-        if (!Objects.equals(this.locationMap, other.locationMap)) {
-            return false;
-        }
-        if (!Objects.equals(this.workingDaysHours, other.workingDaysHours)) {
-            return false;
-        }
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.area, other.area)) {
-            return false;
-        }
-        if (!Objects.equals(this.clinics, other.clinics)) {
-            return false;
-        }
-        if (!Objects.equals(this.insurances, other.insurances)) {
-            return false;
-        }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return name + ", " + area;
     }
 
 }

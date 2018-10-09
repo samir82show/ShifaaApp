@@ -16,10 +16,14 @@
                 <h:panelGrid columns="2">
                     <h:outputText value="#{bundle.ViewClinicLabel_id}"/>
                     <h:outputText value="#{clinicController.selected.id}" title="#{bundle.ViewClinicTitle_id}"/>
-                    <h:outputText value="#{bundle.ViewClinicLabel_name}"/>
-                    <h:outputText value="#{clinicController.selected.name}" title="#{bundle.ViewClinicTitle_name}"/>
                     <h:outputText value="#{bundle.ViewClinicLabel_image}"/>
                     <img src="#{clinicController.selected.image}" alt="" style="height: 100px; width: 100px;"/>
+                    <h:outputText value="#{bundle.ViewClinicLabel_hospital}"/>
+                    <h:outputText value="#{clinicController.selected.hospital.getName()}" title="#{bundle.ViewClinicTitle_hospital}"/>
+                    <h:outputText value="#{bundle.ViewClinicLabel_name}"/>
+                    <h:outputText value="#{clinicController.selected.name.getName()}" title="#{bundle.ViewClinicTitle_name}"/>
+                    <h:outputText value="#{bundle.ViewClinicLabel_workingDaysHours}"/>
+                    <h:outputText value="#{clinicController.selected.workingDaysHours}" title="#{bundle.ViewClinicTitle_workingDaysHours}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{clinicController.destroyAndView}" value="#{bundle.ViewClinicDestroyLink}"/>
