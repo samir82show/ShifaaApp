@@ -41,6 +41,13 @@
                         <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                     <h:message for="area"/>
+                    <h:outputLabel value="#{bundle.CreateUserAuthLabel_insurance}" for="groups" />
+                    <h:selectManyListbox id="groups" value="#{hospitalController.insurances}">
+                        <f:selectItems value="#{insuranceController.findAll()}" 
+                                       var="c"
+                                       itemLabel="#{c.name}" 
+                                       itemValue="#{c.id}" />
+                    </h:selectManyListbox >
                 </h:panelGrid>
                 <h:commandLink action="#{hospitalController.update}" value="#{bundle.EditHospitalSaveLink}"/>
                 <br />

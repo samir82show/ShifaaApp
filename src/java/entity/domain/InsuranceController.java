@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -53,6 +54,10 @@ public class InsuranceController implements Serializable {
 
     public void setImage(Part image) {
         this.image = image;
+    }
+
+    public List<Insurance> findAll() {
+        return ejbFacade.findAll();
     }
 
     public InsuranceController() {

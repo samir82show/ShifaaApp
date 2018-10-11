@@ -4,12 +4,15 @@ import entity.domain.util.Helper;
 import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import facade.HospitalFacade;
+import facade.InsuranceFacade;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -29,12 +32,17 @@ import javax.servlet.http.Part;
 @SessionScoped
 public class HospitalController implements Serializable {
 
+    @EJB
+    private InsuranceFacade insuranceFacade;
+
+    private List<String> insurances;
     private Part image;
     private String prevImage;
     private String applicationPath;
     private String appInternalPath;
     private Hospital current;
     private DataModel items = null;
+
     @EJB
     private facade.HospitalFacade ejbFacade;
     private PaginationHelper pagination;
@@ -42,8 +50,17 @@ public class HospitalController implements Serializable {
 
     @PostConstruct
     public void init() {
+        insurances = new ArrayList<>();
         applicationPath = "C:\\Users\\sawad\\Documents\\NetBeansProjects\\ShifaaApp\\web\\resources\\images\\";
         appInternalPath = "../resources/images/";
+    }
+
+    public List<String> getInsurances() {
+        return insurances;
+    }
+
+    public void setInsurances(List<String> insurances) {
+        this.insurances = insurances;
     }
 
     public Part getImage() {
@@ -132,6 +149,10 @@ public class HospitalController implements Serializable {
 
     public String create() throws MessagingException {
         if (0 == doUpload()) {
+            for (String id : insurances) {
+                Insurance insurance = insuranceFacade.find(Long.parseLong(id));
+                current.addInsurance(insurance);
+            }
             try {
                 getFacade().create(current);
                 JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("HospitalCreated"));
@@ -148,12 +169,21 @@ public class HospitalController implements Serializable {
 
     public String prepareEdit() {
         current = (Hospital) getItems().getRowData();
+        for (Insurance d : current.getInsurances()) {
+            insurances.add(d.getId().toString());
+        }
         prevImage = current.getImage();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
 
     public String update() throws MessagingException {
+        current.getInsurances().clear();
+        for (String id : insurances) {
+            Insurance insurance = insuranceFacade.find(Long.parseLong(id));
+            current.addInsurance(insurance);
+        }
+
         if (prevImage != null) {
             new File(prevImage
                     .replace(Helper.getAppPath(appInternalPath, "hospitals"),
