@@ -5,6 +5,7 @@ import entity.domain.util.PaginationHelper;
 import facade.DaysOfWeekFacade;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -37,6 +38,10 @@ public class DaysOfWeekController implements Serializable {
             selectedItemIndex = -1;
         }
         return current;
+    }
+
+    public List<DaysOfWeek> findAll() {
+        return ejbFacade.findAll();
     }
 
     private DaysOfWeekFacade getFacade() {

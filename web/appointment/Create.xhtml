@@ -26,7 +26,6 @@
                     <h:message for="email"/>
                     <h:outputLabel value="#{bundle.CreateAppointmentLabel_DOB}" for="DOB" />
                     <h:inputText autocomplete="off" class="datepicker" id="DOB" value="#{appointmentController.selected.DOB}" title="#{bundle.CreateAppointmentTitle_DOB}">
-                        <f:convertDateTime pattern="dd/MM/yyyy"/>
                     </h:inputText>
                     <h:message for="DOB"/>
                     <h:outputLabel value="#{bundle.CreateAppointmentLabel_hospital}" for="hospital" />
@@ -49,6 +48,14 @@
                         <f:selectItems value="#{genderController.itemsAvailableSelectMany}"/>
                     </h:selectOneRadio>
                     <h:message for="doctorGender"/>
+                    <h:outputLabel value="#{bundle.CreateAppointmentLabel_days}" for="daysOfWeek" />
+                    <h:selectManyListbox id="daysOfWeek" value="#{appointmentController.days}" title="#{bundle.CreateAppointmentTitle_daysOfWeek}" >
+                        <f:selectItems value="#{daysOfWeekController.findAll()}" 
+                                       var="c"
+                                       itemLabel="#{c.name}" 
+                                       itemValue="#{c.id}" />
+                    </h:selectManyListbox>
+                    <h:message for="daysOfWeek"/>
                     <h:outputLabel value="#{bundle.CreateAppointmentLabel_description}" for="description" />
                     <h:inputTextarea id="description" value="#{appointmentController.selected.description}" title="#{bundle.CreateAppointmentTitle_description}" />
                     <h:message for="description"/>

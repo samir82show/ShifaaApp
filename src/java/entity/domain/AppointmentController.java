@@ -3,9 +3,13 @@ package entity.domain;
 import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import facade.AppointmentFacade;
+import facade.DaysOfWeekFacade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -21,14 +25,32 @@ import javax.faces.model.SelectItem;
 @SessionScoped
 public class AppointmentController implements Serializable {
 
+    @EJB
+    private DaysOfWeekFacade daysOfWeekFacade;
+
+    private List<String> days;
     private Appointment current;
     private DataModel items = null;
+
     @EJB
     private facade.AppointmentFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
+    @PostConstruct
+    public void init() {
+        days = new ArrayList<>();
+    }
+
     public AppointmentController() {
+    }
+
+    public List<String> getDays() {
+        return days;
+    }
+
+    public void setDays(List<String> days) {
+        this.days = days;
     }
 
     public Appointment getSelected() {
@@ -79,6 +101,10 @@ public class AppointmentController implements Serializable {
     }
 
     public String create() {
+        for (String id : days) {
+            DaysOfWeek daysOfWeek = daysOfWeekFacade.find(Long.parseLong(id));
+            current.addDaysOfWeek(daysOfWeek);
+        }
         try {
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("AppointmentCreated"));
@@ -91,11 +117,19 @@ public class AppointmentController implements Serializable {
 
     public String prepareEdit() {
         current = (Appointment) getItems().getRowData();
+        for (DaysOfWeek d : current.getDaysOfWeeks()) {
+            days.add(d.getId().toString());
+        }
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
 
     public String update() {
+        current.getDaysOfWeeks().clear();
+        for (String id : days) {
+            DaysOfWeek daysOfWeek = daysOfWeekFacade.find(Long.parseLong(id));
+            current.addDaysOfWeek(daysOfWeek);
+        }
         try {
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("AppointmentUpdated"));

@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -54,12 +55,6 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAppointmentTitle_description}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.description}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAppointmentTitle_hospital}"/>
                             </f:facet>
                             <h:outputText value="#{item.hospital.getName()}"/>
@@ -81,6 +76,24 @@
                                 <h:outputText value="#{bundle.ListAppointmentTitle_doctorGender}"/>
                             </f:facet>
                             <h:outputText value="#{item.doctorGender.getName()}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAppointmentTitle_description}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.description}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Preferred Days"/>
+                            </f:facet>
+                            <table>
+                                <c:forEach var="d" items="#{item.days}">
+                                    <tr>
+                                        #{d.getName()}
+                                    </tr>
+                                </c:forEach>
+                            </table>
                         </h:column>
                         <h:column>
                             <f:facet name="header">

@@ -16,7 +16,7 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.EditGroupAuthLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{groupAuthController.selected.id}" title="#{bundle.EditGroupAuthTitle_id}" />
+                    <h:inputText disabled="true" id="id" value="#{groupAuthController.selected.id}" title="#{bundle.EditGroupAuthTitle_id}" />
                     <h:outputLabel value="#{bundle.EditGroupAuthLabel_groupname}" for="groupname" />
                     <h:inputText id="groupname" value="#{groupAuthController.selected.groupname}" title="#{bundle.EditGroupAuthTitle_groupname}" />
                 </h:panelGrid>
