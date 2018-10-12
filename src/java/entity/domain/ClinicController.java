@@ -11,7 +11,6 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -31,20 +30,12 @@ public class ClinicController implements Serializable {
 
     private Part image;
     private String prevImage;
-    private String applicationPath;
-    private String appInternalPath;
-
     private Clinic current;
     private DataModel items = null;
     @EJB
     private facade.ClinicFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
-    @PostConstruct
-    public void init() {
-        applicationPath = "C:\\Users\\sawad\\Documents\\NetBeansProjects\\ShifaaApp\\web\\resources\\images\\";
-        appInternalPath = "../resources/images/";
-    }
 
     public ClinicController() {
     }
@@ -107,7 +98,7 @@ public class ClinicController implements Serializable {
     public int doUpload() throws MessagingException {
         if (!image.getSubmittedFileName().equals("")) {
             String imgName = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date()) + image.getSubmittedFileName();
-            String fileFullPath = Helper.getAbsPath(applicationPath, "clinics") + imgName;
+            String fileFullPath = Helper.getAbsPath("clinics") + imgName;
             try {
                 InputStream inputStream = image.getInputStream();
                 File file = new File(fileFullPath);
@@ -124,8 +115,8 @@ public class ClinicController implements Serializable {
                 System.out.println("Unable to save file due to ......." + e.getMessage());
                 return 1;
             }
-            System.out.println(Helper.getAppPath(appInternalPath, "clinics") + imgName);
-            fileFullPath = Helper.getAppPath(appInternalPath, "clinics") + imgName;
+            System.out.println(Helper.getAppPath("clinics") + imgName);
+            fileFullPath = Helper.getAppPath("clinics") + imgName;
             current.setImage(fileFullPath);
         }
         return 0;
@@ -156,11 +147,11 @@ public class ClinicController implements Serializable {
 
     public String update() throws MessagingException {
         if (prevImage != null) {
-            System.out.println("Deleting " + prevImage.replace(Helper.getAppPath(appInternalPath, "clinics"),
-                    Helper.getAbsPath(applicationPath, "clinics")) + ".");
+            System.out.println("Deleting " + prevImage.replace(Helper.getAppPath("clinics"),
+                    Helper.getAbsPath("clinics")) + ".");
             new File(prevImage
-                    .replace(Helper.getAppPath(appInternalPath, "clinics"),
-                            Helper.getAbsPath(applicationPath, "clinics"))
+                    .replace(Helper.getAppPath("clinics"),
+                            Helper.getAbsPath("clinics"))
             ).delete();
         }
         if (0 == doUpload()) {
@@ -202,11 +193,11 @@ public class ClinicController implements Serializable {
         try {
             if (current.getImage() != null) {
                 System.out.println("Deleting " + current.getImage()
-                        .replace(Helper.getAppPath(appInternalPath, "clinics"),
-                                Helper.getAbsPath(applicationPath, "clinics")));
+                        .replace(Helper.getAppPath("clinics"),
+                                Helper.getAbsPath("clinics")));
                 new File(current.getImage()
-                        .replace(Helper.getAppPath(appInternalPath, "clinics"),
-                                Helper.getAbsPath(applicationPath, "clinics"))
+                        .replace(Helper.getAppPath("clinics"),
+                                Helper.getAbsPath("clinics"))
                 ).delete();
             }
             getFacade().remove(current);

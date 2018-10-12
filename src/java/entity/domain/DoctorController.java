@@ -11,7 +11,6 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -31,8 +30,6 @@ public class DoctorController implements Serializable {
 
     private Part image;
     private String prevImage;
-    private String applicationPath;
-    private String appInternalPath;
     private Doctor current;
     private DataModel items = null;
     @EJB
@@ -40,16 +37,10 @@ public class DoctorController implements Serializable {
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
-    @PostConstruct
-    public void init() {
-        applicationPath = "C:\\Users\\sawad\\Documents\\NetBeansProjects\\ShifaaApp\\web\\resources\\images\\";
-        appInternalPath = "../resources/images/";
-    }
-
     public int doUpload() throws MessagingException {
         if (!image.getSubmittedFileName().equals("")) {
             String imgName = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date()) + image.getSubmittedFileName();
-            String fileFullPath = Helper.getAbsPath(applicationPath, "doctors") + imgName;
+            String fileFullPath = Helper.getAbsPath("doctors") + imgName;
             try {
                 InputStream inputStream = image.getInputStream();
                 File file = new File(fileFullPath);
@@ -66,7 +57,7 @@ public class DoctorController implements Serializable {
                 System.out.println("Unable to save file due to ......." + e.getMessage());
                 return 1;
             }
-            fileFullPath = Helper.getAppPath(appInternalPath, "doctors") + imgName;
+            fileFullPath = Helper.getAppPath("doctors") + imgName;
             current.setImage(fileFullPath);
         }
         return 0;
@@ -155,8 +146,8 @@ public class DoctorController implements Serializable {
     public String update() throws MessagingException {
         if (prevImage != null) {
             new File(prevImage
-                    .replace(Helper.getAppPath(appInternalPath, "doctors"),
-                            Helper.getAbsPath(applicationPath, "doctors"))
+                    .replace(Helper.getAppPath("doctors"),
+                            Helper.getAbsPath("doctors"))
             ).delete();
         }
         if (0 == doUpload()) {
@@ -198,8 +189,8 @@ public class DoctorController implements Serializable {
         try {
             if (current.getImage() != null) {
                 new File(current.getImage()
-                        .replace(Helper.getAppPath(appInternalPath, "doctors"),
-                                Helper.getAbsPath(applicationPath, "doctors"))
+                        .replace(Helper.getAppPath("doctors"),
+                                Helper.getAbsPath("doctors"))
                 ).delete();
             }
             getFacade().remove(current);

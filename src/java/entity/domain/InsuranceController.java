@@ -7,13 +7,11 @@ import facade.InsuranceFacade;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -33,20 +31,12 @@ public class InsuranceController implements Serializable {
 
     private Part image;
     private String prevImage;
-    private String applicationPath;
-    private String appInternalPath;
     private Insurance current;
     private DataModel items = null;
     @EJB
     private facade.InsuranceFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
-
-    @PostConstruct
-    public void init() {
-        applicationPath = "C:\\Users\\sawad\\Documents\\NetBeansProjects\\ShifaaApp\\web\\resources\\images\\";
-        appInternalPath = "../resources/images/";
-    }
 
     public Part getImage() {
         return image;
@@ -66,7 +56,7 @@ public class InsuranceController implements Serializable {
     public int doUpload() throws MessagingException {
         if (!image.getSubmittedFileName().equals("")) {
             String imgName = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date()) + image.getSubmittedFileName();
-            String fileFullPath = Helper.getAbsPath(applicationPath, "insurances") + imgName;
+            String fileFullPath = Helper.getAbsPath("insurances") + imgName;
             try {
                 InputStream inputStream = image.getInputStream();
                 File file = new File(fileFullPath);
@@ -83,7 +73,7 @@ public class InsuranceController implements Serializable {
                 System.out.println("Unable to save file due to ......." + e.getMessage());
                 return 1;
             }
-            fileFullPath = Helper.getAppPath(appInternalPath, "insurances") + imgName;
+            fileFullPath = Helper.getAppPath("insurances") + imgName;
             current.setImage(fileFullPath);
         }
         return 0;
@@ -163,8 +153,8 @@ public class InsuranceController implements Serializable {
     public String update() throws MessagingException {
         if (prevImage != null) {
             new File(prevImage
-                    .replace(Helper.getAppPath(appInternalPath, "insurances"),
-                            Helper.getAbsPath(applicationPath, "insurances"))
+                    .replace(Helper.getAppPath("insurances"),
+                            Helper.getAbsPath("insurances"))
             ).delete();
         }
         if (0 == doUpload()) {
@@ -206,8 +196,8 @@ public class InsuranceController implements Serializable {
         try {
             if (current.getImage() != null) {
                 new File(current.getImage()
-                        .replace(Helper.getAppPath(appInternalPath, "insurances"),
-                                Helper.getAbsPath(applicationPath, "insurances"))
+                        .replace(Helper.getAppPath("insurances"),
+                                Helper.getAbsPath("insurances"))
                 ).delete();
             }
             getFacade().remove(current);
