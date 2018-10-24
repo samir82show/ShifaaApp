@@ -13,41 +13,24 @@
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:form enctype="multipart/form-data">
-                <h:panelGrid columns="3">
+            <h:form>
+                <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.EditHospitalLabel_id}" for="id" />
-                    <h:inputText disabled="true" id="id" value="#{hospitalController.selected.id}" title="#{bundle.EditHospitalTitle_id}" />
-                    <h:message for="id"/>
+                    <h:inputText id="id" value="#{hospitalController.selected.id}" title="#{bundle.EditHospitalTitle_id}" />
                     <h:outputLabel value="#{bundle.EditHospitalLabel_name}" for="name" />
                     <h:inputText id="name" value="#{hospitalController.selected.name}" title="#{bundle.EditHospitalTitle_name}" />
-                    <h:message for="name"/>
-                    <h:outputLabel value="#{bundle.EditHospitalLabel_image}" for="image" />
-                    <h:inputFile id="image" value="#{hospitalController.image}" title="#{bundle.EditHospitalTitle_image}" />
-                    <h:message for="image"/>
                     <h:outputLabel value="#{bundle.EditHospitalLabel_phoneNo}" for="phoneNo" />
                     <h:inputText id="phoneNo" value="#{hospitalController.selected.phoneNo}" title="#{bundle.EditHospitalTitle_phoneNo}" />
-                    <h:message for="phoneNo"/>
                     <h:outputLabel value="#{bundle.EditHospitalLabel_email}" for="email" />
                     <h:inputText id="email" value="#{hospitalController.selected.email}" title="#{bundle.EditHospitalTitle_email}" />
-                    <h:message for="email"/>
                     <h:outputLabel value="#{bundle.EditHospitalLabel_locationMap}" for="locationMap" />
                     <h:inputText id="locationMap" value="#{hospitalController.selected.locationMap}" title="#{bundle.EditHospitalTitle_locationMap}" />
-                    <h:message for="locationMap"/>
                     <h:outputLabel value="#{bundle.EditHospitalLabel_workingDaysHours}" for="workingDaysHours" />
                     <h:inputText id="workingDaysHours" value="#{hospitalController.selected.workingDaysHours}" title="#{bundle.EditHospitalTitle_workingDaysHours}" />
-                    <h:message for="workingDaysHours"/>
                     <h:outputLabel value="#{bundle.EditHospitalLabel_area}" for="area" />
                     <h:selectOneMenu id="area" value="#{hospitalController.selected.area}" title="#{bundle.EditHospitalTitle_area}" >
                         <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
-                    <h:message for="area"/>
-                    <h:outputLabel value="#{bundle.CreateUserAuthLabel_insurance}" for="groups" />
-                    <h:selectManyListbox id="groups" value="#{hospitalController.insurances}">
-                        <f:selectItems value="#{insuranceController.findAll()}" 
-                                       var="c"
-                                       itemLabel="#{c.name}" 
-                                       itemValue="#{c.id}" />
-                    </h:selectManyListbox >
                 </h:panelGrid>
                 <h:commandLink action="#{hospitalController.update}" value="#{bundle.EditHospitalSaveLink}"/>
                 <br />

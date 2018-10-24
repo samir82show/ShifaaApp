@@ -34,12 +34,6 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListHospitalTitle_image}"/>
-                            </f:facet>
-                            <img src="#{item.image}" alt="" style="height: 100px; width: 100px;"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListHospitalTitle_phoneNo}"/>
                             </f:facet>
                             <h:outputText value="#{item.phoneNo}"/>
@@ -66,7 +60,7 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListHospitalTitle_area}"/>
                             </f:facet>
-                            <h:outputText value="#{item.area.getName()}"/>
+                            <h:outputText value="#{item.area}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">

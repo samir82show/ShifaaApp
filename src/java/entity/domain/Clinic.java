@@ -26,16 +26,13 @@ public class Clinic implements Serializable {
     private Long id;
 
     @Basic
-    private String image;
-
-    @Basic
     private String workingDaysHours;
 
     @ManyToOne
     private Hospital hospital;
 
     @ManyToOne
-    private ClinicList name;
+    private Category category;
 
     @OneToMany(mappedBy = "clinic")
     private List<Doctor> doctors;
@@ -54,14 +51,6 @@ public class Clinic implements Serializable {
         this.id = id;
     }
 
-    public String getImage() {
-        return this.image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public String getWorkingDaysHours() {
         return this.workingDaysHours;
     }
@@ -78,12 +67,12 @@ public class Clinic implements Serializable {
         this.hospital = hospital;
     }
 
-    public ClinicList getName() {
-        return this.name;
+    public Category getCategory() {
+        return this.category;
     }
 
-    public void setName(ClinicList name) {
-        this.name = name;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public List<Doctor> getDoctors() {
@@ -130,14 +119,8 @@ public class Clinic implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.id);
-        hash = 97 * hash + Objects.hashCode(this.image);
-        hash = 97 * hash + Objects.hashCode(this.workingDaysHours);
-        hash = 97 * hash + Objects.hashCode(this.hospital);
-        hash = 97 * hash + Objects.hashCode(this.name);
-        hash = 97 * hash + Objects.hashCode(this.doctors);
-        hash = 97 * hash + Objects.hashCode(this.clinicServices);
+        int hash = 5;
+        hash = 79 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -153,25 +136,7 @@ public class Clinic implements Serializable {
             return false;
         }
         final Clinic other = (Clinic) obj;
-        if (!Objects.equals(this.image, other.image)) {
-            return false;
-        }
-        if (!Objects.equals(this.workingDaysHours, other.workingDaysHours)) {
-            return false;
-        }
         if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.hospital, other.hospital)) {
-            return false;
-        }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.doctors, other.doctors)) {
-            return false;
-        }
-        if (!Objects.equals(this.clinicServices, other.clinicServices)) {
             return false;
         }
         return true;
@@ -179,7 +144,7 @@ public class Clinic implements Serializable {
 
     @Override
     public String toString() {
-        return hospital + " " + name;
+        return category + ", " + hospital;
     }
 
 }

@@ -23,9 +23,6 @@ public class ClinicService implements Serializable {
     private Long id;
 
     @Basic
-    private String image;
-
-    @Basic
     private String price;
 
     @Basic
@@ -35,7 +32,32 @@ public class ClinicService implements Serializable {
     private Clinic clinic;
 
     @ManyToOne
-    private ServiceList name;
+    private ServiceList serviceList;
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 59 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ClinicService other = (ClinicService) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
 
     public ClinicService() {
     }
@@ -46,14 +68,6 @@ public class ClinicService implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getImage() {
-        return this.image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public String getPrice() {
@@ -80,57 +94,17 @@ public class ClinicService implements Serializable {
         this.clinic = clinic;
     }
 
-    public ServiceList getName() {
-        return this.name;
+    public ServiceList getServiceList() {
+        return this.serviceList;
     }
 
-    public void setName(ServiceList name) {
-        this.name = name;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 59 * hash + Objects.hashCode(this.id);
-        hash = 59 * hash + Objects.hashCode(this.image);
-        hash = 59 * hash + Objects.hashCode(this.price);
-        hash = 59 * hash + Objects.hashCode(this.discount);
-        hash = 59 * hash + Objects.hashCode(this.clinic);
-        hash = 59 * hash + Objects.hashCode(this.name);
-        return hash;
+    public void setServiceList(ServiceList serviceList) {
+        this.serviceList = serviceList;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final ClinicService other = (ClinicService) obj;
-        if (!Objects.equals(this.image, other.image)) {
-            return false;
-        }
-        if (!Objects.equals(this.price, other.price)) {
-            return false;
-        }
-        if (!Objects.equals(this.discount, other.discount)) {
-            return false;
-        }
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.clinic, other.clinic)) {
-            return false;
-        }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        return true;
+    public String toString() {
+        return "ClinicService{" + "id=" + id + ", price=" + price + ", discount=" + discount + ", clinic=" + clinic + ", serviceList=" + serviceList + '}';
     }
 
 }

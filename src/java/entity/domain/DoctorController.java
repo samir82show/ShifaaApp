@@ -1,15 +1,11 @@
 package entity.domain;
 
-import entity.domain.util.Helper;
+import entity.domain.util.ImageUploader;
 import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import facade.DoctorFacade;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -36,32 +32,7 @@ public class DoctorController implements Serializable {
     private facade.DoctorFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
-
-    public int doUpload() throws MessagingException {
-        if (!image.getSubmittedFileName().equals("")) {
-            String imgName = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date()) + image.getSubmittedFileName();
-            String fileFullPath = Helper.getAbsPath("doctors") + imgName;
-            try {
-                InputStream inputStream = image.getInputStream();
-                File file = new File(fileFullPath);
-                file.createNewFile();
-                FileOutputStream fileOutputStream = new FileOutputStream(file);
-                byte[] buffer = new byte[4096];
-                int length;
-                while ((length = inputStream.read(buffer)) > 0) {
-                    fileOutputStream.write(buffer, 0, length);
-                }
-                fileOutputStream.close();
-                inputStream.close();
-            } catch (Exception e) {
-                System.out.println("Unable to save file due to ......." + e.getMessage());
-                return 1;
-            }
-            fileFullPath = Helper.getAppPath("doctors") + imgName;
-            current.setImage(fileFullPath);
-        }
-        return 0;
-    }
+    private ImageUploader imageUploader;
 
     public Part getImage() {
         return image;
@@ -122,7 +93,9 @@ public class DoctorController implements Serializable {
     }
 
     public String create() throws MessagingException {
-        if (0 == doUpload()) {
+        imageUploader = ImageUploader.getInstance(image, "doctors");
+        if (0 == imageUploader.doUpload()) {
+            current.setImage(imageUploader.getAppInternalPath());
             try {
                 getFacade().create(current);
                 JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("DoctorCreated"));
@@ -146,11 +119,11 @@ public class DoctorController implements Serializable {
     public String update() throws MessagingException {
         if (prevImage != null) {
             new File(prevImage
-                    .replace(Helper.getAppPath("doctors"),
-                            Helper.getAbsPath("doctors"))
+                    .replace(imageUploader.getAppPath(),
+                            imageUploader.getAbsolutePath())
             ).delete();
         }
-        if (0 == doUpload()) {
+        if (0 == imageUploader.doUpload()) {
             try {
                 getFacade().edit(current);
                 JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("DoctorUpdated"));
@@ -186,11 +159,12 @@ public class DoctorController implements Serializable {
     }
 
     private void performDestroy() {
+        imageUploader = ImageUploader.getInstance(image, "doctors");
         try {
             if (current.getImage() != null) {
                 new File(current.getImage()
-                        .replace(Helper.getAppPath("doctors"),
-                                Helper.getAbsPath("doctors"))
+                        .replace(imageUploader.getAppPath(),
+                                imageUploader.getAbsolutePath())
                 ).delete();
             }
             getFacade().remove(current);

@@ -19,6 +19,8 @@
     <class>entity.domain.Shift</class>
     <class>entity.domain.ServiceList</class>
     <class>entity.domain.ClinicList</class>
+    <class>entity.domain.Category</class>
+    <class>entity.domain.HospitalImage</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="eclipselink.logging.level" value="FINE"/>

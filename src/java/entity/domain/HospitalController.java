@@ -1,17 +1,10 @@
 package entity.domain;
 
-import entity.domain.util.Helper;
 import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import facade.HospitalFacade;
-import facade.InsuranceFacade;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
+
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -23,68 +16,17 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
-import javax.mail.MessagingException;
-import javax.servlet.http.Part;
 
 @Named("hospitalController")
 @SessionScoped
 public class HospitalController implements Serializable {
 
-    @EJB
-    private InsuranceFacade insuranceFacade;
-
-    private List<String> insurances;
-    private Part image;
-    private String prevImage;
     private Hospital current;
     private DataModel items = null;
-
     @EJB
     private facade.HospitalFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
-
-    public List<String> getInsurances() {
-        return insurances;
-    }
-
-    public void setInsurances(List<String> insurances) {
-        this.insurances = insurances;
-    }
-
-    public Part getImage() {
-        return image;
-    }
-
-    public void setImage(Part image) {
-        this.image = image;
-    }
-
-    public int doUpload() throws MessagingException {
-        if (!image.getSubmittedFileName().equals("")) {
-            String imgName = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date()) + image.getSubmittedFileName();
-            String fileFullPath = Helper.getAbsPath("hospitals") + imgName;
-            try {
-                InputStream inputStream = image.getInputStream();
-                File file = new File(fileFullPath);
-                file.createNewFile();
-                FileOutputStream fileOutputStream = new FileOutputStream(file);
-                byte[] buffer = new byte[4096];
-                int length;
-                while ((length = inputStream.read(buffer)) > 0) {
-                    fileOutputStream.write(buffer, 0, length);
-                }
-                fileOutputStream.close();
-                inputStream.close();
-            } catch (Exception e) {
-                System.out.println("Unable to save file due to ......." + e.getMessage());
-                return 1;
-            }
-            fileFullPath = Helper.getAppPath("hospitals") + imgName;
-            current.setImage(fileFullPath);
-        }
-        return 0;
-    }
 
     public HospitalController() {
     }
@@ -136,61 +78,32 @@ public class HospitalController implements Serializable {
         return "Create";
     }
 
-    public String create() throws MessagingException {
-        if (0 == doUpload()) {
-            for (String id : insurances) {
-                Insurance insurance = insuranceFacade.find(Long.parseLong(id));
-                current.addInsurance(insurance);
-            }
-            try {
-                getFacade().create(current);
-                JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("HospitalCreated"));
-                return prepareCreate();
-            } catch (Exception e) {
-                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
-                return null;
-            }
-        } else {
-            System.out.println("create function ........... Hospital is not added.");
+    public String create() {
+        try {
+            getFacade().create(current);
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("HospitalCreated"));
+            return prepareCreate();
+        } catch (Exception e) {
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            return null;
         }
-        return "/failed_to_create";
     }
 
     public String prepareEdit() {
         current = (Hospital) getItems().getRowData();
-        for (Insurance d : current.getInsurances()) {
-            insurances.add(d.getId().toString());
-        }
-        prevImage = current.getImage();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
 
-    public String update() throws MessagingException {
-        current.getInsurances().clear();
-        for (String id : insurances) {
-            Insurance insurance = insuranceFacade.find(Long.parseLong(id));
-            current.addInsurance(insurance);
+    public String update() {
+        try {
+            getFacade().edit(current);
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("HospitalUpdated"));
+            return "View";
+        } catch (Exception e) {
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            return null;
         }
-
-        if (prevImage != null) {
-            new File(prevImage
-                    .replace(Helper.getAppPath("hospitals"),
-                            Helper.getAbsPath("hospitals"))
-            ).delete();
-        }
-        if (0 == doUpload()) {
-            try {
-                getFacade().edit(current);
-                JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("HospitalUpdated"));
-                return "View";
-            } catch (Exception e) {
-                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
-                return null;
-            }
-        }
-        return "/failed_to_create";
-
     }
 
     public String destroy() {
@@ -217,12 +130,6 @@ public class HospitalController implements Serializable {
 
     private void performDestroy() {
         try {
-            if (current.getImage() != null) {
-                new File(current.getImage()
-                        .replace(Helper.getAppPath("hospitals"),
-                                Helper.getAbsPath("hospitals"))
-                ).delete();
-            }
             getFacade().remove(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("HospitalDeleted"));
         } catch (Exception e) {

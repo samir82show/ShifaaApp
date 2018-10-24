@@ -13,27 +13,20 @@
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:form enctype="multipart/form-data">
-                <h:panelGrid columns="3">
+            <h:form>
+                <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.EditClinicLabel_id}" for="id" />
-                    <h:inputText id="id" disabled="true" value="#{clinicController.selected.id}" title="#{bundle.EditClinicTitle_id}" />
-                    <h:message for="id"/>
-                    <h:outputLabel value="#{bundle.EditClinicLabel_image}" for="image" />
-                    <h:inputFile id="image" value="#{clinicController.image}" title="#{bundle.EditClinicTitle_image}" />
-                    <h:message for="image"/>
-                    <h:outputLabel value="#{bundle.EditClinicLabel_name}" for="name" />
-                    <h:selectOneMenu id="name" value="#{clinicController.selected.name}" title="#{bundle.EditClinicTitle_name}" >
-                        <f:selectItems value="#{clinicListController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
-                    <h:message for="name"/>
+                    <h:inputText id="id" value="#{clinicController.selected.id}" title="#{bundle.EditClinicTitle_id}" />
+                    <h:outputLabel value="#{bundle.EditClinicLabel_workingDaysHours}" for="workingDaysHours" />
+                    <h:inputText id="workingDaysHours" value="#{clinicController.selected.workingDaysHours}" title="#{bundle.EditClinicTitle_workingDaysHours}" />
                     <h:outputLabel value="#{bundle.EditClinicLabel_hospital}" for="hospital" />
                     <h:selectOneMenu id="hospital" value="#{clinicController.selected.hospital}" title="#{bundle.EditClinicTitle_hospital}" >
                         <f:selectItems value="#{hospitalController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
-                    <h:message for="hospital"/>
-                    <h:outputLabel value="#{bundle.EditClinicLabel_workingDaysHours}" for="workingDaysHours" />
-                    <h:inputTextarea id="workingDaysHours" value="#{clinicController.selected.workingDaysHours}" title="#{bundle.EditClinicTitle_workingDaysHours}" />
-                    <h:message for="workingDaysHours"/>
+                    <h:outputLabel value="#{bundle.EditClinicLabel_category}" for="category" />
+                    <h:selectOneMenu id="category" value="#{clinicController.selected.category}" title="#{bundle.EditClinicTitle_category}" >
+                        <f:selectItems value="#{categoryController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
                 </h:panelGrid>
                 <h:commandLink action="#{clinicController.update}" value="#{bundle.EditClinicSaveLink}"/>
                 <br />

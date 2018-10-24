@@ -28,15 +28,21 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListClinicTitle_name}"/>
+                                <h:outputText value="#{bundle.ListClinicTitle_workingDaysHours}"/>
                             </f:facet>
-                            <h:outputText value="#{item.name.getName()}"/>
+                            <h:outputText value="#{item.workingDaysHours}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListClinicTitle_image}"/>
+                                <h:outputText value="#{bundle.ListClinicTitle_hospital}"/>
                             </f:facet>
-                            <img src="#{item.image}" alt="" style="height: 100px; width: 100px;"/>
+                            <h:outputText value="#{item.hospital}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClinicTitle_category}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.category}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">

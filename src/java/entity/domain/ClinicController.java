@@ -1,15 +1,10 @@
 package entity.domain;
 
-import entity.domain.util.Helper;
 import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import facade.ClinicFacade;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
+
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -21,31 +16,20 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
-import javax.mail.MessagingException;
-import javax.servlet.http.Part;
+
 
 @Named("clinicController")
 @SessionScoped
 public class ClinicController implements Serializable {
 
-    private Part image;
-    private String prevImage;
+
     private Clinic current;
     private DataModel items = null;
-    @EJB
-    private facade.ClinicFacade ejbFacade;
+    @EJB private facade.ClinicFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
     public ClinicController() {
-    }
-
-    public Part getImage() {
-        return image;
-    }
-
-    public void setImage(Part image) {
-        this.image = image;
     }
 
     public Clinic getSelected() {
@@ -59,7 +43,6 @@ public class ClinicController implements Serializable {
     private ClinicFacade getFacade() {
         return ejbFacade;
     }
-
     public PaginationHelper getPagination() {
         if (pagination == null) {
             pagination = new PaginationHelper(10) {
@@ -71,7 +54,7 @@ public class ClinicController implements Serializable {
 
                 @Override
                 public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
+                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem()+getPageSize()}));
                 }
             };
         }
@@ -84,7 +67,7 @@ public class ClinicController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Clinic) getItems().getRowData();
+        current = (Clinic)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
@@ -95,80 +78,36 @@ public class ClinicController implements Serializable {
         return "Create";
     }
 
-    public int doUpload() throws MessagingException {
-        if (!image.getSubmittedFileName().equals("")) {
-            String imgName = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date()) + image.getSubmittedFileName();
-            String fileFullPath = Helper.getAbsPath("clinics") + imgName;
-            try {
-                InputStream inputStream = image.getInputStream();
-                File file = new File(fileFullPath);
-                file.createNewFile();
-                FileOutputStream fileOutputStream = new FileOutputStream(file);
-                byte[] buffer = new byte[4096];
-                int length;
-                while ((length = inputStream.read(buffer)) > 0) {
-                    fileOutputStream.write(buffer, 0, length);
-                }
-                fileOutputStream.close();
-                inputStream.close();
-            } catch (Exception e) {
-                System.out.println("Unable to save file due to ......." + e.getMessage());
-                return 1;
-            }
-            System.out.println(Helper.getAppPath("clinics") + imgName);
-            fileFullPath = Helper.getAppPath("clinics") + imgName;
-            current.setImage(fileFullPath);
+    public String create() {
+        try {
+            getFacade().create(current);
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ClinicCreated"));
+            return prepareCreate();
+        } catch (Exception e) {
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            return null;
         }
-        return 0;
-    }
-
-    public String create() throws MessagingException {
-        if (0 == doUpload()) {
-            try {
-                getFacade().create(current);
-                JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ClinicCreated"));
-                return prepareCreate();
-            } catch (Exception e) {
-                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
-                return null;
-            }
-        } else {
-            System.out.println("create function ........... Clinic is not added.");
-        }
-        return "/failed_to_create";
     }
 
     public String prepareEdit() {
-        current = (Clinic) getItems().getRowData();
-        prevImage = current.getImage();
+        current = (Clinic)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
 
-    public String update() throws MessagingException {
-        if (prevImage != null) {
-            System.out.println("Deleting " + prevImage.replace(Helper.getAppPath("clinics"),
-                    Helper.getAbsPath("clinics")) + ".");
-            new File(prevImage
-                    .replace(Helper.getAppPath("clinics"),
-                            Helper.getAbsPath("clinics"))
-            ).delete();
+    public String update() {
+        try {
+            getFacade().edit(current);
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ClinicUpdated"));
+            return "View";
+        } catch (Exception e) {
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            return null;
         }
-        if (0 == doUpload()) {
-            try {
-                getFacade().edit(current);
-                JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ClinicUpdated"));
-                return "View";
-            } catch (Exception e) {
-                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
-                return null;
-            }
-        }
-        return "/failed_to_create";
     }
 
     public String destroy() {
-        current = (Clinic) getItems().getRowData();
+        current = (Clinic)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -191,15 +130,6 @@ public class ClinicController implements Serializable {
 
     private void performDestroy() {
         try {
-            if (current.getImage() != null) {
-                System.out.println("Deleting " + current.getImage()
-                        .replace(Helper.getAppPath("clinics"),
-                                Helper.getAbsPath("clinics")));
-                new File(current.getImage()
-                        .replace(Helper.getAppPath("clinics"),
-                                Helper.getAbsPath("clinics"))
-                ).delete();
-            }
             getFacade().remove(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ClinicDeleted"));
         } catch (Exception e) {
@@ -211,14 +141,14 @@ public class ClinicController implements Serializable {
         int count = getFacade().count();
         if (selectedItemIndex >= count) {
             // selected index cannot be bigger than number of items:
-            selectedItemIndex = count - 1;
+            selectedItemIndex = count-1;
             // go to previous page if last page disappeared:
             if (pagination.getPageFirstItem() >= count) {
                 pagination.previousPage();
             }
         }
         if (selectedItemIndex >= 0) {
-            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex + 1}).get(0);
+            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex+1}).get(0);
         }
     }
 
@@ -259,10 +189,9 @@ public class ClinicController implements Serializable {
 
     public Clinic getClinic(java.lang.Long id) {
         return ejbFacade.find(id);
-
     }
 
-    @FacesConverter(forClass = Clinic.class)
+    @FacesConverter(forClass=Clinic.class)
     public static class ClinicControllerConverter implements Converter {
 
         @Override
@@ -270,7 +199,7 @@ public class ClinicController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            ClinicController controller = (ClinicController) facesContext.getApplication().getELResolver().
+            ClinicController controller = (ClinicController)facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "clinicController");
             return controller.getClinic(getKey(value));
         }
@@ -296,7 +225,7 @@ public class ClinicController implements Serializable {
                 Clinic o = (Clinic) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Clinic.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: "+Clinic.class.getName());
             }
         }
 

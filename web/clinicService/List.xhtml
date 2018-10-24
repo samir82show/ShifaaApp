@@ -28,12 +28,6 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListClinicServiceTitle_image}"/>
-                            </f:facet>
-                            <img src="#{item.image}" alt="" style="height: 100px; width: 100px;"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListClinicServiceTitle_price}"/>
                             </f:facet>
                             <h:outputText value="#{item.price}"/>
@@ -48,13 +42,13 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListClinicServiceTitle_clinic}"/>
                             </f:facet>
-                            <h:outputText value="#{item.clinic.toString()}"/>
+                            <h:outputText value="#{item.clinic}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListClinicServiceTitle_name}"/>
+                                <h:outputText value="#{bundle.ListClinicServiceTitle_serviceList}"/>
                             </f:facet>
-                            <h:outputText value="#{item.name.getName()}"/>
+                            <h:outputText value="#{item.serviceList}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">

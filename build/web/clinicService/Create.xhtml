@@ -13,27 +13,22 @@
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:form enctype="multipart/form-data">
-                <h:panelGrid columns="3">
-                    <h:outputLabel value="#{bundle.CreateClinicServiceLabel_image}" for="image" />
-                    <h:inputFile id="image" value="#{clinicServiceController.image}" title="#{bundle.CreateClinicServiceTitle_image}" />
-                    <h:message for="image"/>
-                    <h:outputLabel value="#{bundle.CreateClinicServiceLabel_name}" for="name" />
-                    <h:selectOneMenu id="name" value="#{clinicServiceController.selected.name}" title="#{bundle.CreateClinicServiceTitle_name}" >
-                        <f:selectItems value="#{serviceListController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
-                    <h:message for="name"/>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateClinicServiceLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{clinicServiceController.selected.id}" title="#{bundle.CreateClinicServiceTitle_id}" />
                     <h:outputLabel value="#{bundle.CreateClinicServiceLabel_price}" for="price" />
                     <h:inputText id="price" value="#{clinicServiceController.selected.price}" title="#{bundle.CreateClinicServiceTitle_price}" />
-                    <h:message for="price"/>
                     <h:outputLabel value="#{bundle.CreateClinicServiceLabel_discount}" for="discount" />
                     <h:inputText id="discount" value="#{clinicServiceController.selected.discount}" title="#{bundle.CreateClinicServiceTitle_discount}" />
-                    <h:message for="discount"/>
                     <h:outputLabel value="#{bundle.CreateClinicServiceLabel_clinic}" for="clinic" />
                     <h:selectOneMenu id="clinic" value="#{clinicServiceController.selected.clinic}" title="#{bundle.CreateClinicServiceTitle_clinic}" >
                         <f:selectItems value="#{clinicController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
-                    <h:message for="clinic"/>
+                    <h:outputLabel value="#{bundle.CreateClinicServiceLabel_serviceList}" for="serviceList" />
+                    <h:selectOneMenu id="serviceList" value="#{clinicServiceController.selected.serviceList}" title="#{bundle.CreateClinicServiceTitle_serviceList}" >
+                        <f:selectItems value="#{serviceListController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{clinicServiceController.create}" value="#{bundle.CreateClinicServiceSaveLink}" />

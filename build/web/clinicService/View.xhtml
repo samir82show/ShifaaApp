@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -16,16 +17,14 @@
                 <h:panelGrid columns="2">
                     <h:outputText value="#{bundle.ViewClinicServiceLabel_id}"/>
                     <h:outputText value="#{clinicServiceController.selected.id}" title="#{bundle.ViewClinicServiceTitle_id}"/>
-                    <h:outputText value="#{bundle.ViewClinicServiceLabel_image}"/>
-                    <img src="#{clinicServiceController.selected.image}" alt="" style="height: 100px; width: 100px;"/>
                     <h:outputText value="#{bundle.ViewClinicServiceLabel_price}"/>
                     <h:outputText value="#{clinicServiceController.selected.price}" title="#{bundle.ViewClinicServiceTitle_price}"/>
                     <h:outputText value="#{bundle.ViewClinicServiceLabel_discount}"/>
                     <h:outputText value="#{clinicServiceController.selected.discount}" title="#{bundle.ViewClinicServiceTitle_discount}"/>
                     <h:outputText value="#{bundle.ViewClinicServiceLabel_clinic}"/>
-                    <h:outputText value="#{clinicServiceController.selected.clinic.toString()}" title="#{bundle.ViewClinicServiceTitle_clinic}"/>
-                    <h:outputText value="#{bundle.ViewClinicServiceLabel_name}"/>
-                    <h:outputText value="#{clinicServiceController.selected.name.getName()}" title="#{bundle.ViewClinicServiceTitle_name}"/>
+                    <h:outputText value="#{clinicServiceController.selected.clinic}" title="#{bundle.ViewClinicServiceTitle_clinic}"/>
+                    <h:outputText value="#{bundle.ViewClinicServiceLabel_serviceList}"/>
+                    <h:outputText value="#{clinicServiceController.selected.serviceList}" title="#{bundle.ViewClinicServiceTitle_serviceList}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{clinicServiceController.destroyAndView}" value="#{bundle.ViewClinicServiceDestroyLink}"/>

@@ -4,12 +4,15 @@
 package entity.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * @author sawad
@@ -24,10 +27,15 @@ public class ServiceList implements Serializable {
     @Basic
     private String name;
 
+    @Basic
+    private String image;
+
+    @OneToMany(mappedBy = "serviceList")
+    private List<ClinicService> clinicServices;
+
     public ServiceList() {
     }
 
-    
     public Long getId() {
         return this.id;
     }
@@ -44,11 +52,39 @@ public class ServiceList implements Serializable {
         this.name = name;
     }
 
+    public String getImage() {
+        return this.image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public List<ClinicService> getClinicServices() {
+        if (clinicServices == null) {
+            clinicServices = new ArrayList<>();
+        }
+        return this.clinicServices;
+    }
+
+    public void setClinicServices(List<ClinicService> clinicServices) {
+        this.clinicServices = clinicServices;
+    }
+
+    public void addClinicService(ClinicService clinicService) {
+        getClinicServices().add(clinicService);
+        clinicService.setServiceList(this);
+    }
+
+    public void removeClinicService(ClinicService clinicService) {
+        getClinicServices().remove(clinicService);
+        clinicService.setServiceList(null);
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 89 * hash + Objects.hashCode(this.id);
-        hash = 89 * hash + Objects.hashCode(this.name);
+        int hash = 3;
+        hash = 29 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -64,9 +100,6 @@ public class ServiceList implements Serializable {
             return false;
         }
         final ServiceList other = (ServiceList) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }

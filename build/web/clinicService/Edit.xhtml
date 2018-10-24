@@ -13,12 +13,10 @@
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:form enctype="multipart/form-data">
+            <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.EditClinicServiceLabel_id}" for="id" />
-                    <h:inputText disabled="true" id="id" value="#{clinicServiceController.selected.id}" title="#{bundle.EditClinicServiceTitle_id}" />
-                    <h:outputLabel value="#{bundle.EditClinicServiceLabel_image}" for="image" />
-                    <h:inputFile id="image" value="#{clinicServiceController.image}" title="#{bundle.EditClinicServiceTitle_image}" />
+                    <h:inputText id="id" value="#{clinicServiceController.selected.id}" title="#{bundle.EditClinicServiceTitle_id}" />
                     <h:outputLabel value="#{bundle.EditClinicServiceLabel_price}" for="price" />
                     <h:inputText id="price" value="#{clinicServiceController.selected.price}" title="#{bundle.EditClinicServiceTitle_price}" />
                     <h:outputLabel value="#{bundle.EditClinicServiceLabel_discount}" for="discount" />
@@ -27,8 +25,8 @@
                     <h:selectOneMenu id="clinic" value="#{clinicServiceController.selected.clinic}" title="#{bundle.EditClinicServiceTitle_clinic}" >
                         <f:selectItems value="#{clinicController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
-                    <h:outputLabel value="#{bundle.EditClinicServiceLabel_name}" for="name" />
-                    <h:selectOneMenu id="name" value="#{clinicServiceController.selected.name}" title="#{bundle.EditClinicServiceTitle_name}" >
+                    <h:outputLabel value="#{bundle.EditClinicServiceLabel_serviceList}" for="serviceList" />
+                    <h:selectOneMenu id="serviceList" value="#{clinicServiceController.selected.serviceList}" title="#{bundle.EditClinicServiceTitle_serviceList}" >
                         <f:selectItems value="#{serviceListController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>

@@ -16,6 +16,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+/**
+ * @author sawad
+ */
 @Entity
 public class Hospital implements Serializable {
 
@@ -25,9 +28,6 @@ public class Hospital implements Serializable {
 
     @Basic
     private String name;
-
-    @Basic
-    private String image;
 
     @Basic
     private String phoneNo;
@@ -46,6 +46,9 @@ public class Hospital implements Serializable {
 
     @OneToMany(mappedBy = "hospital")
     private List<Clinic> clinics;
+
+    @OneToMany(mappedBy = "hospital")
+    private List<HospitalImage> hospitalImages;
 
     @ManyToMany(mappedBy = "hospitals")
     private List<Insurance> insurances;
@@ -67,14 +70,6 @@ public class Hospital implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getImage() {
-        return this.image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public String getPhoneNo() {
@@ -138,6 +133,27 @@ public class Hospital implements Serializable {
         clinic.setHospital(null);
     }
 
+    public List<HospitalImage> getHospitalImages() {
+        if (hospitalImages == null) {
+            hospitalImages = new ArrayList<>();
+        }
+        return this.hospitalImages;
+    }
+
+    public void setHospitalImages(List<HospitalImage> hospitalImages) {
+        this.hospitalImages = hospitalImages;
+    }
+
+    public void addHospitalImage(HospitalImage hospitalImage) {
+        getHospitalImages().add(hospitalImage);
+        hospitalImage.setHospital(this);
+    }
+
+    public void removeHospitalImage(HospitalImage hospitalImage) {
+        getHospitalImages().remove(hospitalImage);
+        hospitalImage.setHospital(null);
+    }
+
     public List<Insurance> getInsurances() {
         if (insurances == null) {
             insurances = new ArrayList<>();
@@ -159,8 +175,8 @@ public class Hospital implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 17 * hash + Objects.hashCode(this.id);
+        int hash = 3;
+        hash = 59 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -184,7 +200,7 @@ public class Hospital implements Serializable {
 
     @Override
     public String toString() {
-        return name + ", " + area;
+        return name;
     }
 
 }
