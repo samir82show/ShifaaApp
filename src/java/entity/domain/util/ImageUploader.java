@@ -12,7 +12,6 @@ public class ImageUploader {
 
     private static ImageUploader imageUploader = null;
     private String folderName;
-    private String appPath;
     private String absolutePath;
     private Part image;
     private final String APP_PATH = "../resources/images/";
@@ -23,6 +22,10 @@ public class ImageUploader {
     public ImageUploader(Part image, String folderName) {
         this.image = image;
         this.folderName = folderName;
+    }
+
+    public void setImage(Part image) {
+        this.image = image;
     }
 
     public static ImageUploader getInstance(Part image, String folderName) {

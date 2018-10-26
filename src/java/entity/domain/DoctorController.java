@@ -94,6 +94,7 @@ public class DoctorController implements Serializable {
 
     public String create() throws MessagingException {
         imageUploader = ImageUploader.getInstance(image, "doctors");
+        imageUploader.setImage(image);
         if (0 == imageUploader.doUpload()) {
             current.setImage(imageUploader.getAppInternalPath());
             try {
@@ -111,19 +112,24 @@ public class DoctorController implements Serializable {
     }
 
     public String prepareEdit() {
+        imageUploader = ImageUploader.getInstance(image, "doctors");
         current = (Doctor) getItems().getRowData();
+        prevImage = current.getImage();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
 
     public String update() throws MessagingException {
+        imageUploader = ImageUploader.getInstance(image, "doctors");
         if (prevImage != null) {
             new File(prevImage
                     .replace(imageUploader.getAppPath(),
                             imageUploader.getAbsolutePath())
             ).delete();
         }
+        imageUploader.setImage(image);
         if (0 == imageUploader.doUpload()) {
+            current.setImage(imageUploader.getAppInternalPath());
             try {
                 getFacade().edit(current);
                 JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("DoctorUpdated"));

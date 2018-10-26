@@ -12,14 +12,14 @@
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:form>
+            <h:form enctype="multipart/form-data">
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.EditCategoryLabel_id}" for="id" />
                     <h:inputText id="id" value="#{categoryController.selected.id}" title="#{bundle.EditCategoryTitle_id}" />
                     <h:outputLabel value="#{bundle.EditCategoryLabel_name}" for="name" />
                     <h:inputText id="name" value="#{categoryController.selected.name}" title="#{bundle.EditCategoryTitle_name}" />
                     <h:outputLabel value="#{bundle.EditCategoryLabel_image}" for="image" />
-                    <h:inputText id="image" value="#{categoryController.selected.image}" title="#{bundle.EditCategoryTitle_image}" />
+                    <h:inputFile id="image" value="#{categoryController.image}" title="#{bundle.EditCategoryTitle_image}"/>
                 </h:panelGrid>
                 <h:commandLink action="#{categoryController.update}" value="#{bundle.EditCategorySaveLink}"/>
                 <br />
