@@ -3,16 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/sawad/Documents/NetBeansProjects/ShifaaApp/src/java/entity/domain/DoctorController.java</file>
-            <file>file:/C:/Users/sawad/Documents/NetBeansProjects/ShifaaApp/src/java/entity/domain/util/ImageUploader.java</file>
-            <file>file:/C:/Users/sawad/Documents/NetBeansProjects/ShifaaApp/web/insurance/List.xhtml</file>
-            <file>file:/C:/Users/sawad/Documents/NetBeansProjects/ShifaaApp/src/java/entity/domain/util/AbstractImageUploader.java</file>
-            <file>file:/C:/Users/sawad/Documents/NetBeansProjects/ShifaaApp/src/java/entity/domain/InsuranceController.java</file>
-            <file>file:/C:/Users/sawad/Documents/NetBeansProjects/ShifaaApp/web/doctor/List.xhtml</file>
-            <file>file:/C:/Users/sawad/Documents/NetBeansProjects/ShifaaApp/web/serviceList/Create.xhtml</file>
-            <file>file:/C:/Users/sawad/Documents/NetBeansProjects/ShifaaApp/src/java/facade/AreaFacade.java</file>
-            <file>file:/C:/Users/sawad/Documents/NetBeansProjects/ShifaaApp/web/index.xhtml</file>
-            <file>file:/C:/Users/sawad/Documents/NetBeansProjects/ShifaaApp/src/java/entity/domain/util/InsuranceImageUploader.java</file>
+            <file>file:/C:/Users/sawad/Documents/NetBeansProjects/ShifaaApp/src/java/entity/domain/CategoryController.java</file>
+            <file>file:/C:/Users/sawad/Documents/NetBeansProjects/ShifaaApp/web/WEB-INF/glassfish-resources.xml</file>
+            <file>file:/C:/Users/sawad/Documents/NetBeansProjects/ShifaaApp/web/category/Edit.xhtml</file>
+            <file>file:/C:/Users/sawad/Documents/NetBeansProjects/ShifaaApp/web/category/View.xhtml</file>
+            <file>file:/C:/Users/sawad/Documents/NetBeansProjects/ShifaaApp/src/conf/persistence.xml</file>
+            <file>file:/C:/Users/sawad/Documents/NetBeansProjects/ShifaaApp/web/category/Create.xhtml</file>
         </group>
     </open-files>
 </project-private>

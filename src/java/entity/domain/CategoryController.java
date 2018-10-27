@@ -5,7 +5,6 @@ import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import facade.CategoryFacade;
 import java.io.File;
-
 import java.io.Serializable;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
@@ -26,7 +25,7 @@ import javax.servlet.http.Part;
 public class CategoryController implements Serializable {
 
     private Part image;
-    private String prevImage;
+    static private String prevImage;
     private Category current;
     private DataModel items = null;
     @EJB
