@@ -19,6 +19,8 @@
                     <h:outputText value="#{genderController.selected.id}" title="#{bundle.ViewGenderTitle_id}"/>
                     <h:outputText value="#{bundle.ViewGenderLabel_name}"/>
                     <h:outputText value="#{genderController.selected.name}" title="#{bundle.ViewGenderTitle_name}"/>
+                    <h:outputText value="Name in (Arabic): "/>
+                    <h:outputText value="#{genderController.selected.inArabic}" title="#{bundle.ViewGenderTitle_name}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{genderController.destroyAndView}" value="#{bundle.ViewGenderDestroyLink}"/>

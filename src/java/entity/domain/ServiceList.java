@@ -28,12 +28,23 @@ public class ServiceList implements Serializable {
     private String name;
 
     @Basic
+    private String inArabic;
+
+    @Basic
     private String image;
 
     @OneToMany(mappedBy = "serviceList")
     private List<ClinicService> clinicServices;
 
     public ServiceList() {
+    }
+
+    public String getInArabic() {
+        return inArabic;
+    }
+
+    public void setInArabic(String inArabic) {
+        this.inArabic = inArabic;
     }
 
     public Long getId() {

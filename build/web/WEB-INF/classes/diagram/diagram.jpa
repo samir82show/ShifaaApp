@@ -35,6 +35,9 @@
         <jpa:nq e="false" name="Clinic.findByWorkingDaysHours">
             <jpa:query>Select c from Clinic c where c.workingDaysHours=:workingDaysHours</jpa:query>
         </jpa:nq>
+        <jpa:nq e="false" name="Clinic.findByInArabic">
+            <jpa:query>Select c from Clinic c where c.inArabic=:inArabic</jpa:query>
+        </jpa:nq>
     </jpa:entity>
     <jpa:entity compositePrimaryKeyClass="AreaPK" abs="false" class="Area" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_15363503185148">
         <jpa:ath>sawad</jpa:ath>
@@ -43,6 +46,7 @@
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="inArabic" id="_1541079332895102"/>
             <jpa:one-to-many orp="false" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_153747244152461" connected-attribute-id="_153747263359777" v="true" xvt="" name="hospitals" id="_153747263359778">
                 <jpa:xwm/>
                 <jpa:xm/>
@@ -58,6 +62,9 @@
         </jpa:nq>
         <jpa:nq e="false" name="Area.findByName">
             <jpa:query>Select a from Area a where a.name=:name</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Area.findByInArabic">
+            <jpa:query>Select a from Area a where a.inArabic=:inArabic</jpa:query>
         </jpa:nq>
     </jpa:entity>
     <jpa:entity compositePrimaryKeyClass="UserAuthPK" abs="false" class="UserAuth" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153635033430412">
@@ -169,6 +176,7 @@
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="inArabic" id="_1541079356578104"/>
             <jpa:many-to-many own="true" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_153747244152461" connected-attribute-id="_153789960191626" v="true" xvt="" name="hospitals" id="_153789960191325">
                 <jpa:xwm/>
                 <jpa:xm/>
@@ -188,6 +196,9 @@
         <jpa:nq e="false" name="Insurance.findByImage">
             <jpa:query>Select i from Insurance i where i.image=:image</jpa:query>
         </jpa:nq>
+        <jpa:nq e="false" name="Insurance.findByInArabic">
+            <jpa:query>Select i from Insurance i where i.inArabic=:inArabic</jpa:query>
+        </jpa:nq>
     </jpa:entity>
     <jpa:entity compositePrimaryKeyClass="DoctorPK" abs="false" class="Doctor" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153635096932872">
         <jpa:ath>sawad</jpa:ath>
@@ -204,6 +215,7 @@
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="inArabic" id="_1541079377536106"/>
             <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_15363502409573" connected-attribute-id="_153747293370285" v="true" xvt="" name="clinic" id="_153747293369884">
                 <jpa:xwm/>
                 <jpa:xm/>
@@ -225,6 +237,9 @@
         </jpa:nq>
         <jpa:nq e="false" name="Doctor.findByQualifications">
             <jpa:query>Select d from Doctor d where d.qualifications=:qualifications</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Doctor.findByInArabic">
+            <jpa:query>Select d from Doctor d where d.inArabic=:inArabic</jpa:query>
         </jpa:nq>
     </jpa:entity>
     <jpa:entity compositePrimaryKeyClass="HospitalPK" abs="false" class="Hospital" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153747244152461">
@@ -250,6 +265,7 @@
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="inArabic" id="_1541079347163103"/>
             <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_15363503185148" connected-attribute-id="_153747263359778" v="true" xvt="" name="area" id="_153747263359777">
                 <jpa:xwm/>
                 <jpa:xm/>
@@ -290,6 +306,9 @@
         <jpa:nq e="false" name="Hospital.findByWorkingDaysHours">
             <jpa:query>Select h from Hospital h where h.workingDaysHours=:workingDaysHours</jpa:query>
         </jpa:nq>
+        <jpa:nq e="false" name="Hospital.findByInArabic">
+            <jpa:query>Select h from Hospital h where h.inArabic=:inArabic</jpa:query>
+        </jpa:nq>
     </jpa:entity>
     <jpa:entity compositePrimaryKeyClass="AppointmentPK" abs="false" class="Appointment" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153790056728532">
         <jpa:ath>sawad</jpa:ath>
@@ -314,6 +333,7 @@
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="inArabic" id="_1541079230515100"/>
             <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_153747244152461" v="true" xvt="" name="hospital" id="_153790109104349">
                 <jpa:xwm/>
                 <jpa:xm/>
@@ -370,6 +390,9 @@
         <jpa:nq e="false" name="Appointment.findByMorningOrEvening">
             <jpa:query>Select a from Appointment a where a.morningOrEvening=:morningOrEvening</jpa:query>
         </jpa:nq>
+        <jpa:nq e="false" name="Appointment.findByInArabic">
+            <jpa:query>Select a from Appointment a where a.inArabic=:inArabic</jpa:query>
+        </jpa:nq>
     </jpa:entity>
     <jpa:entity compositePrimaryKeyClass="GuestPK" abs="false" class="Guest" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153790058351835">
         <jpa:ath>sawad</jpa:ath>
@@ -392,6 +415,10 @@
                 <jpa:temporal>DATE</jpa:temporal>
             </jpa:basic>
             <jpa:basic attribute-type="String" v="true" xvt="" name="password" id="_153794230674332">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="inArabic" id="_154107918516997">
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
@@ -423,6 +450,9 @@
         <jpa:nq e="false" name="Guest.findByPassword">
             <jpa:query>Select g from Guest g where g.password=:password</jpa:query>
         </jpa:nq>
+        <jpa:nq e="false" name="Guest.findByInArabic">
+            <jpa:query>Select g from Guest g where g.inArabic=:inArabic</jpa:query>
+        </jpa:nq>
     </jpa:entity>
     <jpa:entity compositePrimaryKeyClass="DaysOfWeekPK" abs="false" class="DaysOfWeek" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153790170337555">
         <jpa:ath>sawad</jpa:ath>
@@ -431,6 +461,7 @@
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="inArabic" id="_154107919724898"/>
             <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_153790170337656">
                 <jpa:xwm/>
                 <jpa:xm/>
@@ -443,6 +474,9 @@
         <jpa:nq e="false" name="DaysOfWeek.findByName">
             <jpa:query>Select d from DaysOfWeek d where d.name=:name</jpa:query>
         </jpa:nq>
+        <jpa:nq e="false" name="DaysOfWeek.findByInArabic">
+            <jpa:query>Select d from DaysOfWeek d where d.inArabic=:inArabic</jpa:query>
+        </jpa:nq>
     </jpa:entity>
     <jpa:entity compositePrimaryKeyClass="GenderPK" abs="false" class="Gender" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153898569105336">
         <jpa:ath>sawad</jpa:ath>
@@ -451,6 +485,7 @@
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="inArabic" id="_1541079322655101"/>
             <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_153898569108037">
                 <jpa:xwm/>
                 <jpa:xm/>
@@ -463,6 +498,9 @@
         <jpa:nq e="false" name="Gender.findByName">
             <jpa:query>Select c from Gender c where c.name=:name</jpa:query>
         </jpa:nq>
+        <jpa:nq e="false" name="Gender.findByInArabic">
+            <jpa:query>Select g from Gender g where g.inArabic=:inArabic</jpa:query>
+        </jpa:nq>
     </jpa:entity>
     <jpa:entity compositePrimaryKeyClass="ShiftPK" abs="false" class="Shift" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153898591247446">
         <jpa:ath>sawad</jpa:ath>
@@ -471,6 +509,7 @@
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="inArabic" id="_154107921705899"/>
             <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_153898591247947">
                 <jpa:xwm/>
                 <jpa:xm/>
@@ -483,12 +522,16 @@
         <jpa:nq e="false" name="Shift.findByName">
             <jpa:query>Select s from Shift s where s.name=:name</jpa:query>
         </jpa:nq>
+        <jpa:nq e="false" name="Shift.findByInArabic">
+            <jpa:query>Select s from Shift s where s.inArabic=:inArabic</jpa:query>
+        </jpa:nq>
     </jpa:entity>
     <jpa:entity compositePrimaryKeyClass="ServiceListPK" abs="false" class="ServiceList" v="true" xre="false" m="false" rootElement="_15363502350101" id="_153908249838756">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" name="name" id="_153908250799459"/>
             <jpa:basic attribute-type="String" v="true" name="image" id="_154011069232062"/>
+            <jpa:basic attribute-type="String" v="true" name="inArabic" id="_1541079417074108"/>
             <jpa:one-to-many collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_153635052291523" connected-attribute-id="_154011072488464" v="true" name="clinicServices" id="_154011072488465"/>
             <jpa:id attribute-type="Long" v="true" name="id" id="_153908249841957">
                 <jpa:generated-value strategy="AUTO"/>
@@ -503,12 +546,16 @@
         <jpa:nq e="false" name="ServiceList.findByImage">
             <jpa:query>Select s from ServiceList s where s.image=:image</jpa:query>
         </jpa:nq>
+        <jpa:nq e="false" name="ServiceList.findByInArabic">
+            <jpa:query>Select s from ServiceList s where s.inArabic=:inArabic</jpa:query>
+        </jpa:nq>
     </jpa:entity>
     <jpa:entity compositePrimaryKeyClass="CategoryPK" abs="false" class="Category" v="true" xre="false" m="false" rootElement="_15363502350101" id="_153908257558362">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" name="name" id="_153908258717765"/>
             <jpa:basic attribute-type="String" v="true" name="image" id="_154010922338346"/>
+            <jpa:basic attribute-type="String" v="true" name="inArabic" id="_1541079400987107"/>
             <jpa:one-to-many collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_15363502409573" connected-attribute-id="_154011065944260" v="true" name="clinics" id="_154011065944261"/>
             <jpa:id attribute-type="Long" v="true" name="id" id="_153908257558363">
                 <jpa:generated-value strategy="AUTO"/>
@@ -522,6 +569,9 @@
         </jpa:nq>
         <jpa:nq e="false" name="Category.findByImage">
             <jpa:query>Select c from Category c where c.image=:image</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Category.findByInArabic">
+            <jpa:query>Select c from Category c where c.inArabic=:inArabic</jpa:query>
         </jpa:nq>
     </jpa:entity>
     <jpa:entity compositePrimaryKeyClass="HospitalImagePK" abs="false" class="HospitalImage" v="true" xre="false" m="false" rootElement="_15363502350101" id="_154011003504747">
@@ -545,7 +595,7 @@
  */</jpa:snp>
     <jpa:wsl>
         <jpa:ws n="Main" id="_15363502350142">
-            <i ref="_15363503185148" x="92" y="514"/>
+            <i ref="_15363503185148" x="92" y="535"/>
             <i ref="_153747244152461" x="281" y="220"/>
             <i ref="_153635039068418" x="482" y="52"/>
             <i ref="_153898591247446" x="-108" y="331"/>
@@ -557,7 +607,7 @@
             <i ref="_15363502409573" x="482" y="220"/>
             <i ref="_153790170337555" x="-109" y="178"/>
             <i ref="_153908249838756" x="902" y="42"/>
-            <i ref="_153790058351835" x="92" y="-6"/>
+            <i ref="_153790058351835" x="92" y="-53"/>
             <i ref="_153635056565528" x="505" y="423"/>
             <i ref="_153635033430412" x="307" y="-6"/>
             <i ref="_154011003504747" x="281" y="548"/>

@@ -2,8 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -18,9 +17,12 @@
                     <h:outputLabel value="#{bundle.CreateInsuranceLabel_name}" for="name" />
                     <h:inputText autocomplete="off" id="name" value="#{insuranceController.selected.name}" title="#{bundle.CreateInsuranceTitle_name}" />
                     <h:message for="name"/>
+                    <h:outputLabel value="Name in arabic: " for="inArabic" />
+                    <h:inputText autocomplete="off" id="inArabic" value="#{insuranceController.selected.inArabic}" title="#{bundle.CreateInsuranceTitle_name}" />
+                    <h:message for="inArabic"/>
                     <h:outputLabel value="#{bundle.CreateInsuranceLabel_image}" for="image" />
                     <h:inputFile  id="image" value="#{insuranceController.image}" title="#{bundle.CreateInsuranceTitle_image}" />
-                    <h:message for="name"/>
+                    <h:message for="image"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{insuranceController.create}" value="#{bundle.CreateInsuranceSaveLink}" />

@@ -7,66 +7,72 @@
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="#{bundle.ListDoctorTitle}"></h:outputText>
+            <h:outputText value="#{bundles.ListDoctorTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
             <h:form styleClass="jsfcrud_list_form">
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
-                <h:outputText escape="false" value="#{bundle.ListDoctorEmpty}" rendered="#{doctorController.items.rowCount == 0}"/>
+                <h:outputText escape="false" value="#{bundles.ListDoctorEmpty}" rendered="#{doctorController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{doctorController.items.rowCount > 0}">
                     <h:outputText value="#{doctorController.pagination.pageFirstItem + 1}..#{doctorController.pagination.pageLastItem + 1}/#{doctorController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{doctorController.previous}" value="#{bundle.Previous} #{doctorController.pagination.pageSize}" rendered="#{doctorController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{doctorController.next}" value="#{bundle.Next} #{doctorController.pagination.pageSize}" rendered="#{doctorController.pagination.hasNextPage}"/>&nbsp;
+                    <h:commandLink action="#{doctorController.previous}" value="#{bundles.Previous} #{doctorController.pagination.pageSize}" rendered="#{doctorController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{doctorController.next}" value="#{bundles.Next} #{doctorController.pagination.pageSize}" rendered="#{doctorController.pagination.hasNextPage}"/>&nbsp;
                     <h:dataTable value="#{doctorController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListDoctorTitle_id}"/>
+                                <h:outputText value="#{bundles.ListDoctorTitle_id}"/>
                             </f:facet>
                             <h:outputText value="#{item.id}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListDoctorTitle_name}"/>
+                                <h:outputText value="#{bundles.ListDoctorTitle_name}"/>
                             </f:facet>
                             <h:outputText value="#{item.name}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListDoctorTitle_image}"/>
+                                <h:outputText value="Name in (Arabic)"/>
+                            </f:facet>
+                            <h:outputText value="#{item.inArabic}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundles.ListDoctorTitle_image}"/>
                             </f:facet>
                             <img src="#{item.image}" alt="" style="height: 100px; width: 100px;"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListDoctorTitle_qualifications}"/>
+                                <h:outputText value="#{bundles.ListDoctorTitle_qualifications}"/>
                             </f:facet>
                             <h:outputText value="#{item.qualifications}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListDoctorTitle_clinic}"/>
+                                <h:outputText value="#{bundles.ListDoctorTitle_clinic}"/>
                             </f:facet>
-                            <h:outputText value="#{item.clinic.toString()}"/>
+                            <h:outputText value="#{item.clinic}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{doctorController.prepareView}" value="#{bundle.ListDoctorViewLink}"/>
+                            <h:commandLink action="#{doctorController.prepareView}" value="#{bundles.ListDoctorViewLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{doctorController.prepareEdit}" value="#{bundle.ListDoctorEditLink}"/>
+                            <h:commandLink action="#{doctorController.prepareEdit}" value="#{bundles.ListDoctorEditLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{doctorController.destroy}" value="#{bundle.ListDoctorDestroyLink}"/>
+                            <h:commandLink action="#{doctorController.destroy}" value="#{bundles.ListDoctorDestroyLink}"/>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{doctorController.prepareCreate}" value="#{bundle.ListDoctorCreateLink}"/>
+                <h:commandLink action="#{doctorController.prepareCreate}" value="#{bundles.ListDoctorCreateLink}"/>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{bundle.ListDoctorIndexLink}"/>
+                <h:link outcome="/index" value="#{bundles.ListDoctorIndexLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>

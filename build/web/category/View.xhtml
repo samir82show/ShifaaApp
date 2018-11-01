@@ -18,6 +18,8 @@
                     <h:outputText value="#{categoryController.selected.id}" title="#{bundle.ViewCategoryTitle_id}"/>
                     <h:outputText value="#{bundle.ViewCategoryLabel_name}"/>
                     <h:outputText value="#{categoryController.selected.name}" title="#{bundle.ViewCategoryTitle_name}"/>
+                    <h:outputText value="Name in (arabic): "/>
+                    <h:outputText value="#{categoryController.selected.inArabic}" title="Name in arabic"/>
                     <h:outputText value="#{bundle.ViewCategoryLabel_image}"/>
                     <img src="#{categoryController.selected.image}" alt="" style="height: 100px; width: 100px;"/>
                 </h:panelGrid>

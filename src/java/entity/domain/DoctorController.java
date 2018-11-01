@@ -5,6 +5,7 @@ import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import facade.DoctorFacade;
 import java.io.File;
+
 import java.io.Serializable;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
@@ -25,7 +26,7 @@ import javax.servlet.http.Part;
 public class DoctorController implements Serializable {
 
     private Part image;
-    private String prevImage;
+    static private String prevImage;
     private Doctor current;
     private DataModel items = null;
     @EJB
@@ -34,15 +35,15 @@ public class DoctorController implements Serializable {
     private int selectedItemIndex;
     private ImageUploader imageUploader;
 
+    public DoctorController() {
+    }
+
     public Part getImage() {
         return image;
     }
 
     public void setImage(Part image) {
         this.image = image;
-    }
-
-    public DoctorController() {
     }
 
     public Doctor getSelected() {
@@ -99,16 +100,17 @@ public class DoctorController implements Serializable {
             current.setImage(imageUploader.getAppInternalPath());
             try {
                 getFacade().create(current);
-                JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("DoctorCreated"));
+                JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundles").getString("DoctorCreated"));
                 return prepareCreate();
             } catch (Exception e) {
-                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundles").getString("PersistenceErrorOccured"));
                 return null;
             }
         } else {
             System.out.println("create function ........... Doctor is not added.");
         }
         return "/failed_to_create";
+
     }
 
     public String prepareEdit() {
@@ -132,10 +134,10 @@ public class DoctorController implements Serializable {
             current.setImage(imageUploader.getAppInternalPath());
             try {
                 getFacade().edit(current);
-                JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("DoctorUpdated"));
+                JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundles").getString("DoctorUpdated"));
                 return "View";
             } catch (Exception e) {
-                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundles").getString("PersistenceErrorOccured"));
                 return null;
             }
         }
@@ -174,9 +176,9 @@ public class DoctorController implements Serializable {
                 ).delete();
             }
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("DoctorDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundles").getString("DoctorDeleted"));
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundles").getString("PersistenceErrorOccured"));
         }
     }
 

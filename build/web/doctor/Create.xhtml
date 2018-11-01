@@ -7,37 +7,37 @@
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="#{bundle.CreateDoctorTitle}"></h:outputText>
+            <h:outputText value="#{bundles.CreateDoctorTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form enctype="multipart/form-data">
-                <h:panelGrid columns="3">
-                    <h:outputLabel value="#{bundle.CreateDoctorLabel_name}" for="name" />
-                    <h:inputText autocomplete="off" id="name" value="#{doctorController.selected.name}" title="#{bundle.CreateDoctorTitle_name}" />
-                    <h:message for="name"/>
-                    <h:outputLabel value="#{bundle.CreateDoctorLabel_image}" for="image" />
-                    <h:inputFile autocomplete="off" id="image" value="#{doctorController.image}" title="#{bundle.CreateDoctorTitle_image}" />
-                    <h:message for="image"/>
-                    <h:outputLabel value="#{bundle.CreateDoctorLabel_qualifications}" for="qualifications" />
-                    <h:inputTextarea id="qualifications" value="#{doctorController.selected.qualifications}" title="#{bundle.CreateDoctorTitle_qualifications}" />
-                    <h:message for="qualifications"/>
-                    <h:outputLabel value="#{bundle.CreateDoctorLabel_clinic}" for="clinic" />
-                    <h:selectOneMenu id="clinic" value="#{doctorController.selected.clinic}" title="#{bundle.CreateDoctorTitle_clinic}" >
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundles.CreateDoctorLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{doctorController.selected.id}" title="#{bundles.CreateDoctorTitle_id}" />
+                    <h:outputLabel value="#{bundles.CreateDoctorLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{doctorController.selected.name}" title="#{bundles.CreateDoctorTitle_name}" />
+                    <h:outputLabel value="Name in (Arabic): " for="inArabic" />
+                    <h:inputText id="inArabic" value="#{doctorController.selected.inArabic}" title="Name in Arabic" />
+                    <h:outputLabel value="#{bundles.CreateDoctorLabel_image}" for="image" />
+                    <h:inputFile id="image" value="#{doctorController.image}" title="#{bundle.CreateServiceTitle_image}"/>
+                    <h:outputLabel value="#{bundles.CreateDoctorLabel_qualifications}" for="qualifications" />
+                    <h:inputText id="qualifications" value="#{doctorController.selected.qualifications}" title="#{bundles.CreateDoctorTitle_qualifications}" />
+                    <h:outputLabel value="#{bundles.CreateDoctorLabel_clinic}" for="clinic" />
+                    <h:selectOneMenu id="clinic" value="#{doctorController.selected.clinic}" title="#{bundles.CreateDoctorTitle_clinic}" >
                         <f:selectItems value="#{clinicController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
-                    <h:message for="clinic"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{doctorController.create}" value="#{bundle.CreateDoctorSaveLink}" />
+                <h:commandLink action="#{doctorController.create}" value="#{bundles.CreateDoctorSaveLink}" />
                 <br />
                 <br />
-                <h:commandLink action="#{doctorController.prepareList}" value="#{bundle.CreateDoctorShowAllLink}" immediate="true"/>
+                <h:commandLink action="#{doctorController.prepareList}" value="#{bundles.CreateDoctorShowAllLink}" immediate="true"/>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{bundle.CreateDoctorIndexLink}"/>
+                <h:link outcome="/index" value="#{bundles.CreateDoctorIndexLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>

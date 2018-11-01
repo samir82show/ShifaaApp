@@ -24,7 +24,18 @@ public class Shift implements Serializable {
     @Basic
     private String name;
 
+    @Basic
+    private String inArabic;
+
     public Shift() {
+    }
+
+    public String getInArabic() {
+        return inArabic;
+    }
+
+    public void setInArabic(String inArabic) {
+        this.inArabic = inArabic;
     }
 
     public Long getId() {

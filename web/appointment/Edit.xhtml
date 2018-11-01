@@ -21,6 +21,9 @@
                     <h:outputLabel value="#{bundle.EditAppointmentLabel_name}" for="name" />
                     <h:inputText id="name" value="#{appointmentController.selected.name}" title="#{bundle.EditAppointmentTitle_name}" />
                     <h:message for="name"/>
+                    <h:outputLabel value="Name in (Arabic): " for="inArabic" />
+                    <h:inputText autocomplete="off" id="inArabic" value="#{appointmentController.selected.inArabic}" title="Name in Arabic" />
+                    <h:message for="inArabic"/>
                     <h:outputLabel value="#{bundle.EditAppointmentLabel_phone}" for="phone" />
                     <h:inputText id="phone" value="#{appointmentController.selected.phone}" title="#{bundle.EditAppointmentTitle_phone}" />
                     <h:message for="phone"/>

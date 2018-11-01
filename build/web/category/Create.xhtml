@@ -18,6 +18,8 @@
                     <h:inputText id="id" value="#{categoryController.selected.id}" title="#{bundle.CreateCategoryTitle_id}" />
                     <h:outputLabel value="#{bundle.CreateCategoryLabel_name}" for="name" />
                     <h:inputText id="name" value="#{categoryController.selected.name}" title="#{bundle.CreateCategoryTitle_name}" />
+                    <h:outputLabel value="Name in (arabic): " for="inArabic" />
+                    <h:inputText id="inArabic" value="#{categoryController.selected.inArabic}" title="Name in arabic" />
                     <h:outputLabel value="#{bundle.CreateCategoryLabel_image}" for="image" />
                     <h:inputFile id="image" value="#{categoryController.image}" title="#{bundle.CreateCategoryTitle_image}"/>
                 </h:panelGrid>

@@ -19,6 +19,8 @@
                     <h:outputText value="#{daysOfWeekController.selected.id}" title="#{bundle.ViewDaysOfWeekTitle_id}"/>
                     <h:outputText value="#{bundle.ViewDaysOfWeekLabel_name}"/>
                     <h:outputText value="#{daysOfWeekController.selected.name}" title="#{bundle.ViewDaysOfWeekTitle_name}"/>
+                    <h:outputText value="Name in (Arabic): "/>
+                    <h:outputText value="#{daysOfWeekController.selected.inArabic}" title="#{bundle.ViewDaysOfWeekTitle_name}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{daysOfWeekController.destroyAndView}" value="#{bundle.ViewDaysOfWeekDestroyLink}"/>

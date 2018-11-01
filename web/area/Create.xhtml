@@ -18,6 +18,8 @@
                     <h:inputText id="id" value="#{areaController.selected.id}" title="#{bundle.CreateAreaTitle_id}" />
                     <h:outputLabel value="#{bundle.CreateAreaLabel_name}" for="name" />
                     <h:inputText id="name" value="#{areaController.selected.name}" title="#{bundle.CreateAreaTitle_name}" />
+                    <h:outputLabel value="Name in (Arabic): " for="inArabic" />
+                    <h:inputText id="inArabic" value="#{areaController.selected.inArabic}" title="Name in arabic" />
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{areaController.create}" value="#{bundle.CreateAreaSaveLink}" />

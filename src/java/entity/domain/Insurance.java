@@ -28,10 +28,21 @@ public class Insurance implements Serializable {
     private String name;
 
     @Basic
+    private String inArabic;
+
+    @Basic
     private String image;
 
     @ManyToMany
     private List<Hospital> hospitals;
+
+    public String getInArabic() {
+        return inArabic;
+    }
+
+    public void setInArabic(String inArabic) {
+        this.inArabic = inArabic;
+    }
 
     public Insurance() {
     }
