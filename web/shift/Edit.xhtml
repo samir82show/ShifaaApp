@@ -18,7 +18,7 @@
                     <h:inputText id="id" value="#{shiftController.selected.id}" title="#{bundle.EditShiftTitle_id}" />
                     <h:outputLabel value="#{bundle.EditShiftLabel_name}" for="name" />
                     <h:inputText id="name" value="#{shiftController.selected.name}" title="#{bundle.EditShiftTitle_name}" />
-                    <h:outputLabel value="Name in arabic: " for="inArabic" />
+                    <h:outputLabel value="Name in (Arabic): " for="inArabic" />
                     <h:inputText autocomplete="off" id="inArabic" value="#{shiftController.selected.inArabic}" title="#{bundle.CreateShiftTitle_name}" />
                 </h:panelGrid>
                 <h:commandLink action="#{shiftController.update}" value="#{bundle.EditShiftSaveLink}"/>

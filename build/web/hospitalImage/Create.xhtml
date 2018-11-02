@@ -13,12 +13,12 @@
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:form>
+            <h:form enctype="multipart/form-data">
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateHospitalImageLabel_id}" for="id" />
                     <h:inputText id="id" value="#{hospitalImageController.selected.id}" title="#{bundle.CreateHospitalImageTitle_id}" />
                     <h:outputLabel value="#{bundle.CreateHospitalImageLabel_image}" for="image" />
-                    <h:inputText id="image" value="#{hospitalImageController.selected.image}" title="#{bundle.CreateHospitalImageTitle_image}" />
+                    <h:inputFile id="image" value="#{hospitalImageController.image}" title="#{bundle.CreateHospitalImageTitle_image}"/>
                     <h:outputLabel value="#{bundle.CreateHospitalImageLabel_hospital}" for="hospital" />
                     <h:selectOneMenu id="hospital" value="#{hospitalImageController.selected.hospital}" title="#{bundle.CreateHospitalImageTitle_hospital}" >
                         <f:selectItems value="#{hospitalController.itemsAvailableSelectOne}"/>

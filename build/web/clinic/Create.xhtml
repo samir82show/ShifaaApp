@@ -18,7 +18,9 @@
                     <h:outputLabel value="#{bundle.CreateClinicLabel_id}" for="id" />
                     <h:inputText id="id" value="#{clinicController.selected.id}" title="#{bundle.CreateClinicTitle_id}" />
                     <h:outputLabel value="#{bundle.CreateClinicLabel_workingDaysHours}" for="workingDaysHours" />
-                    <h:inputText id="workingDaysHours" value="#{clinicController.selected.workingDaysHours}" title="#{bundle.CreateClinicTitle_workingDaysHours}" />
+                    <h:inputTextarea id="workingDaysHours" value="#{clinicController.selected.workingDaysHours}" title="#{bundle.CreateClinicTitle_workingDaysHours}" />
+                    <h:outputLabel value="WorkingDaysHoursArabic (Arabic)" for="workingDaysHoursArabic" />
+                    <h:inputTextarea id="workingDaysHoursArabic" value="#{clinicController.selected.workingDaysHoursArabic}" title="#{bundle.CreateClinicTitle_workingDaysHours}" />
                     <h:outputLabel value="#{bundle.CreateClinicLabel_hospital}" for="hospital" />
                     <h:selectOneMenu id="hospital" value="#{clinicController.selected.hospital}" title="#{bundle.CreateClinicTitle_hospital}" >
                         <f:selectItems value="#{hospitalController.itemsAvailableSelectOne}"/>

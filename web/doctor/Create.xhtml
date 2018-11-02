@@ -23,8 +23,10 @@
                     <h:inputText id="inArabic" value="#{doctorController.selected.inArabic}" title="Name in Arabic" />
                     <h:outputLabel value="#{bundles.CreateDoctorLabel_image}" for="image" />
                     <h:inputFile id="image" value="#{doctorController.image}" title="#{bundle.CreateServiceTitle_image}"/>
-                    <h:outputLabel value="#{bundles.CreateDoctorLabel_qualifications}" for="qualifications" />
-                    <h:inputText id="qualifications" value="#{doctorController.selected.qualifications}" title="#{bundles.CreateDoctorTitle_qualifications}" />
+                    <h:outputLabel value="Specialization: " for="specialization" />
+                    <h:inputTextarea id="specialization" value="#{doctorController.selected.qualifications}" title="#{bundles.CreateDoctorTitle_qualifications}" />
+                    <h:outputLabel value="Specialization (Arabic): " for="specializationArabic" />
+                    <h:inputTextarea id="specializationArabic" value="#{doctorController.selected.specializationArabic}" title="#{bundles.CreateDoctorTitle_qualifications}" />
                     <h:outputLabel value="#{bundles.CreateDoctorLabel_clinic}" for="clinic" />
                     <h:selectOneMenu id="clinic" value="#{doctorController.selected.clinic}" title="#{bundles.CreateDoctorTitle_clinic}" >
                         <f:selectItems value="#{clinicController.itemsAvailableSelectOne}"/>

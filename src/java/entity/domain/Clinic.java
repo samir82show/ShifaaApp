@@ -28,6 +28,9 @@ public class Clinic implements Serializable {
     @Basic
     private String workingDaysHours;
 
+    @Basic
+    private String workingDaysHoursArabic;
+
     @ManyToOne
     private Hospital hospital;
 
@@ -41,6 +44,14 @@ public class Clinic implements Serializable {
     private List<ClinicService> clinicServices;
 
     public Clinic() {
+    }
+
+    public String getWorkingDaysHoursArabic() {
+        return workingDaysHoursArabic;
+    }
+
+    public void setWorkingDaysHoursArabic(String workingDaysHoursArabic) {
+        this.workingDaysHoursArabic = workingDaysHoursArabic;
     }
 
     public Long getId() {

@@ -22,8 +22,10 @@
                     <h:inputText id="nameInArabic" value="#{doctorController.selected.inArabic}" title="Name in Arabic" />
                     <h:outputText value="#{bundles.ViewDoctorLabel_image}"/>
                     <img src="#{doctorController.selected.image}" alt="" style="height: 100px; width: 100px;"/>
-                    <h:outputText value="#{bundles.ViewDoctorLabel_qualifications}"/>
+                    <h:outputText value="Specialization: "/>
                     <h:outputText value="#{doctorController.selected.qualifications}" title="#{bundles.ViewDoctorTitle_qualifications}"/>
+                    <h:outputText value="Specialization (Arabic): "/>
+                    <h:outputText value="#{doctorController.selected.specializationArabic}" title="#{bundles.ViewDoctorTitle_qualifications}"/>
                     <h:outputText value="#{bundles.ViewDoctorLabel_clinic}"/>
                     <h:outputText value="#{doctorController.selected.clinic}" title="#{bundles.ViewDoctorTitle_clinic}"/>
                 </h:panelGrid>

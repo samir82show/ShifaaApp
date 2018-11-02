@@ -46,9 +46,15 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundles.ListDoctorTitle_qualifications}"/>
+                                <h:outputText value="Specialization"/>
                             </f:facet>
                             <h:outputText value="#{item.qualifications}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Specialization (Arabic)"/>
+                            </f:facet>
+                            <h:outputText value="#{item.specializationArabic}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">

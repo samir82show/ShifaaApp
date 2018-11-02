@@ -21,17 +21,28 @@ public class Doctor implements Serializable {
 
     @Basic
     private String image;
-    
+
     @Basic
     private String inArabic;
 
     @Basic
     private String qualifications;
 
+    @Basic
+    private String specializationArabic;
+
     @ManyToOne
     private Clinic clinic;
 
     public Doctor() {
+    }
+
+    public String getSpecializationArabic() {
+        return specializationArabic;
+    }
+
+    public void setSpecializationArabic(String specializationArabic) {
+        this.specializationArabic = specializationArabic;
     }
 
     public Long getId() {
@@ -46,7 +57,6 @@ public class Doctor implements Serializable {
         this.inArabic = inArabic;
     }
 
-    
     public void setId(Long id) {
         this.id = id;
     }
