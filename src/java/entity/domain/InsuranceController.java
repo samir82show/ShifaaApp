@@ -25,6 +25,7 @@ import javax.servlet.http.Part;
 @SessionScoped
 public class InsuranceController implements Serializable {
 
+    private List<Insurance> insurances;
     private Part image;
     private String prevImage;
     private Insurance current;
@@ -34,6 +35,11 @@ public class InsuranceController implements Serializable {
     private PaginationHelper pagination;
     private int selectedItemIndex;
     private ImageUploader imageUploader;
+
+    public List<Insurance> getInsurances() {
+        insurances = ejbFacade.findAll();
+        return insurances;
+    }
 
     public Part getImage() {
         return image;

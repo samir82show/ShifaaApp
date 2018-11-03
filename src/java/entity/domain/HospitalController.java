@@ -3,9 +3,13 @@ package entity.domain;
 import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import facade.HospitalFacade;
+import facade.InsuranceFacade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -21,12 +25,28 @@ import javax.faces.model.SelectItem;
 @SessionScoped
 public class HospitalController implements Serializable {
 
+    @EJB
+    private InsuranceFacade insuranceFacade;
+    private List<String> insurances;
     private Hospital current;
     private DataModel items = null;
     @EJB
     private facade.HospitalFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+
+    @PostConstruct
+    public void init() {
+        insurances = new ArrayList<>();
+    }
+
+    public List<String> getInsurances() {
+        return insurances;
+    }
+
+    public void setInsurances(List<String> insurances) {
+        this.insurances = insurances;
+    }
 
     public HospitalController() {
     }
@@ -79,6 +99,10 @@ public class HospitalController implements Serializable {
     }
 
     public String create() {
+        for (String id : insurances) {
+            Insurance insurance = insuranceFacade.find(Long.parseLong(id));
+            current.addInsurance(insurance);
+        }
         try {
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("HospitalCreated"));
@@ -91,11 +115,19 @@ public class HospitalController implements Serializable {
 
     public String prepareEdit() {
         current = (Hospital) getItems().getRowData();
+        for (Insurance d : current.getInsurances()) {
+            insurances.add(d.getId().toString());
+        }
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
 
     public String update() {
+        current.getInsurances().clear();
+        for (String id : insurances) {
+            Insurance insurance = insuranceFacade.find(Long.parseLong(id));
+            current.addInsurance(insurance);
+        }
         try {
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("HospitalUpdated"));

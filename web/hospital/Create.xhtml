@@ -33,6 +33,13 @@
                     <h:selectOneMenu id="area" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_area}" >
                         <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
+                    <h:outputLabel value="Insurance Companies: " for="insurances" />
+                    <h:selectManyListbox id="insurances" value="#{hospitalController.insurances}">
+                        <f:selectItems value="#{insuranceController.insurances}" 
+                                       var="c"
+                                       itemLabel="#{c.name}" 
+                                       itemValue="#{c.id}" />
+                    </h:selectManyListbox >
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{hospitalController.create}" value="#{bundle.CreateHospitalSaveLink}" />
