@@ -35,7 +35,7 @@
                     </h:selectOneMenu>
                     <h:outputLabel value="Insurance Companies: " for="insurances" />
                     <h:selectManyListbox id="insurances" value="#{hospitalController.insurances}">
-                        <f:selectItems value="#{insuranceController.insurances}" 
+                        <f:selectItems value="#{insuranceController.findAll()}" 
                                        var="c"
                                        itemLabel="#{c.name}" 
                                        itemValue="#{c.id}" />

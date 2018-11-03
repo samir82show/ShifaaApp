@@ -25,9 +25,8 @@ import javax.servlet.http.Part;
 @SessionScoped
 public class InsuranceController implements Serializable {
 
-    private List<Insurance> insurances;
     private Part image;
-    private String prevImage;
+    static private String prevImage;
     private Insurance current;
     private DataModel items = null;
     @EJB
@@ -37,8 +36,7 @@ public class InsuranceController implements Serializable {
     private ImageUploader imageUploader;
 
     public List<Insurance> getInsurances() {
-        insurances = ejbFacade.findAll();
-        return insurances;
+        return ejbFacade.findAll();
     }
 
     public Part getImage() {
@@ -105,6 +103,7 @@ public class InsuranceController implements Serializable {
 
     public String create() throws MessagingException {
         imageUploader = ImageUploader.getInstance(image, "insurances");
+        imageUploader.setImage(image);
         if (0 == imageUploader.doUpload()) {
             try {
                 current.setImage(imageUploader.getAppInternalPath());
@@ -116,13 +115,14 @@ public class InsuranceController implements Serializable {
                 return null;
             }
         } else {
-            System.out.println("create function ........... Clinic is not added.");
+            System.out.println("create function ........... Insurance is not added.");
         }
         return "/failed_to_create";
 
     }
 
     public String prepareEdit() {
+        imageUploader = ImageUploader.getInstance(image, "insurances");
         current = (Insurance) getItems().getRowData();
         prevImage = current.getImage();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
@@ -130,13 +130,16 @@ public class InsuranceController implements Serializable {
     }
 
     public String update() throws MessagingException {
+          imageUploader = ImageUploader.getInstance(image, "insurances");
         if (prevImage != null) {
             new File(prevImage
                     .replace(imageUploader.getAppPath(),
                             imageUploader.getAbsolutePath())
             ).delete();
         }
+        imageUploader.setImage(image);
         if (0 == imageUploader.doUpload()) {
+            current.setImage(imageUploader.getAppInternalPath());
             try {
                 getFacade().edit(current);
                 JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("InsuranceUpdated"));

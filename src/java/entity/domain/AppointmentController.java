@@ -27,7 +27,6 @@ public class AppointmentController implements Serializable {
 
     @EJB
     private DaysOfWeekFacade daysOfWeekFacade;
-
     private List<String> days;
     private Appointment current;
     private DataModel items = null;
