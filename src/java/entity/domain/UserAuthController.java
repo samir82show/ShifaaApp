@@ -5,11 +5,12 @@ import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import facade.GroupAuthFacade;
 import facade.UserAuthFacade;
-
 import java.io.Serializable;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -38,6 +39,11 @@ public class UserAuthController implements Serializable {
     private int selectedItemIndex;
 
     public UserAuthController() {
+    }
+
+    @PostConstruct
+    public void init() {
+        groups = new ArrayList<>();
     }
 
     public List<String> getGroups() {
@@ -113,11 +119,19 @@ public class UserAuthController implements Serializable {
 
     public String prepareEdit() {
         current = (UserAuth) getItems().getRowData();
+        for (GroupAuth d : current.getGroupAuths()) {
+            groups.add(d.getId().toString());
+        }
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
 
     public String update() {
+        current.getGroupAuths().clear();
+        for (String id : groups) {
+            GroupAuth groupAuth = groupAuthFacade.find(Long.parseLong(id));
+            current.addGroupAuth(groupAuth);
+        }
         try {
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserAuthUpdated"));
