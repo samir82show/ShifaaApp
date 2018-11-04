@@ -2,8 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -15,16 +14,16 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewClinicLabel_workingDaysHoursArabic}"/>
-                    <h:outputText value="#{clinicController.selected.workingDaysHoursArabic}" title="#{bundle.ViewClinicTitle_workingDaysHoursArabic}"/>
                     <h:outputText value="#{bundle.ViewClinicLabel_id}"/>
                     <h:outputText value="#{clinicController.selected.id}" title="#{bundle.ViewClinicTitle_id}"/>
                     <h:outputText value="#{bundle.ViewClinicLabel_workingDaysHours}"/>
                     <h:outputText value="#{clinicController.selected.workingDaysHours}" title="#{bundle.ViewClinicTitle_workingDaysHours}"/>
+                    <h:outputText value="#{bundle.ViewClinicLabel_workingDaysHoursArabic}"/>
+                    <h:outputText value="#{clinicController.selected.workingDaysHoursArabic}" title="#{bundle.ViewClinicTitle_workingDaysHoursArabic}"/>
                     <h:outputText value="#{bundle.ViewClinicLabel_hospital}"/>
-                    <h:outputText value="#{clinicController.selected.hospital}" title="#{bundle.ViewClinicTitle_hospital}"/>
+                    <h:outputText value="#{clinicController.selected.hospital.getName()}" title="#{bundle.ViewClinicTitle_hospital}"/>
                     <h:outputText value="#{bundle.ViewClinicLabel_category}"/>
-                    <h:outputText value="#{clinicController.selected.category}" title="#{bundle.ViewClinicTitle_category}"/>
+                    <h:outputText value="#{clinicController.selected.category.getName()}" title="#{bundle.ViewClinicTitle_category}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{clinicController.destroyAndView}" value="#{bundle.ViewClinicDestroyLink}"/>

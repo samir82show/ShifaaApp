@@ -22,9 +22,9 @@
                     <h:outputText value="#{bundle.ViewClinicServiceLabel_discount}"/>
                     <h:outputText value="#{clinicServiceController.selected.discount}" title="#{bundle.ViewClinicServiceTitle_discount}"/>
                     <h:outputText value="#{bundle.ViewClinicServiceLabel_clinic}"/>
-                    <h:outputText value="#{clinicServiceController.selected.clinic}" title="#{bundle.ViewClinicServiceTitle_clinic}"/>
+                    <h:outputText value="#{clinicServiceController.selected.clinic.toString()}" title="#{bundle.ViewClinicServiceTitle_clinic}"/>
                     <h:outputText value="#{bundle.ViewClinicServiceLabel_serviceList}"/>
-                    <h:outputText value="#{clinicServiceController.selected.serviceList}" title="#{bundle.ViewClinicServiceTitle_serviceList}"/>
+                    <h:outputText value="#{clinicServiceController.selected.serviceList.toString()}" title="#{bundle.ViewClinicServiceTitle_serviceList}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{clinicServiceController.destroyAndView}" value="#{bundle.ViewClinicServiceDestroyLink}"/>

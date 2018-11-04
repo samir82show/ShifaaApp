@@ -9,7 +9,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-11-04T12:43:14")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-11-05T01:54:48")
 @StaticMetamodel(Hospital.class)
 public class Hospital_ { 
 
@@ -17,7 +17,7 @@ public class Hospital_ {
     public static volatile ListAttribute<Hospital, Insurance> insurances;
     public static volatile ListAttribute<Hospital, Clinic> clinics;
     public static volatile SingularAttribute<Hospital, String> workingDaysHours;
-    public static volatile SingularAttribute<Hospital, Integer> rating;
+    public static volatile SingularAttribute<Hospital, String> rating;
     public static volatile SingularAttribute<Hospital, String> ratingComment;
     public static volatile ListAttribute<Hospital, HospitalImage> hospitalImages;
     public static volatile SingularAttribute<Hospital, String> locationMap;

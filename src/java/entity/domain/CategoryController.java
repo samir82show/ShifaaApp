@@ -1,8 +1,10 @@
 package entity.domain;
 
+import entity.domain.util.ImageUploader;
 import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import facade.CategoryFacade;
+import java.io.File;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
@@ -16,19 +18,32 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.mail.MessagingException;
+import javax.servlet.http.Part;
 
 @Named("categoryController")
 @SessionScoped
 public class CategoryController implements Serializable {
 
+    private Part image;
+    static private String prevImage;
     private Category current;
     private DataModel items = null;
     @EJB
     private facade.CategoryFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private ImageUploader imageUploader;
 
     public CategoryController() {
+    }
+
+    public Part getImage() {
+        return image;
+    }
+
+    public void setImage(Part image) {
+        this.image = image;
     }
 
     public Category getSelected() {
@@ -78,32 +93,54 @@ public class CategoryController implements Serializable {
         return "Create";
     }
 
-    public String create() {
-        try {
-            getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("CategoryCreated"));
-            return prepareCreate();
-        } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
-            return null;
+    public String create() throws MessagingException {
+        imageUploader = ImageUploader.getInstance(image, "clinic_categories");
+        imageUploader.setImage(image);
+        if (0 == imageUploader.doUpload()) {
+            current.setImage(imageUploader.getAppInternalPath());
+            try {
+                getFacade().create(current);
+                JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("CategoryCreated"));
+                return prepareCreate();
+            } catch (Exception e) {
+                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+                return null;
+            }
+        } else {
+            System.out.println("create function ........... Category is not added.");
         }
+        return "/failed_to_create";
     }
 
     public String prepareEdit() {
+        imageUploader = ImageUploader.getInstance(image, "clinic_categories");
         current = (Category) getItems().getRowData();
+        prevImage = current.getImage();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
 
-    public String update() {
-        try {
-            getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("CategoryUpdated"));
-            return "View";
-        } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
-            return null;
+    public String update() throws MessagingException {
+        imageUploader = ImageUploader.getInstance(image, "clinic_categories");
+        if (prevImage != null) {
+            new File(prevImage
+                    .replace(imageUploader.getAppPath(),
+                            imageUploader.getAbsolutePath())
+            ).delete();
         }
+        imageUploader.setImage(image);
+        if (0 == imageUploader.doUpload()) {
+            current.setImage(imageUploader.getAppInternalPath());
+            try {
+                getFacade().edit(current);
+                JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("CategoryUpdated"));
+                return "View";
+            } catch (Exception e) {
+                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+                return null;
+            }
+        }
+        return "/failed_to_create";
     }
 
     public String destroy() {
@@ -129,7 +166,14 @@ public class CategoryController implements Serializable {
     }
 
     private void performDestroy() {
+        imageUploader = ImageUploader.getInstance(image, "clinic_categories");
         try {
+            if (current.getImage() != null) {
+                new File(current.getImage()
+                        .replace(imageUploader.getAppPath(),
+                                imageUploader.getAbsolutePath())
+                ).delete();
+            }
             getFacade().remove(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("CategoryDeleted"));
         } catch (Exception e) {
