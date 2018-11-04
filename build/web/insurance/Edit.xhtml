@@ -6,36 +6,32 @@
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="#{bundle.EditInsuranceTitle}"></h:outputText>
+            <h:outputText value="#{bundles.EditInsuranceTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form enctype="multipart/form-data">
-                <h:panelGrid columns="3">
-                    <h:outputLabel value="#{bundle.EditInsuranceLabel_id}" for="id" />
-                    <h:inputText disabled="true" id="id" value="#{insuranceController.selected.id}" title="#{bundle.EditInsuranceTitle_id}" />
-                    <h:message for="id"/>
-                    <h:outputLabel value="#{bundle.EditInsuranceLabel_name}" for="name" />
-                    <h:inputText autocomplete="off" id="name" value="#{insuranceController.selected.name}" title="#{bundle.EditInsuranceTitle_name}" />
-                    <h:message for="name"/>
-                    <h:outputLabel value="Name in (Arabic): " for="inArabic" />
-                    <h:inputText autocomplete="off" id="inArabic" value="#{insuranceController.selected.inArabic}" title="#{bundle.CreateInsuranceTitle_name}" />
-                    <h:message for="inArabic"/>
-                    <h:outputLabel value="#{bundle.EditInsuranceLabel_image}" for="image" />
-                    <h:inputFile id="image" value="#{insuranceController.image}" title="#{bundle.EditInsuranceTitle_image}" />
-                    <h:message for="image"/>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundles.EditInsuranceLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{insuranceController.selected.id}" title="#{bundles.EditInsuranceTitle_id}" />
+                    <h:outputLabel value="#{bundles.EditInsuranceLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{insuranceController.selected.name}" title="#{bundles.EditInsuranceTitle_name}" />
+                    <h:outputLabel value="#{bundles.EditInsuranceLabel_inArabic}" for="inArabic" />
+                    <h:inputText id="inArabic" value="#{insuranceController.selected.inArabic}" title="#{bundles.EditInsuranceTitle_inArabic}" />
+                    <h:outputLabel value="#{bundles.EditInsuranceLabel_image}" for="image" />
+                    <h:inputFile id="image" value="#{insuranceController.image}" title="#{bundle.CreateServiceTitle_image}"/>
                 </h:panelGrid>
-                <h:commandLink action="#{insuranceController.update}" value="#{bundle.EditInsuranceSaveLink}"/>
+                <h:commandLink action="#{insuranceController.update}" value="#{bundles.EditInsuranceSaveLink}"/>
                 <br />
                 <br />
-                <h:link outcome="View" value="#{bundle.EditInsuranceViewLink}"/>
+                <h:link outcome="View" value="#{bundles.EditInsuranceViewLink}"/>
                 <br />
-                <h:commandLink action="#{insuranceController.prepareList}" value="#{bundle.EditInsuranceShowAllLink}" immediate="true"/>
+                <h:commandLink action="#{insuranceController.prepareList}" value="#{bundles.EditInsuranceShowAllLink}" immediate="true"/>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{bundle.EditInsuranceIndexLink}" />
+                <h:link outcome="/index" value="#{bundles.EditInsuranceIndexLink}" />
             </h:form>
         </ui:define>
     </ui:composition>

@@ -6,7 +6,7 @@
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="#{bundles.ViewDoctorTitle}"></h:outputText>
+            <h:outputText value="#{bundle.ViewDoctorTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
@@ -14,33 +14,33 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputText value="#{bundles.ViewDoctorLabel_id}"/>
-                    <h:outputText value="#{doctorController.selected.id}" title="#{bundles.ViewDoctorTitle_id}"/>
-                    <h:outputText value="#{bundles.ViewDoctorLabel_name}"/>
-                    <h:outputText value="#{doctorController.selected.name}" title="#{bundles.ViewDoctorTitle_name}"/>
+                    <h:outputText value="#{bundle.ViewDoctorLabel_id}"/>
+                    <h:outputText value="#{doctorController.selected.id}" title="#{bundle.ViewDoctorTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewDoctorLabel_name}"/>
+                    <h:outputText value="#{doctorController.selected.name}" title="#{bundle.ViewDoctorTitle_name}"/>
                     <h:outputLabel value="Name in (Arabic): " for="nameInArabic" />
                     <h:inputText id="nameInArabic" value="#{doctorController.selected.inArabic}" title="Name in Arabic" />
-                    <h:outputText value="#{bundles.ViewDoctorLabel_image}"/>
+                    <h:outputText value="#{bundle.ViewDoctorLabel_image}"/>
                     <img src="#{doctorController.selected.image}" alt="" style="height: 100px; width: 100px;"/>
                     <h:outputText value="Specialization: "/>
-                    <h:outputText value="#{doctorController.selected.qualifications}" title="#{bundles.ViewDoctorTitle_qualifications}"/>
+                    <h:outputText value="#{doctorController.selected.qualifications}" title="#{bundle.ViewDoctorTitle_qualifications}"/>
                     <h:outputText value="Specialization (Arabic): "/>
-                    <h:outputText value="#{doctorController.selected.specializationArabic}" title="#{bundles.ViewDoctorTitle_qualifications}"/>
-                    <h:outputText value="#{bundles.ViewDoctorLabel_clinic}"/>
-                    <h:outputText value="#{doctorController.selected.clinic}" title="#{bundles.ViewDoctorTitle_clinic}"/>
+                    <h:outputText value="#{doctorController.selected.specializationArabic}" title="#{bundle.ViewDoctorTitle_qualifications}"/>
+                    <h:outputText value="#{bundle.ViewDoctorLabel_clinic}"/>
+                    <h:outputText value="#{doctorController.selected.clinic}" title="#{bundle.ViewDoctorTitle_clinic}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{doctorController.destroyAndView}" value="#{bundles.ViewDoctorDestroyLink}"/>
+                <h:commandLink action="#{doctorController.destroyAndView}" value="#{bundle.ViewDoctorDestroyLink}"/>
                 <br />
                 <br />
-                <h:link outcome="Edit" value="#{bundles.ViewDoctorEditLink}"/>
+                <h:link outcome="Edit" value="#{bundle.ViewDoctorEditLink}"/>
                 <br />
-                <h:commandLink action="#{doctorController.prepareCreate}" value="#{bundles.ViewDoctorCreateLink}" />
+                <h:commandLink action="#{doctorController.prepareCreate}" value="#{bundle.ViewDoctorCreateLink}" />
                 <br />
-                <h:commandLink action="#{doctorController.prepareList}" value="#{bundles.ViewDoctorShowAllLink}"/>
+                <h:commandLink action="#{doctorController.prepareList}" value="#{bundle.ViewDoctorShowAllLink}"/>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{bundles.ViewDoctorIndexLink}"/>
+                <h:link outcome="/index" value="#{bundle.ViewDoctorIndexLink}"/>
 
             </h:form>
         </ui:define>
