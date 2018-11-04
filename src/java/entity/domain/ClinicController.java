@@ -17,15 +17,14 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
-
 @Named("clinicController")
 @SessionScoped
 public class ClinicController implements Serializable {
 
-
     private Clinic current;
     private DataModel items = null;
-    @EJB private facade.ClinicFacade ejbFacade;
+    @EJB
+    private facade.ClinicFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
@@ -43,6 +42,7 @@ public class ClinicController implements Serializable {
     private ClinicFacade getFacade() {
         return ejbFacade;
     }
+
     public PaginationHelper getPagination() {
         if (pagination == null) {
             pagination = new PaginationHelper(10) {
@@ -54,7 +54,7 @@ public class ClinicController implements Serializable {
 
                 @Override
                 public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem()+getPageSize()}));
+                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
                 }
             };
         }
@@ -67,7 +67,7 @@ public class ClinicController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Clinic)getItems().getRowData();
+        current = (Clinic) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
@@ -90,7 +90,7 @@ public class ClinicController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Clinic)getItems().getRowData();
+        current = (Clinic) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -107,7 +107,7 @@ public class ClinicController implements Serializable {
     }
 
     public String destroy() {
-        current = (Clinic)getItems().getRowData();
+        current = (Clinic) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -141,14 +141,14 @@ public class ClinicController implements Serializable {
         int count = getFacade().count();
         if (selectedItemIndex >= count) {
             // selected index cannot be bigger than number of items:
-            selectedItemIndex = count-1;
+            selectedItemIndex = count - 1;
             // go to previous page if last page disappeared:
             if (pagination.getPageFirstItem() >= count) {
                 pagination.previousPage();
             }
         }
         if (selectedItemIndex >= 0) {
-            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex+1}).get(0);
+            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex + 1}).get(0);
         }
     }
 
@@ -191,7 +191,7 @@ public class ClinicController implements Serializable {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(forClass=Clinic.class)
+    @FacesConverter(forClass = Clinic.class)
     public static class ClinicControllerConverter implements Converter {
 
         @Override
@@ -199,7 +199,7 @@ public class ClinicController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            ClinicController controller = (ClinicController)facesContext.getApplication().getELResolver().
+            ClinicController controller = (ClinicController) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "clinicController");
             return controller.getClinic(getKey(value));
         }
@@ -225,7 +225,7 @@ public class ClinicController implements Serializable {
                 Clinic o = (Clinic) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: "+Clinic.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Clinic.class.getName());
             }
         }
 

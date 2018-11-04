@@ -34,6 +34,12 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUserAuthTitle_password}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.password}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListUserAuthTitle_email}"/>
                             </f:facet>
                             <h:outputText value="#{item.email}"/>
@@ -42,7 +48,7 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListUserAuthTitle_hospital}"/>
                             </f:facet>
-                            <h:outputText value="#{item.hospital.getName()}"/>
+                            <h:outputText value="#{item.hospital}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">

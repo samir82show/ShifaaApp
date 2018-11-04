@@ -15,12 +15,12 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAreaLabel_inArabic}" for="inArabic" />
+                    <h:inputText id="inArabic" value="#{areaController.selected.inArabic}" title="#{bundle.EditAreaTitle_inArabic}" />
                     <h:outputLabel value="#{bundle.EditAreaLabel_id}" for="id" />
                     <h:inputText id="id" value="#{areaController.selected.id}" title="#{bundle.EditAreaTitle_id}" />
                     <h:outputLabel value="#{bundle.EditAreaLabel_name}" for="name" />
                     <h:inputText id="name" value="#{areaController.selected.name}" title="#{bundle.EditAreaTitle_name}" />
-                    <h:outputLabel value="Name in (Arabic): " for="inArabic" />
-                    <h:inputText id="inArabic" value="#{areaController.selected.inArabic}" title="Name in arabic" />
                 </h:panelGrid>
                 <h:commandLink action="#{areaController.update}" value="#{bundle.EditAreaSaveLink}"/>
                 <br />

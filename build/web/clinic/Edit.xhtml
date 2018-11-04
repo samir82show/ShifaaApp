@@ -15,12 +15,12 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditClinicLabel_workingDaysHoursArabic}" for="workingDaysHoursArabic" />
+                    <h:inputText id="workingDaysHoursArabic" value="#{clinicController.selected.workingDaysHoursArabic}" title="#{bundle.EditClinicTitle_workingDaysHoursArabic}" />
                     <h:outputLabel value="#{bundle.EditClinicLabel_id}" for="id" />
                     <h:inputText id="id" value="#{clinicController.selected.id}" title="#{bundle.EditClinicTitle_id}" />
                     <h:outputLabel value="#{bundle.EditClinicLabel_workingDaysHours}" for="workingDaysHours" />
                     <h:inputText id="workingDaysHours" value="#{clinicController.selected.workingDaysHours}" title="#{bundle.EditClinicTitle_workingDaysHours}" />
-                    <h:outputLabel value="WorkingDaysHoursArabic (Arabic)" for="workingDaysHoursArabic" />
-                    <h:inputTextarea id="workingDaysHoursArabic" value="#{clinicController.selected.workingDaysHoursArabic}" title="#{bundle.CreateClinicTitle_workingDaysHours}" />
                     <h:outputLabel value="#{bundle.EditClinicLabel_hospital}" for="hospital" />
                     <h:selectOneMenu id="hospital" value="#{clinicController.selected.hospital}" title="#{bundle.EditClinicTitle_hospital}" >
                         <f:selectItems value="#{hospitalController.itemsAvailableSelectOne}"/>

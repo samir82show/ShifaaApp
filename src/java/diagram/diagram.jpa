@@ -211,11 +211,12 @@
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
-            <jpa:basic attribute-type="String" v="true" xvt="" name="qualifications" id="_153635118780577">
+            <jpa:basic attribute-type="String" v="true" xvt="" name="specialization" id="_153635118780577">
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
             <jpa:basic attribute-type="String" v="true" name="inArabic" id="_1541079377536106"/>
+            <jpa:basic attribute-type="String" v="true" name="specializationArabic" id="_154132069419349"/>
             <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_15363502409573" connected-attribute-id="_153747293370285" v="true" xvt="" name="clinic" id="_153747293369884">
                 <jpa:xwm/>
                 <jpa:xm/>
@@ -235,11 +236,14 @@
         <jpa:nq e="false" name="Doctor.findByImage">
             <jpa:query>Select d from Doctor d where d.image=:image</jpa:query>
         </jpa:nq>
-        <jpa:nq e="false" name="Doctor.findByQualifications">
-            <jpa:query>Select d from Doctor d where d.qualifications=:qualifications</jpa:query>
+        <jpa:nq e="false" name="Doctor.findBySpecialization">
+            <jpa:query>Select d from Doctor d where d.specialization=:specialization</jpa:query>
         </jpa:nq>
         <jpa:nq e="false" name="Doctor.findByInArabic">
             <jpa:query>Select d from Doctor d where d.inArabic=:inArabic</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Doctor.findBySpecializationArabic">
+            <jpa:query>Select d from Doctor d where d.specializationArabic=:specializationArabic</jpa:query>
         </jpa:nq>
     </jpa:entity>
     <jpa:entity compositePrimaryKeyClass="HospitalPK" abs="false" class="Hospital" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153747244152461">
@@ -266,6 +270,8 @@
                 <jpa:xm/>
             </jpa:basic>
             <jpa:basic attribute-type="String" v="true" name="inArabic" id="_1541079347163103"/>
+            <jpa:basic attribute-type="String" v="true" name="rating" id="_154132071564750"/>
+            <jpa:basic attribute-type="String" v="true" name="ratingComment" id="_154132072332951"/>
             <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_15363503185148" connected-attribute-id="_153747263359778" v="true" xvt="" name="area" id="_153747263359777">
                 <jpa:xwm/>
                 <jpa:xm/>
@@ -309,6 +315,12 @@
         <jpa:nq e="false" name="Hospital.findByInArabic">
             <jpa:query>Select h from Hospital h where h.inArabic=:inArabic</jpa:query>
         </jpa:nq>
+        <jpa:nq e="false" name="Hospital.findByRating">
+            <jpa:query>Select h from Hospital h where h.rating=:rating</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Hospital.findByRatingComment">
+            <jpa:query>Select h from Hospital h where h.ratingComment=:ratingComment</jpa:query>
+        </jpa:nq>
     </jpa:entity>
     <jpa:entity compositePrimaryKeyClass="AppointmentPK" abs="false" class="Appointment" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153790056728532">
         <jpa:ath>sawad</jpa:ath>
@@ -325,9 +337,10 @@
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
-            <jpa:basic attribute-type="String" v="true" xvt="" name="DOB" id="_153790088137647">
+            <jpa:basic attribute-type="java.util.Date" v="true" xvt="" name="DOB" id="_153790088137647">
                 <jpa:xwm/>
                 <jpa:xm/>
+                <jpa:temporal>DATE</jpa:temporal>
             </jpa:basic>
             <jpa:basic attribute-type="String" v="true" xvt="" name="description" id="_153790113734750">
                 <jpa:xwm/>
@@ -596,7 +609,7 @@
     <jpa:wsl>
         <jpa:ws n="Main" id="_15363502350142">
             <i ref="_15363503185148" x="92" y="535"/>
-            <i ref="_153747244152461" x="281" y="220"/>
+            <i ref="_153747244152461" x="281" y="204"/>
             <i ref="_153635039068418" x="482" y="52"/>
             <i ref="_153898591247446" x="-108" y="331"/>
             <i ref="_153635052291523" x="696" y="230"/>

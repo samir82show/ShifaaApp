@@ -15,12 +15,16 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateHospitalLabel_rating}" for="rating" />
+                    <h:inputText id="rating" value="#{hospitalController.selected.rating}" title="#{bundle.CreateHospitalTitle_rating}" />
+                    <h:outputLabel value="#{bundle.CreateHospitalLabel_ratingComment}" for="ratingComment" />
+                    <h:inputText id="ratingComment" value="#{hospitalController.selected.ratingComment}" title="#{bundle.CreateHospitalTitle_ratingComment}" />
+                    <h:outputLabel value="#{bundle.CreateHospitalLabel_inArabic}" for="inArabic" />
+                    <h:inputText id="inArabic" value="#{hospitalController.selected.inArabic}" title="#{bundle.CreateHospitalTitle_inArabic}" />
                     <h:outputLabel value="#{bundle.CreateHospitalLabel_id}" for="id" />
                     <h:inputText id="id" value="#{hospitalController.selected.id}" title="#{bundle.CreateHospitalTitle_id}" />
                     <h:outputLabel value="#{bundle.CreateHospitalLabel_name}" for="name" />
                     <h:inputText id="name" value="#{hospitalController.selected.name}" title="#{bundle.CreateHospitalTitle_name}" />
-                    <h:outputLabel value="Name in (Arabic): " for="inArabic" />
-                    <h:inputText id="inArabic" value="#{hospitalController.selected.inArabic}" title="#{bundle.CreateHospitalTitle_name}" />
                     <h:outputLabel value="#{bundle.CreateHospitalLabel_phoneNo}" for="phoneNo" />
                     <h:inputText id="phoneNo" value="#{hospitalController.selected.phoneNo}" title="#{bundle.CreateHospitalTitle_phoneNo}" />
                     <h:outputLabel value="#{bundle.CreateHospitalLabel_email}" for="email" />
@@ -28,18 +32,11 @@
                     <h:outputLabel value="#{bundle.CreateHospitalLabel_locationMap}" for="locationMap" />
                     <h:inputText id="locationMap" value="#{hospitalController.selected.locationMap}" title="#{bundle.CreateHospitalTitle_locationMap}" />
                     <h:outputLabel value="#{bundle.CreateHospitalLabel_workingDaysHours}" for="workingDaysHours" />
-                    <h:inputTextarea id="workingDaysHours" value="#{hospitalController.selected.workingDaysHours}" title="#{bundle.CreateHospitalTitle_workingDaysHours}" />
+                    <h:inputText id="workingDaysHours" value="#{hospitalController.selected.workingDaysHours}" title="#{bundle.CreateHospitalTitle_workingDaysHours}" />
                     <h:outputLabel value="#{bundle.CreateHospitalLabel_area}" for="area" />
                     <h:selectOneMenu id="area" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_area}" >
                         <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
-                    <h:outputLabel value="Insurance Companies: " for="insurances" />
-                    <h:selectManyListbox id="insurances" value="#{hospitalController.insurances}">
-                        <f:selectItems value="#{insuranceController.findAll()}" 
-                                       var="c"
-                                       itemLabel="#{c.name}" 
-                                       itemValue="#{c.id}" />
-                    </h:selectManyListbox >
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{hospitalController.create}" value="#{bundle.CreateHospitalSaveLink}" />

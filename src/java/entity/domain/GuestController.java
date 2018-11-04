@@ -1,12 +1,10 @@
 package entity.domain;
 
-import entity.domain.util.EncryptPassword;
 import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import facade.GuestFacade;
 
 import java.io.Serializable;
-import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -80,8 +78,7 @@ public class GuestController implements Serializable {
         return "Create";
     }
 
-    public String create() throws NoSuchAlgorithmException {
-        current.setPassword(new EncryptPassword().encrypt("MD5", current.getPassword()));
+    public String create() {
         try {
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("GuestCreated"));
@@ -98,8 +95,7 @@ public class GuestController implements Serializable {
         return "Edit";
     }
 
-    public String update() throws NoSuchAlgorithmException {
-        current.setPassword(new EncryptPassword().encrypt("MD5", current.getPassword()));
+    public String update() {
         try {
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("GuestUpdated"));

@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -14,12 +15,16 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewHospitalLabel_rating}"/>
+                    <h:outputText value="#{hospitalController.selected.rating}" title="#{bundle.ViewHospitalTitle_rating}"/>
+                    <h:outputText value="#{bundle.ViewHospitalLabel_ratingComment}"/>
+                    <h:outputText value="#{hospitalController.selected.ratingComment}" title="#{bundle.ViewHospitalTitle_ratingComment}"/>
+                    <h:outputText value="#{bundle.ViewHospitalLabel_inArabic}"/>
+                    <h:outputText value="#{hospitalController.selected.inArabic}" title="#{bundle.ViewHospitalTitle_inArabic}"/>
                     <h:outputText value="#{bundle.ViewHospitalLabel_id}"/>
                     <h:outputText value="#{hospitalController.selected.id}" title="#{bundle.ViewHospitalTitle_id}"/>
                     <h:outputText value="#{bundle.ViewHospitalLabel_name}"/>
                     <h:outputText value="#{hospitalController.selected.name}" title="#{bundle.ViewHospitalTitle_name}"/>
-                    <h:outputText value="Name in (Arabic): "/>
-                    <h:outputText value="#{hospitalController.selected.inArabic}" title="#{bundle.ViewHospitalTitle_name}"/>
                     <h:outputText value="#{bundle.ViewHospitalLabel_phoneNo}"/>
                     <h:outputText value="#{hospitalController.selected.phoneNo}" title="#{bundle.ViewHospitalTitle_phoneNo}"/>
                     <h:outputText value="#{bundle.ViewHospitalLabel_email}"/>

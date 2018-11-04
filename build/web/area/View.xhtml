@@ -15,12 +15,12 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAreaLabel_inArabic}"/>
+                    <h:outputText value="#{areaController.selected.inArabic}" title="#{bundle.ViewAreaTitle_inArabic}"/>
                     <h:outputText value="#{bundle.ViewAreaLabel_id}"/>
                     <h:outputText value="#{areaController.selected.id}" title="#{bundle.ViewAreaTitle_id}"/>
                     <h:outputText value="#{bundle.ViewAreaLabel_name}"/>
                     <h:outputText value="#{areaController.selected.name}" title="#{bundle.ViewAreaTitle_name}"/>
-                    <h:outputText value="Name in (arabic): "/>
-                    <h:outputText value="#{areaController.selected.inArabic}" title="Name in arabic"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{areaController.destroyAndView}" value="#{bundle.ViewAreaDestroyLink}"/>

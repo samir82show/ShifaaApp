@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -14,6 +15,8 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateGroupAuthLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{groupAuthController.selected.id}" title="#{bundle.CreateGroupAuthTitle_id}" />
                     <h:outputLabel value="#{bundle.CreateGroupAuthLabel_groupname}" for="groupname" />
                     <h:inputText id="groupname" value="#{groupAuthController.selected.groupname}" title="#{bundle.CreateGroupAuthTitle_groupname}" />
                 </h:panelGrid>

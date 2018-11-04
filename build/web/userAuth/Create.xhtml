@@ -15,23 +15,18 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateUserAuthLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{userAuthController.selected.id}" title="#{bundle.CreateUserAuthTitle_id}" />
                     <h:outputLabel value="#{bundle.CreateUserAuthLabel_username}" for="username" />
                     <h:inputText id="username" value="#{userAuthController.selected.username}" title="#{bundle.CreateUserAuthTitle_username}" />
                     <h:outputLabel value="#{bundle.CreateUserAuthLabel_password}" for="password" />
-                    <h:inputSecret id="password" value="#{userAuthController.selected.password}" title="#{bundle.CreateUserAuthTitle_password}" />
+                    <h:inputText id="password" value="#{userAuthController.selected.password}" title="#{bundle.CreateUserAuthTitle_password}" />
                     <h:outputLabel value="#{bundle.CreateUserAuthLabel_email}" for="email" />
                     <h:inputText id="email" value="#{userAuthController.selected.email}" title="#{bundle.CreateUserAuthTitle_email}" />
                     <h:outputLabel value="#{bundle.CreateUserAuthLabel_hospital}" for="hospital" />
                     <h:selectOneMenu id="hospital" value="#{userAuthController.selected.hospital}" title="#{bundle.CreateUserAuthTitle_hospital}" >
                         <f:selectItems value="#{hospitalController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
-                    <h:outputLabel value="#{bundle.CreateUserAuthLabel_groups}" for="groups" />
-                    <h:selectManyListbox id="groups" value="#{userAuthController.groups}">
-                        <f:selectItems value="#{groupAuthController.groups}" 
-                                       var="c"
-                                       itemLabel="#{c.groupname}" 
-                                       itemValue="#{c.id}" />
-                    </h:selectManyListbox >
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{userAuthController.create}" value="#{bundle.CreateUserAuthSaveLink}" />

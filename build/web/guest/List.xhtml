@@ -22,6 +22,12 @@
                     <h:dataTable value="#{guestController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                         <h:column>
                             <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGuestTitle_inArabic}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.inArabic}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListGuestTitle_id}"/>
                             </f:facet>
                             <h:outputText value="#{item.id}"/>
@@ -31,12 +37,6 @@
                                 <h:outputText value="#{bundle.ListGuestTitle_name}"/>
                             </f:facet>
                             <h:outputText value="#{item.name}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="Name in (Arabic)"/>
-                            </f:facet>
-                            <h:outputText value="#{item.inArabic}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
@@ -54,9 +54,7 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListGuestTitle_DOB}"/>
                             </f:facet>
-                            <h:outputText value="#{item.DOB}">
-                                <f:convertDateTime pattern="dd/MM/yyyy"/>
-                            </h:outputText>
+                            <h:outputText value="#{item.DOB}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
@@ -68,7 +66,7 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListGuestTitle_gender}"/>
                             </f:facet>
-                            <h:outputText value="#{item.gender.getName()}"/>
+                            <h:outputText value="#{item.gender}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">

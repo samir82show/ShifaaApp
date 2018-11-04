@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -12,16 +13,16 @@
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:form enctype="multipart/form-data">
+            <h:form>
                 <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCategoryLabel_inArabic}" for="inArabic" />
+                    <h:inputText id="inArabic" value="#{categoryController.selected.inArabic}" title="#{bundle.EditCategoryTitle_inArabic}" />
                     <h:outputLabel value="#{bundle.EditCategoryLabel_id}" for="id" />
                     <h:inputText id="id" value="#{categoryController.selected.id}" title="#{bundle.EditCategoryTitle_id}" />
                     <h:outputLabel value="#{bundle.EditCategoryLabel_name}" for="name" />
                     <h:inputText id="name" value="#{categoryController.selected.name}" title="#{bundle.EditCategoryTitle_name}" />
-                    <h:outputLabel value="Name in (Arabic): " for="inArabic" />
-                    <h:inputText id="inArabic" value="#{categoryController.selected.inArabic}" title="Name in arabic" />
                     <h:outputLabel value="#{bundle.EditCategoryLabel_image}" for="image" />
-                    <h:inputFile id="image" value="#{categoryController.image}" title="#{bundle.EditCategoryTitle_image}"/>
+                    <h:inputText id="image" value="#{categoryController.selected.image}" title="#{bundle.EditCategoryTitle_image}" />
                 </h:panelGrid>
                 <h:commandLink action="#{categoryController.update}" value="#{bundle.EditCategorySaveLink}"/>
                 <br />

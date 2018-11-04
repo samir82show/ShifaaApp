@@ -2,6 +2,7 @@ package entity.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Basic;
@@ -11,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Appointment implements Serializable {
@@ -32,7 +35,8 @@ public class Appointment implements Serializable {
     private String email;
 
     @Basic
-    private String DOB;
+    @Temporal(TemporalType.DATE)
+    private Date DOB;
 
     @Basic
     private String description;
@@ -95,11 +99,11 @@ public class Appointment implements Serializable {
         this.email = email;
     }
 
-    public String getDOB() {
+    public Date getDOB() {
         return this.DOB;
     }
 
-    public void setDOB(String DOB) {
+    public void setDOB(Date DOB) {
         this.DOB = DOB;
     }
 
