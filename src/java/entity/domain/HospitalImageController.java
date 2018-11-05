@@ -5,7 +5,6 @@ import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import facade.HospitalImageFacade;
 import java.io.File;
-
 import java.io.Serializable;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
@@ -166,7 +165,7 @@ public class HospitalImageController implements Serializable {
     }
 
     private void performDestroy() {
-        imageUploader = ImageUploader.getInstance(image, "insurances");
+        imageUploader = ImageUploader.getInstance(image, "hospitals");
         try {
             if (current.getImage() != null) {
                 new File(current.getImage()

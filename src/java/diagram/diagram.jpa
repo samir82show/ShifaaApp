@@ -272,6 +272,7 @@
             <jpa:basic attribute-type="String" v="true" name="inArabic" id="_1541079347163103"/>
             <jpa:basic attribute-type="String" v="true" name="rating" id="_154132071564750"/>
             <jpa:basic attribute-type="String" v="true" name="ratingComment" id="_154132072332951"/>
+            <jpa:basic attribute-type="String" v="true" name="WorkingDaysHoursArabic" id="_154145186954949"/>
             <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_15363503185148" connected-attribute-id="_153747263359778" v="true" xvt="" name="area" id="_153747263359777">
                 <jpa:xwm/>
                 <jpa:xm/>
@@ -320,6 +321,9 @@
         </jpa:nq>
         <jpa:nq e="false" name="Hospital.findByRatingComment">
             <jpa:query>Select h from Hospital h where h.ratingComment=:ratingComment</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Hospital.findByWorkingDaysHoursArabic">
+            <jpa:query>Select h from Hospital h where h.WorkingDaysHoursArabic=:WorkingDaysHoursArabic</jpa:query>
         </jpa:nq>
     </jpa:entity>
     <jpa:entity compositePrimaryKeyClass="AppointmentPK" abs="false" class="Appointment" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153790056728532">

@@ -38,6 +38,9 @@ public class Hospital implements Serializable {
     @Basic
     private String workingDaysHours;
 
+    @Basic
+    private String workingDaysHoursArabic;
+
     @ManyToOne
     private Area area;
 
@@ -52,6 +55,14 @@ public class Hospital implements Serializable {
     private List<Insurance> insurances;
 
     public Hospital() {
+    }
+
+    public String getWorkingDaysHoursArabic() {
+        return workingDaysHoursArabic;
+    }
+
+    public void setWorkingDaysHoursArabic(String workingDaysHoursArabic) {
+        this.workingDaysHoursArabic = workingDaysHoursArabic;
     }
 
     public String getInArabic() {

@@ -29,6 +29,8 @@
                     <h:inputText id="locationMap" value="#{hospitalController.selected.locationMap}" title="#{bundle.EditHospitalTitle_locationMap}" />
                     <h:outputLabel value="#{bundle.EditHospitalLabel_workingDaysHours}" for="workingDaysHours" />
                     <h:inputTextarea id="workingDaysHours" value="#{hospitalController.selected.workingDaysHours}" title="#{bundle.EditHospitalTitle_workingDaysHours}" />
+                    <h:outputLabel value="WorkingDaysHours(Arabic): " for="workingDaysHoursArabic" />
+                    <h:inputTextarea id="workingDaysHoursArabic" value="#{hospitalController.selected.workingDaysHoursArabic}" title="#{bundle.CreateHospitalTitle_workingDaysHours}" />
                     <h:outputLabel value="#{bundle.EditHospitalLabel_area}" for="area" />
                     <h:selectOneMenu id="area" value="#{hospitalController.selected.area}" title="#{bundle.EditHospitalTitle_area}" >
                         <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
