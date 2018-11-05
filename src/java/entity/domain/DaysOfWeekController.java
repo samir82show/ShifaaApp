@@ -5,6 +5,7 @@ import entity.domain.util.PaginationHelper;
 import facade.DaysOfWeekFacade;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -21,6 +22,7 @@ import javax.faces.model.SelectItem;
 @SessionScoped
 public class DaysOfWeekController implements Serializable {
 
+    private List<DaysOfWeek> days;
     private DaysOfWeek current;
     private DataModel items = null;
     @EJB
@@ -31,6 +33,13 @@ public class DaysOfWeekController implements Serializable {
     public DaysOfWeekController() {
     }
 
+    public List<DaysOfWeek> getDays() {
+        days = ejbFacade.findAll();
+        return days;
+    }
+    
+    
+    
     public DaysOfWeek getSelected() {
         if (current == null) {
             current = new DaysOfWeek();

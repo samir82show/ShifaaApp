@@ -13,20 +13,20 @@
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:form>
+            <h:form enctype="multipart/form-data">
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditDoctorLabel_specializationArabic}" for="specializationArabic" />
-                    <h:inputText id="specializationArabic" value="#{doctorController.selected.specializationArabic}" title="#{bundle.EditDoctorTitle_specializationArabic}" />
                     <h:outputLabel value="#{bundle.EditDoctorLabel_id}" for="id" />
                     <h:inputText id="id" value="#{doctorController.selected.id}" title="#{bundle.EditDoctorTitle_id}" />
-                    <h:outputLabel value="#{bundle.EditDoctorLabel_inArabic}" for="inArabic" />
-                    <h:inputText id="inArabic" value="#{doctorController.selected.inArabic}" title="#{bundle.EditDoctorTitle_inArabic}" />
                     <h:outputLabel value="#{bundle.EditDoctorLabel_name}" for="name" />
                     <h:inputText id="name" value="#{doctorController.selected.name}" title="#{bundle.EditDoctorTitle_name}" />
-                    <h:outputLabel value="#{bundle.EditDoctorLabel_image}" for="image" />
-                    <h:inputText id="image" value="#{doctorController.selected.image}" title="#{bundle.EditDoctorTitle_image}" />
+                    <h:outputLabel value="#{bundle.EditDoctorLabel_inArabic}" for="inArabic" />
+                    <h:inputText id="inArabic" value="#{doctorController.selected.inArabic}" title="#{bundle.EditDoctorTitle_inArabic}" />
                     <h:outputLabel value="#{bundle.EditDoctorLabel_qualifications}" for="qualifications" />
                     <h:inputText id="qualifications" value="#{doctorController.selected.qualifications}" title="#{bundle.EditDoctorTitle_qualifications}" />
+                    <h:outputLabel value="#{bundle.EditDoctorLabel_specializationArabic}" for="specializationArabic" />
+                    <h:inputText id="specializationArabic" value="#{doctorController.selected.specializationArabic}" title="#{bundle.EditDoctorTitle_specializationArabic}" />
+                    <h:outputLabel value="#{bundle.EditDoctorLabel_image}" for="image" />
+                    <h:inputFile id="image" value="#{doctorController.image}" title="#{bundle.CreateDoctorTitle_image}"/>
                     <h:outputLabel value="#{bundle.EditDoctorLabel_clinic}" for="clinic" />
                     <h:selectOneMenu id="clinic" value="#{doctorController.selected.clinic}" title="#{bundle.EditDoctorTitle_clinic}" >
                         <f:selectItems value="#{clinicController.itemsAvailableSelectOne}"/>

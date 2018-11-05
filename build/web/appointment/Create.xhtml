@@ -29,6 +29,13 @@
                     <h:inputText autocomplete="off" class="datepicker" id="DOB" value="#{appointmentController.selected.DOB}" title="#{bundle.CreateAppointmentTitle_DOB}">
                         <f:convertDateTime pattern="dd/MM/yyyy"/>
                     </h:inputText>
+                    <h:outputLabel value="Preferred Days: " for="days" />
+                    <h:selectManyListbox id="days" value="#{appointmentController.days}">
+                        <f:selectItems value="#{daysOfWeekController.days}" 
+                                       var="c"
+                                       itemLabel="#{c.name}" 
+                                       itemValue="#{c.id}" />
+                    </h:selectManyListbox >
                     <h:outputLabel value="#{bundle.CreateAppointmentLabel_hospital}" for="hospital" />
                     <h:selectOneMenu id="hospital" value="#{appointmentController.selected.hospital}" title="#{bundle.CreateAppointmentTitle_hospital}" >
                         <f:selectItems value="#{hospitalController.itemsAvailableSelectOne}"/>
