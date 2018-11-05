@@ -22,24 +22,6 @@
                     <h:dataTable value="#{hospitalController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListHospitalTitle_rating}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.rating}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListHospitalTitle_ratingComment}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.ratingComment}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListHospitalTitle_inArabic}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.inArabic}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListHospitalTitle_id}"/>
                             </f:facet>
                             <h:outputText value="#{item.id}"/>
@@ -49,6 +31,12 @@
                                 <h:outputText value="#{bundle.ListHospitalTitle_name}"/>
                             </f:facet>
                             <h:outputText value="#{item.name}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHospitalTitle_inArabic}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.inArabic}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
@@ -78,7 +66,7 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListHospitalTitle_area}"/>
                             </f:facet>
-                            <h:outputText value="#{item.area}"/>
+                            <h:outputText value="#{item.area.getName()}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">

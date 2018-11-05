@@ -5,6 +5,7 @@ import entity.domain.util.PaginationHelper;
 import facade.InsuranceFacade;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -21,6 +22,7 @@ import javax.faces.model.SelectItem;
 @SessionScoped
 public class InsuranceController implements Serializable {
 
+    private List<Insurance> insurances;
     private Insurance current;
     private DataModel items = null;
     @EJB
@@ -29,6 +31,11 @@ public class InsuranceController implements Serializable {
     private int selectedItemIndex;
 
     public InsuranceController() {
+    }
+
+    public List<Insurance> getInsurances() {
+        insurances = ejbFacade.findAll();
+        return insurances;
     }
 
     public Insurance getSelected() {

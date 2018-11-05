@@ -4,7 +4,6 @@ import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import facade.AppointmentFacade;
 import facade.DaysOfWeekFacade;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -117,6 +116,7 @@ public class AppointmentController implements Serializable {
 
     public String prepareEdit() {
         current = (Appointment) getItems().getRowData();
+        days.clear();
         for (DaysOfWeek d : current.getDaysOfWeeks()) {
             days.add(d.getId().toString());
         }

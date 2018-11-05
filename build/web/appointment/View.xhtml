@@ -39,6 +39,10 @@
                     <h:outputText value="#{appointmentController.selected.morningOrEvening.getName()}" title="#{bundle.ViewAppointmentTitle_morningOrEvening}"/>
                     <h:outputText value="#{bundle.ViewAppointmentLabel_doctorGender}"/>
                     <h:outputText value="#{appointmentController.selected.doctorGender.getName()}" title="#{bundle.ViewAppointmentTitle_doctorGender}"/>
+                    <h:outputText value="Rating: "/>
+                    <h:outputText value="#{appointmentController.selected.rating}" title="#{bundle.ViewAppointmentTitle_doctorGender}"/>
+                    <h:outputText value="Rating comment: "/>
+                    <h:outputText value="#{appointmentController.selected.ratingComment}" title="#{bundle.ViewAppointmentTitle_doctorGender}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{appointmentController.destroyAndView}" value="#{bundle.ViewAppointmentDestroyLink}"/>

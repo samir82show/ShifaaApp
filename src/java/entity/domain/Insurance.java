@@ -33,7 +33,7 @@ public class Insurance implements Serializable {
     @Basic
     private String image;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "insurances")
     private List<Hospital> hospitals;
 
     public String getInArabic() {

@@ -346,7 +346,15 @@
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
-            <jpa:basic attribute-type="String" v="true" name="inArabic" id="_1541079230515100"/>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="inArabic" id="_1541079230515100">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="rating" id="_154141024096849"/>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="ratingComment" id="_154141024773550">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
             <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_153747244152461" v="true" xvt="" name="hospital" id="_153790109104349">
                 <jpa:xwm/>
                 <jpa:xm/>
@@ -405,6 +413,12 @@
         </jpa:nq>
         <jpa:nq e="false" name="Appointment.findByInArabic">
             <jpa:query>Select a from Appointment a where a.inArabic=:inArabic</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Appointment.findByRating">
+            <jpa:query>Select a from Appointment a where a.rating=:rating</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Appointment.findByRatingComment">
+            <jpa:query>Select a from Appointment a where a.ratingComment=:ratingComment</jpa:query>
         </jpa:nq>
     </jpa:entity>
     <jpa:entity compositePrimaryKeyClass="GuestPK" abs="false" class="Guest" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153790058351835">
@@ -620,7 +634,7 @@
             <i ref="_15363502409573" x="482" y="220"/>
             <i ref="_153790170337555" x="-109" y="178"/>
             <i ref="_153908249838756" x="902" y="42"/>
-            <i ref="_153790058351835" x="92" y="-53"/>
+            <i ref="_153790058351835" x="72" y="-38"/>
             <i ref="_153635056565528" x="505" y="423"/>
             <i ref="_153635033430412" x="307" y="-6"/>
             <i ref="_154011003504747" x="281" y="548"/>

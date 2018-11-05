@@ -38,12 +38,6 @@ public class Hospital implements Serializable {
     @Basic
     private String workingDaysHours;
 
-    @Basic
-    private String rating;
-    
-    @Basic
-    private String ratingComment;
-
     @ManyToOne
     private Area area;
 
@@ -53,26 +47,11 @@ public class Hospital implements Serializable {
     @OneToMany(mappedBy = "hospital")
     private List<HospitalImage> hospitalImages;
 
-    @ManyToMany(mappedBy = "hospitals")
+//    @ManyToMany(mappedBy = "hospitals")
+    @ManyToMany
     private List<Insurance> insurances;
 
     public Hospital() {
-    }
-
-    public String getRating() {
-        return rating;
-    }
-
-    public void setRating(String rating) {
-        this.rating = rating;
-    }
-
-    public String getRatingComment() {
-        return ratingComment;
-    }
-
-    public void setRatingComment(String ratingComment) {
-        this.ratingComment = ratingComment;
     }
 
     public String getInArabic() {
