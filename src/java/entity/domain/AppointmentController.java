@@ -99,6 +99,11 @@ public class AppointmentController implements Serializable {
         return "Create";
     }
 
+//    public List<DaysOfWeek> findDays(Appointment appointment) {
+//        System.out.println("findDays.................. " + appointment);
+//        return appointment.getDaysOfWeeks();
+//    }
+    
     public String create() {
         for (String id : days) {
             DaysOfWeek daysOfWeek = daysOfWeekFacade.find(Long.parseLong(id));

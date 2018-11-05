@@ -123,7 +123,7 @@ public class HospitalController implements Serializable {
     }
 
     public String update() {
-//        current.getInsurances().clear();
+        current.getInsurances().clear();
         for (String id : insurances) {
             Insurance insurance = insuranceFacade.find(Long.parseLong(id));
             current.addInsurance(insurance);
