@@ -43,6 +43,10 @@
                     <h:outputText value="#{appointmentController.selected.rating}" title="#{bundle.ViewAppointmentTitle_doctorGender}"/>
                     <h:outputText value="Rating comment: "/>
                     <h:outputText value="#{appointmentController.selected.ratingComment}" title="#{bundle.ViewAppointmentTitle_doctorGender}"/>
+                    <h:outputText value="Preferred Days: "/>
+                     <ui:repeat value="#{appointmentController.selected.daysOfWeeks}" var="d">
+                        <h:outputText value="#{d.getName()}"/><br />
+                    </ui:repeat>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{appointmentController.destroyAndView}" value="#{bundle.ViewAppointmentDestroyLink}"/>

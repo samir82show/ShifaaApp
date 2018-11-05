@@ -30,13 +30,13 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListHospitalImageTitle_image}"/>
                             </f:facet>
-                            <h:outputText value="#{item.image}"/>
+                            <img src="#{item.image}" alt="" style="height: 100px; width: 100px;"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListHospitalImageTitle_hospital}"/>
                             </f:facet>
-                            <h:outputText value="#{item.hospital}"/>
+                            <h:outputText value="#{item.hospital.getName()}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">

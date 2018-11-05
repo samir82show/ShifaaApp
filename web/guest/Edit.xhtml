@@ -15,20 +15,22 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditGuestLabel_inArabic}" for="inArabic" />
-                    <h:inputText id="inArabic" value="#{guestController.selected.inArabic}" title="#{bundle.EditGuestTitle_inArabic}" />
                     <h:outputLabel value="#{bundle.EditGuestLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{guestController.selected.id}" title="#{bundle.EditGuestTitle_id}" />
+                    <h:inputText readonly="true" id="id" value="#{guestController.selected.id}" title="#{bundle.EditGuestTitle_id}" />
                     <h:outputLabel value="#{bundle.EditGuestLabel_name}" for="name" />
                     <h:inputText id="name" value="#{guestController.selected.name}" title="#{bundle.EditGuestTitle_name}" />
+                    <h:outputLabel value="#{bundle.EditGuestLabel_inArabic}" for="inArabic" />
+                    <h:inputText id="inArabic" value="#{guestController.selected.inArabic}" title="#{bundle.EditGuestTitle_inArabic}" />
+                    <h:outputLabel value="#{bundle.EditGuestLabel_password}" for="password" />
+                    <h:inputSecret id="password" value="#{guestController.selected.password}" title="#{bundle.EditGuestTitle_password}" />
                     <h:outputLabel value="#{bundle.EditGuestLabel_phone}" for="phone" />
                     <h:inputText id="phone" value="#{guestController.selected.phone}" title="#{bundle.EditGuestTitle_phone}" />
                     <h:outputLabel value="#{bundle.EditGuestLabel_email}" for="email" />
                     <h:inputText id="email" value="#{guestController.selected.email}" title="#{bundle.EditGuestTitle_email}" />
                     <h:outputLabel value="#{bundle.EditGuestLabel_DOB}" for="DOB" />
-                    <h:inputText id="DOB" value="#{guestController.selected.DOB}" title="#{bundle.EditGuestTitle_DOB}" />
-                    <h:outputLabel value="#{bundle.EditGuestLabel_password}" for="password" />
-                    <h:inputText id="password" value="#{guestController.selected.password}" title="#{bundle.EditGuestTitle_password}" />
+                    <h:inputText autocomplete="off" class="datepicker" id="DOB" value="#{guestController.selected.DOB}" title="#{bundle.EditGuestTitle_DOB}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </h:inputText>
                     <h:outputLabel value="#{bundle.EditGuestLabel_gender}" for="gender" />
                     <h:selectOneMenu id="gender" value="#{guestController.selected.gender}" title="#{bundle.EditGuestTitle_gender}" >
                         <f:selectItems value="#{genderController.itemsAvailableSelectOne}"/>

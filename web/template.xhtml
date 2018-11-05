@@ -9,10 +9,12 @@
         <title><ui:insert name="title">Default Title</ui:insert></title>
         <h:outputStylesheet library="css" name="jsfcrud.css"/>
         <link rel="stylesheet" href="/resources/demos/style.css"/>
-        <link href="resources/js/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
-        <h:outputStylesheet library="js" name="jquery-ui-1.12.1.custom/jquery-ui.min.css"/>
+
         <h:outputScript library="js" name="jquery-1.12.4.min.js"/>
-        <h:outputScript library="js" name="jquery-ui-1.12.1.custom/jquery-ui.min.js"/>
+        <h:outputStylesheet library="js" name="jquery-ui-1.12.1.custom/jquery-ui.css"/>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+        <h:outputScript library="js" name="jquery-1.12.4.min.js"/>
+        <h:outputScript library="js" name="jquery-ui-1.12.1.custom/jquery-ui.js"/>
         <script>
             $(function () {
                 $(".datepicker").datepicker({dateFormat: 'dd/mm/yy'});
