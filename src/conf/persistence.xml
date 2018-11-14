@@ -22,6 +22,7 @@
     <class>entity.domain.ClinicList</class>
     <class>entity.domain.Category</class>
     <class>entity.domain.HospitalImage</class>
+    <class>entity.domain.HospitalRating</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="eclipselink.logging.level" value="FINE"/>

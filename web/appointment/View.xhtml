@@ -39,10 +39,6 @@
                     <h:outputText value="#{appointmentController.selected.morningOrEvening.getName()}" title="#{bundle.ViewAppointmentTitle_morningOrEvening}"/>
                     <h:outputText value="#{bundle.ViewAppointmentLabel_doctorGender}"/>
                     <h:outputText value="#{appointmentController.selected.doctorGender.getName()}" title="#{bundle.ViewAppointmentTitle_doctorGender}"/>
-                    <h:outputText value="Rating: "/>
-                    <h:outputText value="#{appointmentController.selected.rating}" title="#{bundle.ViewAppointmentTitle_doctorGender}"/>
-                    <h:outputText value="Rating comment: "/>
-                    <h:outputText value="#{appointmentController.selected.ratingComment}" title="#{bundle.ViewAppointmentTitle_doctorGender}"/>
                     <h:outputText value="Preferred Days: "/>
                      <ui:repeat value="#{appointmentController.selected.daysOfWeeks}" var="d">
                         <h:outputText value="#{d.getName()}"/><br />

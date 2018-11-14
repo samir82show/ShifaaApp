@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Edit Hospital Rating"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Id:" for="id" />
+                    <h:inputText id="id" value="#{hospitalRatingController.selected.id}" title="Id" />
+                    <h:outputLabel value="Rating:" for="rating" />
+                    <h:inputText id="rating" value="#{hospitalRatingController.selected.rating}" title="Rating" />
+                    <h:outputLabel value="RatingComment:" for="ratingComment" />
+                    <h:inputText id="ratingComment" value="#{hospitalRatingController.selected.ratingComment}" title="RatingComment" />
+                    <h:outputLabel value="Guest:" for="guest" />
+                    <h:selectOneMenu id="guest" value="#{hospitalRatingController.selected.guest}" title="Guest" >
+                        <f:selectItems value="#{guestController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Hospital:" for="hospital" />
+                    <h:selectOneMenu id="hospital" value="#{hospitalRatingController.selected.hospital}" title="Hospital" >
+                        <f:selectItems value="#{hospitalController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{hospitalRatingController.update}" value="Save"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="View"/>
+                <br />
+                <h:commandLink action="#{hospitalRatingController.prepareList}" value="Show All Rating Items" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="Index" />
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+
+</html>

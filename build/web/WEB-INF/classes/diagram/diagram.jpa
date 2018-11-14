@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" ptype="MONOLITH" ppkg="entity" epkg="domain" v="4.8.2" rws="_15363502350142" Pws="_15363502350142" cws="_15363502350142" persistenceUnitName="ShifaaAppPU" sm="false" xs="false" id="_15363502350101" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
-    <jpa:entity compositePrimaryKeyClass="ClinicPK" abs="false" class="Clinic" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_15363502409573">
+    <jpa:entity compositePrimaryKeyClass="ClinicPK" abs="false" class="Clinic" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_15363502409573">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" name="workingDaysHours" id="_1539088613031113"/>
@@ -133,7 +133,7 @@
             <jpa:query>Select g from GroupAuth g where g.groupname=:groupname</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="ClinicServicePK" abs="false" class="ClinicService" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153635052291523">
+    <jpa:entity compositePrimaryKeyClass="ClinicServicePK" abs="false" class="ClinicService" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153635052291523">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" name="price" id="_153908245422651"/>
@@ -246,7 +246,7 @@
             <jpa:query>Select d from Doctor d where d.specializationArabic=:specializationArabic</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="HospitalPK" abs="false" class="Hospital" v="true" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153747244152461">
+    <jpa:entity compositePrimaryKeyClass="HospitalPK" abs="false" class="Hospital" v="true" gen="false" jbn="false" xre="false" m="false" rootElement="_15363502350101" id="_153747244152461">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_153747245450664">
@@ -270,8 +270,6 @@
                 <jpa:xm/>
             </jpa:basic>
             <jpa:basic attribute-type="String" v="true" name="inArabic" id="_1541079347163103"/>
-            <jpa:basic attribute-type="String" v="true" name="rating" id="_154132071564750"/>
-            <jpa:basic attribute-type="String" v="true" name="ratingComment" id="_154132072332951"/>
             <jpa:basic attribute-type="String" v="true" name="WorkingDaysHoursArabic" id="_154145186954949"/>
             <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_15363503185148" connected-attribute-id="_153747263359778" v="true" xvt="" name="area" id="_153747263359777">
                 <jpa:xwm/>
@@ -351,11 +349,6 @@
                 <jpa:xm/>
             </jpa:basic>
             <jpa:basic attribute-type="String" v="true" xvt="" name="inArabic" id="_1541079230515100">
-                <jpa:xwm/>
-                <jpa:xm/>
-            </jpa:basic>
-            <jpa:basic attribute-type="String" v="true" name="rating" id="_154141024096849"/>
-            <jpa:basic attribute-type="String" v="true" xvt="" name="ratingComment" id="_154141024773550">
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
@@ -557,7 +550,7 @@
             <jpa:query>Select s from Shift s where s.inArabic=:inArabic</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="ServiceListPK" abs="false" class="ServiceList" v="true" xre="false" m="false" rootElement="_15363502350101" id="_153908249838756">
+    <jpa:entity compositePrimaryKeyClass="ServiceListPK" abs="false" class="ServiceList" v="true" gen="false" xre="false" m="false" rootElement="_15363502350101" id="_153908249838756">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" name="name" id="_153908250799459"/>
@@ -581,7 +574,7 @@
             <jpa:query>Select s from ServiceList s where s.inArabic=:inArabic</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="CategoryPK" abs="false" class="Category" v="true" xre="false" m="false" rootElement="_15363502350101" id="_153908257558362">
+    <jpa:entity compositePrimaryKeyClass="CategoryPK" abs="false" class="Category" v="true" gen="false" xre="false" m="false" rootElement="_15363502350101" id="_153908257558362">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" name="name" id="_153908258717765"/>
@@ -605,7 +598,7 @@
             <jpa:query>Select c from Category c where c.inArabic=:inArabic</jpa:query>
         </jpa:nq>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="HospitalImagePK" abs="false" class="HospitalImage" v="true" xre="false" m="false" rootElement="_15363502350101" id="_154011003504747">
+    <jpa:entity compositePrimaryKeyClass="HospitalImagePK" abs="false" class="HospitalImage" v="true" gen="false" xre="false" m="false" rootElement="_15363502350101" id="_154011003504747">
         <jpa:ath>sawad</jpa:ath>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" name="image" id="_154011007233552"/>
@@ -619,6 +612,27 @@
         </jpa:nq>
         <jpa:nq e="false" name="HospitalImage.findByImage">
             <jpa:query>Select h from HospitalImage h where h.image=:image</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="HospitalRatingPK" abs="false" class="HospitalRating" v="true" xre="false" m="false" rootElement="_15363502350101" id="_154218419031049">
+        <jpa:ath>sawad</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="rating" id="_154218422661252"/>
+            <jpa:basic attribute-type="String" v="true" name="ratingComment" id="_154218423601953"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_153790058351835" v="true" name="guest" id="_154218429860055"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_153747244152461" v="true" name="hospital" id="_154218432803957"/>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_154218419032450">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="HospitalRating.findAll">
+            <jpa:query>Select e from HospitalRating e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="HospitalRating.findByRating">
+            <jpa:query>Select h from HospitalRating h where h.rating=:rating</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="HospitalRating.findByRatingComment">
+            <jpa:query>Select h from HospitalRating h where h.ratingComment=:ratingComment</jpa:query>
         </jpa:nq>
     </jpa:entity>
     <jpa:snp loc="BEFORE_PACKAGE" e="true">/**
@@ -638,10 +652,11 @@
             <i ref="_15363502409573" x="482" y="220"/>
             <i ref="_153790170337555" x="-109" y="178"/>
             <i ref="_153908249838756" x="902" y="42"/>
-            <i ref="_153790058351835" x="72" y="-38"/>
+            <i ref="_153790058351835" x="-1" y="-76"/>
             <i ref="_153635056565528" x="505" y="423"/>
-            <i ref="_153635033430412" x="307" y="-6"/>
+            <i ref="_153635033430412" x="323" y="-17"/>
             <i ref="_154011003504747" x="281" y="548"/>
+            <i ref="_154218419031049" x="140" y="-47"/>
         </jpa:ws>
     </jpa:wsl>
 </jpa:entity-mappings>
