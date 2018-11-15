@@ -41,12 +41,6 @@ public class Appointment implements Serializable {
     @Basic
     private String description;
 
-    @Basic
-    private String rating;
-
-    @Basic
-    private String ratingComment;
-
     @ManyToOne
     private Hospital hospital;
 
@@ -64,22 +58,6 @@ public class Appointment implements Serializable {
 
     public String getInArabic() {
         return inArabic;
-    }
-
-    public String getRating() {
-        return rating;
-    }
-
-    public void setRating(String rating) {
-        this.rating = rating;
-    }
-
-    public String getRatingComment() {
-        return ratingComment;
-    }
-
-    public void setRatingComment(String ratingComment) {
-        this.ratingComment = ratingComment;
     }
 
     public void setInArabic(String inArabic) {
