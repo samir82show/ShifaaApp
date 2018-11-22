@@ -15,8 +15,8 @@ public class ImageUploader {
     private String absolutePath;
     private Part image;
     private final String APP_PATH = "../resources/images/";
-//    private final String ABSOLUTE_PATH = "C:\\Users\\sawad\\Documents\\NetBeansProjects\\ShifaaApp\\web\\resources\\images\\";
-    private final String ABSOLUTE_PATH = "/app/glassfish4/glassfish/domains/domain1/applications/ShifaaApp/resources/images/";
+    private final String ABSOLUTE_PATH = "C:\\Users\\sawad\\Documents\\NetBeansProjects\\ShifaaApp\\web\\resources\\images\\";
+//    private final String ABSOLUTE_PATH = "/app/glassfish4/glassfish/domains/domain1/applications/ShifaaApp/resources/images/";
     private String appInternalPath;
 
     public ImageUploader(Part image, String folderName) {

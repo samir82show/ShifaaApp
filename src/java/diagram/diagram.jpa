@@ -348,10 +348,6 @@
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
-            <jpa:basic attribute-type="String" v="true" xvt="" name="inArabic" id="_1541079230515100">
-                <jpa:xwm/>
-                <jpa:xm/>
-            </jpa:basic>
             <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_153747244152461" v="true" xvt="" name="hospital" id="_153790109104349">
                 <jpa:xwm/>
                 <jpa:xm/>
@@ -439,10 +435,6 @@
                 <jpa:temporal>DATE</jpa:temporal>
             </jpa:basic>
             <jpa:basic attribute-type="String" v="true" xvt="" name="password" id="_153794230674332">
-                <jpa:xwm/>
-                <jpa:xm/>
-            </jpa:basic>
-            <jpa:basic attribute-type="String" v="true" xvt="" name="inArabic" id="_154107918516997">
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:basic>
@@ -646,10 +638,10 @@
             <i ref="_153898591247446" x="-108" y="331"/>
             <i ref="_153635052291523" x="696" y="230"/>
             <i ref="_153898569105336" x="-76" y="535"/>
-            <i ref="_153908257558362" x="663" y="36"/>
+            <i ref="_153908257558362" x="684" y="36"/>
             <i ref="_153635096932872" x="684" y="435"/>
             <i ref="_153790056728532" x="72" y="209"/>
-            <i ref="_15363502409573" x="482" y="220"/>
+            <i ref="_15363502409573" x="503" y="210"/>
             <i ref="_153790170337555" x="-109" y="178"/>
             <i ref="_153908249838756" x="902" y="42"/>
             <i ref="_153790058351835" x="-1" y="-76"/>

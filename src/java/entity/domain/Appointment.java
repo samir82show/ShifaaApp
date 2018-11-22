@@ -26,9 +26,6 @@ public class Appointment implements Serializable {
     private String name;
 
     @Basic
-    private String inArabic;
-
-    @Basic
     private String phone;
 
     @Basic
@@ -55,14 +52,6 @@ public class Appointment implements Serializable {
 
     @ManyToMany
     private List<DaysOfWeek> daysOfWeeks;
-
-    public String getInArabic() {
-        return inArabic;
-    }
-
-    public void setInArabic(String inArabic) {
-        this.inArabic = inArabic;
-    }
 
     public Appointment() {
     }
