@@ -24,6 +24,9 @@ public class Hospital implements Serializable {
     private String name;
 
     @Basic
+    private String membership;
+
+    @Basic
     private String inArabic;
 
     @Basic
@@ -55,6 +58,14 @@ public class Hospital implements Serializable {
     private List<Insurance> insurances;
 
     public Hospital() {
+    }
+
+    public String getMembership() {
+        return membership;
+    }
+
+    public void setMembership(String membership) {
+        this.membership = membership;
     }
 
     public String getWorkingDaysHoursArabic() {

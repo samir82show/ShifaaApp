@@ -20,6 +20,8 @@
                     <img src="#{hospitalImageController.selected.image}" alt="" style="height: 100px; width: 100px;"/>
                     <h:outputText value="#{bundle.ViewHospitalImageLabel_hospital}"/>
                     <h:outputText value="#{hospitalImageController.selected.hospital.getName()}" title="#{bundle.ViewHospitalImageTitle_hospital}"/>
+                    <h:outputLabel value="Type of image: " for="imagetype" />
+                    <h:outputText value="#{hospitalImageController.selected.imageType}" title="Image Type"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{hospitalImageController.destroyAndView}" value="#{bundle.ViewHospitalImageDestroyLink}"/>
