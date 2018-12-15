@@ -95,7 +95,9 @@ public class ServiceListController implements Serializable {
 
     public String create() throws MessagingException {
         imageUploader = ImageUploader.getInstance(image, "services");
+//        System.out.println("create................ " + image);
         imageUploader.setImage(image);
+//        System.out.println("create................ " + image);
         if (0 == imageUploader.doUpload()) {
             current.setImage(imageUploader.getAppInternalPath());
             try {

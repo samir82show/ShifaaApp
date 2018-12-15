@@ -42,6 +42,11 @@
                                        itemLabel="#{c.name}" 
                                        itemValue="#{c.id}" />
                     </h:selectManyListbox >
+                    <h:outputLabel value="Membership: " for="membership" />
+                    <h:selectOneMenu id="membership" value="#{hospitalController.selected.membership}" title="Membership" >
+                        <f:selectItem itemLabel="Regular" itemValue="regular"/>
+                        <f:selectItem itemLabel="Premium" itemValue="premium"/>
+                    </h:selectOneMenu>
                 </h:panelGrid>
                 <h:commandLink action="#{hospitalController.update}" value="#{bundle.EditHospitalSaveLink}"/>
                 <br />

@@ -36,6 +36,8 @@
                     <ui:repeat value="#{hospitalController.selected.insurances}" var="i">
                         <h:outputText value="#{i.getName()}"/><br />
                     </ui:repeat>
+                    <h:outputText value="Membership: "/>
+                    <h:outputText value="#{hospitalController.selected.membership}" title="Membership"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{hospitalController.destroyAndView}" value="#{bundle.ViewHospitalDestroyLink}"/>

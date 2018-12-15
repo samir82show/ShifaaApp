@@ -23,6 +23,12 @@
                     <h:selectOneMenu id="hospital" value="#{hospitalImageController.selected.hospital}" title="#{bundle.EditHospitalImageTitle_hospital}" >
                         <f:selectItems value="#{hospitalController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
+                    <h:outputLabel value="Type of image: " for="imagetype" />
+                    <h:selectOneMenu id="imagetype" value="#{hospitalImageController.selected.imageType}" title="image type" >
+                        <f:selectItem itemLabel="Slideshow" itemValue="slideshow"/>
+                        <f:selectItem itemLabel="Icon" itemValue="icon"/>
+                        <f:selectItem itemLabel="Paid Advertisement" itemValue="paid"/>
+                    </h:selectOneMenu>
                 </h:panelGrid>
                 <h:commandLink action="#{hospitalImageController.update}" value="#{bundle.EditHospitalImageSaveLink}"/>
                 <br />
