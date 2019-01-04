@@ -21,6 +21,9 @@ public class Guest implements Serializable {
 
     @Basic
     private String name;
+    
+    @Basic
+    private String inArabic;
 
     @Basic
     private String phone;
@@ -39,6 +42,14 @@ public class Guest implements Serializable {
     private Gender gender;
 
     public Guest() {
+    }
+
+    public String getInArabic() {
+        return inArabic;
+    }
+
+    public void setInArabic(String inArabic) {
+        this.inArabic = inArabic;
     }
 
     public Long getId() {
