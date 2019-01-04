@@ -19,6 +19,8 @@
                     <h:inputText readonly="true" id="id" value="#{appointmentController.selected.id}" title="#{bundle.EditAppointmentTitle_id}" />
                     <h:outputLabel value="#{bundle.EditAppointmentLabel_name}" for="name" />
                     <h:inputText id="name" value="#{appointmentController.selected.name}" title="#{bundle.EditAppointmentTitle_name}" />
+                    <h:outputLabel value="Name(in Arabic)" for="inarabic" />
+                    <h:inputText id="inarabic" value="#{appointmentController.selected.inArabic}" title="#{bundle.CreateAppointmentTitle_name}" />
                     <h:outputLabel value="#{bundle.EditAppointmentLabel_phone}" for="phone" />
                     <h:inputText id="phone" value="#{appointmentController.selected.phone}" title="#{bundle.EditAppointmentTitle_phone}" />
                     <h:outputLabel value="#{bundle.EditAppointmentLabel_email}" for="email" />

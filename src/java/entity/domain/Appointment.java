@@ -24,6 +24,9 @@ public class Appointment implements Serializable {
 
     @Basic
     private String name;
+    
+    @Basic
+    private String inArabic;
 
     @Basic
     private String phone;
@@ -66,6 +69,14 @@ public class Appointment implements Serializable {
 
     public String getName() {
         return this.name;
+    }
+
+    public String getInArabic() {
+        return inArabic;
+    }
+
+    public void setInArabic(String inArabic) {
+        this.inArabic = inArabic;
     }
 
     public void setName(String name) {
