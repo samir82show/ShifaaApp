@@ -25,12 +25,34 @@ public class Category implements Serializable {
     private String inArabic;
 
     @Basic
+    private String arabicDesc;
+
+    @Basic
+    private String desc;
+
+    @Basic
     private String image;
 
     @OneToMany(mappedBy = "category")
     private List<Clinic> clinics;
 
     public Category() {
+    }
+
+    public String getArabicDesc() {
+        return arabicDesc;
+    }
+
+    public void setArabicDesc(String arabicDesc) {
+        this.arabicDesc = arabicDesc;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public String getInArabic() {
