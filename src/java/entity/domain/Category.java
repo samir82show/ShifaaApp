@@ -25,10 +25,10 @@ public class Category implements Serializable {
     private String inArabic;
 
     @Basic
-    private String arabicDesc;
+    private String arabicDescription;
 
     @Basic
-    private String desc;
+    private String description;
 
     @Basic
     private String image;
@@ -39,20 +39,20 @@ public class Category implements Serializable {
     public Category() {
     }
 
-    public String getArabicDesc() {
-        return arabicDesc;
+    public String getArabicDescription() {
+        return arabicDescription;
     }
 
-    public void setArabicDesc(String arabicDesc) {
-        this.arabicDesc = arabicDesc;
+    public void setArabicDescription(String arabicDescription) {
+        this.arabicDescription = arabicDescription;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getInArabic() {

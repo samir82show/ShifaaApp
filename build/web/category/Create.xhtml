@@ -23,9 +23,9 @@
                     <h:outputLabel value="#{bundle.CreateCategoryLabel_image}" for="image" />
                     <h:inputFile id="image" value="#{categoryController.image}" title="#{bundle.CreateCategoryTitle_image}"/>
                     <h:outputLabel value="Desc" for="desc" />
-                    <h:inputText id="desc" value="#{categoryController.selected.desc}" title="Description" />
+                    <h:inputText id="desc" value="#{categoryController.selected.description}" title="Description" />
                     <h:outputLabel value="Description(Arabic)" for="arabicDesc" />
-                    <h:inputText id="arabicDesc" value="#{categoryController.selected.arabicDesc}" title="ArabicDescription" />
+                    <h:inputText id="arabicDesc" value="#{categoryController.selected.arabicDescription}" title="ArabicDescription" />
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{categoryController.create}" value="#{bundle.CreateCategorySaveLink}" />

@@ -23,9 +23,9 @@
                     <h:outputText value="#{bundle.ViewCategoryLabel_image}"/>
                     <img src="#{categoryController.selected.image}" alt="" style="height: 100px; width: 100px;"/>
                     <h:outputText value="Description"/>
-                    <h:outputText value="#{categoryController.selected.desc}" title="Description"/>
+                    <h:outputText value="#{categoryController.selected.description}" title="Description"/>
                     <h:outputText value="Description(Arabic)"/>
-                    <h:outputText value="#{categoryController.selected.arabicDesc}" title="descritionArabic"/>
+                    <h:outputText value="#{categoryController.selected.arabicDescription}" title="descritionArabic"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{categoryController.destroyAndView}" value="#{bundle.ViewCategoryDestroyLink}"/>
