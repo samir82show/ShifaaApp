@@ -1,10 +1,13 @@
 package entity.domain;
 
+import entity.domain.util.EncryptPassword;
 import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import facade.UserAuthFacade;
+import facade.UserauthGroupauthVFacade;
 
 import java.io.Serializable;
+import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -16,6 +19,7 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.inject.Inject;
 
 @Named("userAuthController")
 @SessionScoped
@@ -27,6 +31,10 @@ public class UserAuthController implements Serializable {
     private facade.UserAuthFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    @Inject
+    private UserauthGroupauthV userauthGroupauthV;
+    @EJB
+    private UserauthGroupauthVFacade userauthGroupauthVFacade;
 
     public UserAuthController() {
     }
@@ -76,6 +84,23 @@ public class UserAuthController implements Serializable {
         current = new UserAuth();
         selectedItemIndex = -1;
         return "Create";
+    }
+
+    public String login() throws NoSuchAlgorithmException {
+        if (userauthGroupauthVFacade.findByEmailPassword(current.getEmail(), new EncryptPassword().encrypt("MD5", current.getPassword())).isEmpty()) {
+            userauthGroupauthV = null;
+        } else {
+            userauthGroupauthV = (userauthGroupauthVFacade.findByEmailPassword(current.getEmail(), new EncryptPassword().encrypt("MD5", current.getPassword())).get(0));
+            if (userauthGroupauthV.getEmail().equals(current.getEmail()) && userauthGroupauthV.getPassword().equalsIgnoreCase(new EncryptPassword().encrypt("MD5", current.getPassword()))) {
+                return "index";
+            }
+        }
+        return "login?error=true";
+    }
+
+    public String logout() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "login";
     }
 
     public String create() {

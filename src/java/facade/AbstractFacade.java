@@ -10,13 +10,20 @@ public abstract class AbstractFacade<T> {
     public AbstractFacade(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
-
+    
     protected abstract EntityManager getEntityManager();
 
     public void create(T entity) {
         getEntityManager().persist(entity);
     }
 
+    public List<T> findByEmailPassword(String email, String password) {
+        return getEntityManager().createNamedQuery("UserauthGroupauthV.findByEmailPassword")
+                .setParameter("email", email)
+                .setParameter("password", password)
+                .getResultList();
+    }
+    
     public void edit(T entity) {
         getEntityManager().merge(entity);
     }
