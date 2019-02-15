@@ -5,6 +5,7 @@ import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import facade.UserAuthFacade;
 import facade.UserauthGroupauthVFacade;
+import facade.UserauthHospitalFacade;
 
 import java.io.Serializable;
 import java.security.NoSuchAlgorithmException;
@@ -32,9 +33,9 @@ public class UserAuthController implements Serializable {
     private PaginationHelper pagination;
     private int selectedItemIndex;
     @Inject
-    private UserauthGroupauthV userauthGroupauthV;
+    private UserauthHospital userauthHospital;
     @EJB
-    private UserauthGroupauthVFacade userauthGroupauthVFacade;
+    private UserauthHospitalFacade userauthHospitalFacade;
 
     public UserAuthController() {
     }
@@ -87,11 +88,11 @@ public class UserAuthController implements Serializable {
     }
 
     public String login() throws NoSuchAlgorithmException {
-        if (userauthGroupauthVFacade.findByEmailPassword(current.getEmail(), new EncryptPassword().encrypt("MD5", current.getPassword())).isEmpty()) {
-            userauthGroupauthV = null;
+        if (userauthHospitalFacade.findByEmailPassword(current.getEmail(), new EncryptPassword().encrypt("MD5", current.getPassword())).isEmpty()) {
+            userauthHospital = null;
         } else {
-            userauthGroupauthV = (userauthGroupauthVFacade.findByEmailPassword(current.getEmail(), new EncryptPassword().encrypt("MD5", current.getPassword())).get(0));
-            if (userauthGroupauthV.getEmail().equals(current.getEmail()) && userauthGroupauthV.getPassword().equalsIgnoreCase(new EncryptPassword().encrypt("MD5", current.getPassword()))) {
+            userauthHospital = (userauthHospitalFacade.findByEmailPassword(current.getEmail(), new EncryptPassword().encrypt("MD5", current.getPassword())).get(0));
+            if (userauthHospital.getEmail().equals(current.getEmail()) && userauthHospital.getPassword().equalsIgnoreCase(new EncryptPassword().encrypt("MD5", current.getPassword()))) {
                 return "index";
             }
         }

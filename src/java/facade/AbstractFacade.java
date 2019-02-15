@@ -18,7 +18,7 @@ public abstract class AbstractFacade<T> {
     }
 
     public List<T> findByEmailPassword(String email, String password) {
-        return getEntityManager().createNamedQuery("UserauthGroupauthV.findByEmailPassword")
+        return getEntityManager().createNamedQuery("UserauthHospital.findByEmailPassword")
                 .setParameter("email", email)
                 .setParameter("password", password)
                 .getResultList();
