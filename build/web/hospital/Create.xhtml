@@ -30,7 +30,7 @@
                     <h:outputLabel value="#{bundle.CreateHospitalLabel_workingDaysHours}" for="workingDaysHours" />
                     <h:inputTextarea style="width: 300px; height: 130px" id="workingDaysHours" value="#{hospitalController.selected.workingDaysHours}" title="#{bundle.CreateHospitalTitle_workingDaysHours}" />
                     <h:outputLabel value="WorkingDaysHours(Arabic): " for="workingDaysHoursArabic" />
-                    <h:inputTextarea id="workingDaysHoursArabic" value="#{hospitalController.selected.workingDaysHoursArabic}" title="#{bundle.CreateHospitalTitle_workingDaysHours}" />
+                    <h:inputTextarea style="width: 300px; height: 130px" id="workingDaysHoursArabic" value="#{hospitalController.selected.workingDaysHoursArabic}" title="#{bundle.CreateHospitalTitle_workingDaysHours}" />
                     <h:outputLabel value="#{bundle.CreateHospitalLabel_area}" for="area" />
                     <h:selectOneMenu id="area" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_area}" >
                         <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
