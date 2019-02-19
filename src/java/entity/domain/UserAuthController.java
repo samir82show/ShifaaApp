@@ -104,7 +104,8 @@ public class UserAuthController implements Serializable {
         return "login";
     }
 
-    public String create() {
+    public String create() throws NoSuchAlgorithmException {
+        current.setPassword(new EncryptPassword().encrypt("MD5", current.getPassword()));
         try {
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserAuthCreated"));
@@ -121,7 +122,8 @@ public class UserAuthController implements Serializable {
         return "Edit";
     }
 
-    public String update() {
+    public String update() throws NoSuchAlgorithmException {
+        current.setPassword(new EncryptPassword().encrypt("MD5", current.getPassword()));
         try {
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserAuthUpdated"));

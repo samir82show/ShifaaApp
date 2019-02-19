@@ -20,7 +20,7 @@
                     <h:outputLabel value="#{bundle.EditUserAuthLabel_username}" for="username" />
                     <h:inputText id="username" value="#{userAuthController.selected.name}" title="#{bundle.EditUserAuthTitle_username}" />
                     <h:outputLabel value="#{bundle.EditUserAuthLabel_password}" for="password" />
-                    <h:inputText id="password" value="#{userAuthController.selected.password}" title="#{bundle.EditUserAuthTitle_password}" />
+                    <h:inputSecret id="password" value="#{userAuthController.selected.password}" title="#{bundle.EditUserAuthTitle_password}" />
                     <h:outputLabel value="#{bundle.EditUserAuthLabel_email}" for="email" />
                     <h:inputText id="email" value="#{userAuthController.selected.email}" title="#{bundle.EditUserAuthTitle_email}" />
                     <h:outputLabel value="#{bundle.EditUserAuthLabel_hospital}" for="hospital" />
