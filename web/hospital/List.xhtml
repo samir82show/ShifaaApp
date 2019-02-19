@@ -64,6 +64,18 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
+                                <h:outputText value="Address"/>
+                            </f:facet>
+                            <h:outputText value="#{item.address}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Address in Arabic"/>
+                            </f:facet>
+                            <h:outputText value="#{item.addressAr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
                                 <h:outputText value="WorkingDaysHours(Arabic)"/>
                             </f:facet>
                             <h:outputText value="#{item.workingDaysHoursArabic}"/>

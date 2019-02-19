@@ -25,6 +25,12 @@ public class Hospital implements Serializable {
 
     @Basic
     private String membership;
+    
+    @Basic
+    private String address;
+    
+    @Basic
+    private String addressAr;
 
     @Basic
     private String inArabic;
@@ -58,6 +64,22 @@ public class Hospital implements Serializable {
     private List<Insurance> insurances;
 
     public Hospital() {
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getAddressAr() {
+        return addressAr;
+    }
+
+    public void setAddressAr(String addressAr) {
+        this.addressAr = addressAr;
     }
 
     public String getMembership() {
