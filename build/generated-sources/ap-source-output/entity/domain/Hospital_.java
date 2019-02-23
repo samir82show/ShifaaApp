@@ -9,14 +9,16 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-02-15T18:57:48")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-02-19T21:44:07")
 @StaticMetamodel(Hospital.class)
 public class Hospital_ { 
 
     public static volatile SingularAttribute<Hospital, Area> area;
+    public static volatile SingularAttribute<Hospital, String> address;
     public static volatile ListAttribute<Hospital, Insurance> insurances;
     public static volatile SingularAttribute<Hospital, String> workingDaysHoursArabic;
     public static volatile ListAttribute<Hospital, Clinic> clinics;
+    public static volatile SingularAttribute<Hospital, String> addressAr;
     public static volatile SingularAttribute<Hospital, String> workingDaysHours;
     public static volatile SingularAttribute<Hospital, String> membership;
     public static volatile ListAttribute<Hospital, HospitalImage> hospitalImages;

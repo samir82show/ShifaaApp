@@ -20,8 +20,6 @@
                     <h:inputText id="name" value="#{serviceListController.selected.name}" title="#{bundle.EditServiceListTitle_name}" />
                     <h:outputLabel value="#{bundle.EditServiceListLabel_inArabic}" for="inArabic" />
                     <h:inputText id="inArabic" value="#{serviceListController.selected.inArabic}" title="#{bundle.EditServiceListTitle_inArabic}" />
-                    <h:outputLabel value="#{bundle.EditServiceListLabel_image}" for="image" />
-                    <h:inputFile id="image" value="#{serviceListController.image}" title="#{bundle.CreateServiceTitle_image}"/>
                 </h:panelGrid>
                 <h:commandLink action="#{serviceListController.update}" value="#{bundle.EditServiceListSaveLink}"/>
                 <br />
