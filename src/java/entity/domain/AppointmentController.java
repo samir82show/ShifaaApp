@@ -7,6 +7,7 @@ import facade.DaysOfWeekFacade;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -103,7 +104,6 @@ public class AppointmentController implements Serializable {
 //        System.out.println("findDays.................. " + appointment);
 //        return appointment.getDaysOfWeeks();
 //    }
-    
     public String create() {
         for (String id : days) {
             DaysOfWeek daysOfWeek = daysOfWeekFacade.find(Long.parseLong(id));
