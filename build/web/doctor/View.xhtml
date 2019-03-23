@@ -28,6 +28,8 @@
                     <h:outputText value="#{doctorController.selected.specializationArabic}" title="#{bundle.ViewDoctorTitle_specializationArabic}"/>
                     <h:outputText value="#{bundle.ViewDoctorLabel_clinic}"/>
                     <h:outputText value="#{doctorController.selected.clinic.toString()}" title="#{bundle.ViewDoctorTitle_clinic}"/>
+                    <h:outputText value="Nationality: "/>
+                    <h:outputText value="#{doctorController.selected.nationalities}" title="#{bundle.ViewDoctorTitle_clinic}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{doctorController.destroyAndView}" value="#{bundle.ViewDoctorDestroyLink}"/>

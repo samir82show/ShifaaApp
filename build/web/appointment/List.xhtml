@@ -34,7 +34,7 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAppointmentTitle_name}"/>
+                                <h:outputText value="Name(Arabic)"/>
                             </f:facet>
                             <h:outputText value="#{item.inArabic}"/>
                         </h:column>
@@ -69,6 +69,18 @@
                                 <h:outputText value="#{bundle.ListAppointmentTitle_hospital}"/>
                             </f:facet>
                             <h:outputText value="#{item.hospital.getName()}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Clinic"/>
+                            </f:facet>
+                            <h:outputText value="#{item.clinic}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Clinic Service"/>
+                            </f:facet>
+                            <h:outputText value="#{item.clinicservice}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">

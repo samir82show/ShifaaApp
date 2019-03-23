@@ -31,6 +31,10 @@
                     <h:selectOneMenu id="clinic" value="#{doctorController.selected.clinic}" title="#{bundle.EditDoctorTitle_clinic}" >
                         <f:selectItems value="#{clinicController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
+                    <h:outputLabel value="Nationality: " for="nationalities" />
+                    <h:selectOneMenu id="nationalities" value="#{doctorController.selected.nationalities}" title="#{bundle.EditDoctorTitle_clinic}" >
+                        <f:selectItems value="#{nationalitiesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
                 </h:panelGrid>
                 <h:commandLink action="#{doctorController.update}" value="#{bundle.EditDoctorSaveLink}"/>
                 <br />
