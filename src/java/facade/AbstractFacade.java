@@ -1,7 +1,10 @@
 package facade;
 
+import entity.domain.Area;
+import entity.domain.Clinic;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 public abstract class AbstractFacade<T> {
 
@@ -10,7 +13,7 @@ public abstract class AbstractFacade<T> {
     public AbstractFacade(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
-    
+
     protected abstract EntityManager getEntityManager();
 
     public void create(T entity) {
@@ -23,7 +26,24 @@ public abstract class AbstractFacade<T> {
                 .setParameter("password", password)
                 .getResultList();
     }
-    
+
+    public List<Object[]> findServicesByHospitalAndClinic(String hospital, String clinic) {
+
+        Query q;
+
+            q = getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
+                    + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
+                    + " JOIN category cat ON cat.id=c.category_id WHERE a.name = '" + hospital + "' AND cat.name = '" + clinic + "'");
+            return q.getResultList();
+    }
+
+    public Object findhospitalByName(String name) {
+        getEntityManager().getEntityManagerFactory().getCache().evictAll();
+        return getEntityManager().createNamedQuery("Hospital.findByName")
+                .setParameter("name", name)
+                .getSingleResult();
+    }
+
     public void edit(T entity) {
         getEntityManager().merge(entity);
     }
@@ -58,5 +78,5 @@ public abstract class AbstractFacade<T> {
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
-    
+
 }

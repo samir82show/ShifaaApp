@@ -5,6 +5,7 @@ import entity.domain.util.PaginationHelper;
 import facade.ClinicFacade;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -186,7 +187,11 @@ public class ClinicController implements Serializable {
     public SelectItem[] getItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
-
+    
+    public SelectItem[] getItemsAvailableSelectOneClinic() {
+        return JsfUtil.getSelectItemsClinic(ejbFacade.findAll(), true);
+    }
+    
     public Clinic getClinic(java.lang.Long id) {
         return ejbFacade.find(id);
     }

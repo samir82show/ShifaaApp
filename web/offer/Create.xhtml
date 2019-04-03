@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundles.CreateOfferTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundles.CreateOfferLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{offerController.selected.id}" title="#{bundles.CreateOfferTitle_id}" />
+                    <h:outputLabel value="#{bundles.CreateOfferLabel_hospital}" for="hospital" />
+                    <h:selectOneMenu onchange="submit()" valueChangeListener="#{offerController.hospitalChange}" required="true" requiredMessage="Hospital is required!" id="hospital" value="#{offerController.selected.hospital}" title="#{bundles.CreateOfferTitle_hospital}" >
+                        <f:selectItems value="#{hospitalController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundles.CreateOfferLabel_clinic}" for="clinic" />
+                    <h:selectOneMenu onchange="submit()" valueChangeListener="#{offerController.clinicChange}"  required="true" requiredMessage="Clinic is required!" id="clinic" value="#{offerController.selected.clinic}" title="#{bundles.CreateOfferTitle_clinic}" >
+                        <f:selectItems value="#{offerController.clinics}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="All services/Specific service" for="offer_coverage"/>
+                    <h:selectOneRadio required="true" requiredMessage="Offer type is required!" id="offer_coverage" value="#{offerController.selected.clinic}" title="#{bundles.CreateOfferTitle_clinic}" >
+                        <f:selectItem itemLabel="All services" itemValue="all" />
+                        <f:selectItem itemLabel="Specific service" itemValue="specific" />
+                    </h:selectOneRadio>
+                    <h:outputLabel value="#{bundles.CreateOfferLabel_serviceList}" for="serviceList" />
+                    <h:selectOneMenu id="serviceList" value="#{offerController.selected.serviceList}" title="#{bundles.CreateOfferTitle_serviceList}" >
+                        <f:selectItems value="#{offerController.clinicServices}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundles.CreateOfferLabel_discountPrice}" for="discountPrice" />
+                    <h:inputText id="discountPrice" value="#{offerController.selected.discountPrice}" title="#{bundles.CreateOfferTitle_discountPrice}" />
+                    <h:outputLabel value="#{bundles.CreateOfferLabel_start_date}" for="start_date" />
+                    <h:inputText id="start_date" value="#{offerController.selected.start_date}" title="#{bundles.CreateOfferTitle_start_date}" >
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundles.CreateOfferLabel_end_date}" for="end_date" />
+                    <h:inputText id="end_date" value="#{offerController.selected.end_date}" title="#{bundles.CreateOfferTitle_end_date}" >
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:inputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{offerController.create}" value="#{bundles.CreateOfferSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{offerController.prepareList}" value="#{bundles.CreateOfferShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundles.CreateOfferIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

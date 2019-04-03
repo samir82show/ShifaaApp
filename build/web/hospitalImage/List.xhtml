@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListHospitalImageTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListHospitalImageEmpty}" rendered="#{hospitalImageController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{hospitalImageController.items.rowCount > 0}">
+                    <h:outputText value="#{hospitalImageController.pagination.pageFirstItem + 1}..#{hospitalImageController.pagination.pageLastItem + 1}/#{hospitalImageController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{hospitalImageController.previous}" value="#{bundle.Previous} #{hospitalImageController.pagination.pageSize}" rendered="#{hospitalImageController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{hospitalImageController.next}" value="#{bundle.Next} #{hospitalImageController.pagination.pageSize}" rendered="#{hospitalImageController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{hospitalImageController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHospitalImageTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHospitalImageTitle_image}"/>
+                            </f:facet>
+                            <img src="#{item.image}" alt="" style="height: 100px; width: 100px;"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHospitalImageTitle_hospital}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hospital.getName()}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Image Type"/>
+                            </f:facet>
+                            <h:outputText value="#{item.imageType}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{hospitalImageController.prepareView}" value="#{bundle.ListHospitalImageViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{hospitalImageController.prepareEdit}" value="#{bundle.ListHospitalImageEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{hospitalImageController.destroy}" value="#{bundle.ListHospitalImageDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{hospitalImageController.prepareCreate}" value="#{bundle.ListHospitalImageCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListHospitalImageIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

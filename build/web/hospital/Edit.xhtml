@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditHospitalTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditHospitalLabel_id}" for="id" />
+                    <h:inputText readonly="true" id="id" value="#{hospitalController.selected.id}" title="#{bundle.EditHospitalTitle_id}" />
+                    <h:outputLabel value="#{bundle.EditHospitalLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{hospitalController.selected.name}" title="#{bundle.EditHospitalTitle_name}" />
+                    <h:outputLabel value="#{bundle.EditHospitalLabel_inArabic}" for="inArabic" />
+                    <h:inputText id="inArabic" value="#{hospitalController.selected.inArabic}" title="#{bundle.EditHospitalTitle_inArabic}" />
+                    <h:outputLabel value="#{bundle.EditHospitalLabel_phoneNo}" for="phoneNo" />
+                    <h:inputText id="phoneNo" value="#{hospitalController.selected.phoneNo}" title="#{bundle.EditHospitalTitle_phoneNo}" />
+                    <h:outputLabel value="#{bundle.EditHospitalLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{hospitalController.selected.email}" title="#{bundle.EditHospitalTitle_email}" />
+                    <h:outputLabel value="#{bundle.EditHospitalLabel_locationMap}" for="locationMap" />
+                    <h:inputText id="locationMap" value="#{hospitalController.selected.locationMap}" title="#{bundle.EditHospitalTitle_locationMap}" />
+                    <h:outputLabel value="#{bundle.EditHospitalLabel_workingDaysHours}" for="workingDaysHours" />
+                    <h:inputTextarea style="width: 300px; height: 130px" id="workingDaysHours" value="#{hospitalController.selected.workingDaysHours}" title="#{bundle.EditHospitalTitle_workingDaysHours}" />
+                    <h:outputLabel value="WorkingDaysHours(Arabic): " for="workingDaysHoursArabic" />
+                    <h:inputTextarea style="width: 300px; height: 130px" id="workingDaysHoursArabic" value="#{hospitalController.selected.workingDaysHoursArabic}" title="#{bundle.CreateHospitalTitle_workingDaysHours}" />
+                    <h:outputLabel value="Address: " for="address" />
+                    <h:inputTextarea style="width: 300px; height: 130px" id="address" value="#{hospitalController.selected.address}" title="Address" />
+                    <h:outputLabel value="Address(Arabic): " for="addressAr" />
+                    <h:inputTextarea style="width: 300px; height: 130px" id="addressAr" value="#{hospitalController.selected.addressAr}" title="AddressA in arabic" />
+                    <h:outputLabel value="#{bundle.EditHospitalLabel_area}" for="area" />
+                    <h:selectOneMenu id="area" value="#{hospitalController.selected.area}" title="#{bundle.EditHospitalTitle_area}" >
+                        <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Insurances: " for="insurances" />
+                    <h:selectManyListbox id="insurances" value="#{hospitalController.insurances}">
+                        <f:selectItems value="#{insuranceController.insurances}" 
+                                       var="c"
+                                       itemLabel="#{c.name}" 
+                                       itemValue="#{c.id}" />
+                    </h:selectManyListbox >
+                    <h:outputLabel value="Membership: " for="membership" />
+                    <h:selectOneMenu id="membership" value="#{hospitalController.selected.membership}" title="Membership" >
+                        <f:selectItem itemLabel="Regular" itemValue="regular"/>
+                        <f:selectItem itemLabel="Premium" itemValue="premium"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{hospitalController.update}" value="#{bundle.EditHospitalSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditHospitalViewLink}"/>
+                <br />
+                <h:commandLink action="#{hospitalController.prepareList}" value="#{bundle.EditHospitalShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditHospitalIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

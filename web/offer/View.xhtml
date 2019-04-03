@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundles.ViewOfferTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundles.ViewOfferLabel_id}"/>
+                    <h:outputText value="#{offerController.selected.id}" title="#{bundles.ViewOfferTitle_id}"/>
+                    <h:outputText value="#{bundles.ViewOfferLabel_discountPrice}"/>
+                    <h:outputText value="#{offerController.selected.discountPrice}" title="#{bundles.ViewOfferTitle_discountPrice}"/>
+                    <h:outputText value="#{bundles.ViewOfferLabel_start_date}"/>
+                    <h:outputText value="#{offerController.selected.start_date}" title="#{bundles.ViewOfferTitle_start_date}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundles.ViewOfferLabel_end_date}"/>
+                    <h:outputText value="#{offerController.selected.end_date}" title="#{bundles.ViewOfferTitle_end_date}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundles.ViewOfferLabel_clinic}"/>
+                    <h:outputText value="#{offerController.selected.clinic}" title="#{bundles.ViewOfferTitle_clinic}"/>
+                    <h:outputText value="#{bundles.ViewOfferLabel_hospital}"/>
+                    <h:outputText value="#{offerController.selected.hospital}" title="#{bundles.ViewOfferTitle_hospital}"/>
+                    <h:outputText value="#{bundles.ViewOfferLabel_serviceList}"/>
+                    <h:outputText value="#{offerController.selected.serviceList}" title="#{bundles.ViewOfferTitle_serviceList}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{offerController.destroyAndView}" value="#{bundles.ViewOfferDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundles.ViewOfferEditLink}"/>
+                <br />
+                <h:commandLink action="#{offerController.prepareCreate}" value="#{bundles.ViewOfferCreateLink}" />
+                <br />
+                <h:commandLink action="#{offerController.prepareList}" value="#{bundles.ViewOfferShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundles.ViewOfferIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

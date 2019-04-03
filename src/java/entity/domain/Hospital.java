@@ -11,9 +11,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Hospital.findAll", query = "SELECT h FROM Hospital h")
+    , @NamedQuery(name = "Hospital.findHospitalNames", query = "SELECT h.name FROM Hospital h order by h.name")
+    , @NamedQuery(name = "Hospital.findByName", query = "SELECT h FROM Hospital h WHERE h.name = :name")
+    , @NamedQuery(name = "Hospital.findHospitalsByMembership", query = "SELECT h FROM Hospital h WHERE h.membership = :membership")
+    , @NamedQuery(name = "Hospital.findByInArabicName", query = "SELECT h FROM Hospital h WHERE h.inArabic = :inArabic")
+    ,@NamedQuery(name = "Hospital.findHospitalNamesArabic", query = "SELECT h.inArabic FROM Hospital h order by h.inArabic")})
 public class Hospital implements Serializable {
 
     @Id
@@ -54,6 +65,9 @@ public class Hospital implements Serializable {
     private Area area;
 
     @OneToMany(mappedBy = "hospital")
+    private List<Clinic> offers;
+    
+    @OneToMany(mappedBy = "hospital")
     private List<Clinic> clinics;
 
     @OneToMany(mappedBy = "hospital")
@@ -68,6 +82,14 @@ public class Hospital implements Serializable {
 
     public String getAddress() {
         return address;
+    }
+
+    public List<Clinic> getOffers() {
+        return offers;
+    }
+
+    public void setOffers(List<Clinic> offers) {
+        this.offers = offers;
     }
 
     public void setAddress(String address) {
