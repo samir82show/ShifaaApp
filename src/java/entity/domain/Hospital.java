@@ -36,10 +36,10 @@ public class Hospital implements Serializable {
 
     @Basic
     private String membership;
-    
+
     @Basic
     private String address;
-    
+
     @Basic
     private String addressAr;
 
@@ -65,8 +65,8 @@ public class Hospital implements Serializable {
     private Area area;
 
     @OneToMany(mappedBy = "hospital")
-    private List<Clinic> offers;
-    
+    private List<Offer> offers;
+
     @OneToMany(mappedBy = "hospital")
     private List<Clinic> clinics;
 
@@ -84,11 +84,11 @@ public class Hospital implements Serializable {
         return address;
     }
 
-    public List<Clinic> getOffers() {
+    public List<Offer> getOffers() {
         return offers;
     }
 
-    public void setOffers(List<Clinic> offers) {
+    public void setOffers(List<Offer> offers) {
         this.offers = offers;
     }
 

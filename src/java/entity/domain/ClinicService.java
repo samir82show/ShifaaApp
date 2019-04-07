@@ -1,6 +1,7 @@
 package entity.domain;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -32,6 +34,9 @@ public class ClinicService implements Serializable {
 
     @ManyToOne
     private Clinic clinic;
+
+    @OneToMany(mappedBy = "clinicService")
+    private List<Offer> offers;
 
     @ManyToOne
     private ServiceList serviceList;
@@ -106,7 +111,7 @@ public class ClinicService implements Serializable {
 
     @Override
     public String toString() {
-        return "ClinicService{" + "id=" + id + ", price=" + price + ", discount=" + discount + ", clinic=" + clinic + ", serviceList=" + serviceList + '}';
+        return serviceList.getName();
     }
 
 }

@@ -32,10 +32,14 @@ public class OfferController implements Serializable {
     private facade.HospitalFacade hospitalFacade;
     @EJB
     private facade.ClinicFacade clinicFacade;
+    @EJB
+    private facade.ClinicServiceFacade clinicServiceFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
     private List<Clinic> clinics;
     private List<ClinicService> clinicServices;
+    private Hospital hospital;
+    private Clinic clinic;
 
     public OfferController() {
     }
@@ -103,35 +107,43 @@ public class OfferController implements Serializable {
         return "Create";
     }
 
-    public void clinicChange(ValueChangeEvent en) {
-        if (clinicServices != null) {
-            clinicServices.clear();
-        } else {
+    public void clinicChange(ValueChangeEvent e) {
+
+        if (clinicServices == null) {
             clinicServices = new ArrayList<>();
-        }
-        if (en.getNewValue() == null) {
+        } else {
             clinicServices.clear();
-        } else {
-            System.out.println("e.getNewValue()....................... " + en.getNewValue().toString().split(",")[0]);
-//            Clinic clinic = (Clinic) clinicFacade.fin
         }
+//        if (!ejbFacade.findServicesByHospitalAndClinic(hospital.getName(), clinic.getCategory().getName()).isEmpty()) {
+//            for (Object[] s : ejbFacade.findServicesByHospitalAndClinic(hospital.getName(), clinic.getCategory().getName())) {
+//                System.out.println("long...................... " + s[0]);
+//                clinicServices.add(clinicServiceFacade.find(s[0]));
+//            }
+//            System.out.println("clinics.................. " + clinicServices);
+////            System.out.println("e.getNewValue()....................... " + en.getNewValue().toString().split(",")[0]);
+////            Clinic clinic = (Clinic) clinicFacade.fin
+//        }
     }
-    
+
     public void hospitalChange(ValueChangeEvent e) {
-        if (clinics != null) {
+
+        if(clinics != null) {
             clinics.clear();
-        } else {
-            clinics = new ArrayList<>();
         }
-        if (e.getNewValue() == null) {
-            clinics.clear();
-        } else {
-            Hospital hospital = (Hospital)hospitalFacade.findhospitalByName(e.getNewValue().toString());
-            for (Clinic c : hospital.getClinics()) {
-                clinics.add(c);
+        if(clinicServices != null) {
+            clinicServices.clear();
+        }
+        hospital = (Hospital) hospitalFacade.findhospitalByName(e.getNewValue().toString());
+        if (!hospital.getClinics().isEmpty()) {
+            clinics = hospital.getClinics();
+            current.setClinic(clinics.get(0));
+//            System.out.println("hospital...................... " + hospital.getName());
+//            System.out.println("current.getClinic()...................... " + current.getClinic());
+            if (!current.getClinic().getClinicServices().isEmpty()) {
+                clinicServices = current.getClinic().getClinicServices();
+//                System.out.println("clinicServices.get(0)...................... " + clinicServices.get(0));
             }
         }
-        System.out.println("clinic............................... " + clinics.get(0).toString().split(","));
     }
 
     public String create() {

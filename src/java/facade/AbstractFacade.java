@@ -30,11 +30,17 @@ public abstract class AbstractFacade<T> {
     public List<Object[]> findServicesByHospitalAndClinic(String hospital, String clinic) {
 
         Query q;
-
-            q = getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
-                    + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
-                    + " JOIN category cat ON cat.id=c.category_id WHERE a.name = '" + hospital + "' AND cat.name = '" + clinic + "'");
-            return q.getResultList();
+        q = getEntityManager().createNativeQuery("SELECT cs.id, sl.name as clinic FROM clinic c "
+                + "join category cat on cat.id=c.category_id "
+                + "join hospital h on h.id=c.hospital_id "
+                + "join clinicservice cs on cs.clinic_id=c.id "
+                + "join servicelist sl on sl.id=cs.servicelist_id "
+                + "WHERE h.name='" + hospital + "' "
+                + "AND cat.name='" + clinic + "'");
+//        q = getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
+//                + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
+//                + " JOIN category cat ON cat.id=c.category_id WHERE a.name = '" + hospital + "' AND cat.name = '" + clinic + "'");
+        return q.getResultList();
     }
 
     public Object findhospitalByName(String name) {

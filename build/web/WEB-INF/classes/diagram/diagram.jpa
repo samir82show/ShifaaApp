@@ -141,6 +141,7 @@
             <jpa:basic attribute-type="String" v="true" name="discount" id="_153908246238752"/>
             <jpa:many-to-one primaryKey="false" connected-entity-id="_15363502409573" connected-attribute-id="_153908248723555" v="true" name="clinic" id="_153908248723554"/>
             <jpa:many-to-one primaryKey="false" connected-entity-id="_153908249838756" connected-attribute-id="_154011072488465" v="true" name="serviceList" id="_154011072488464"/>
+            <jpa:one-to-many collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_155431971173655" connected-attribute-id="_1554541155640120" v="true" name="offers" id="_1554541155647121"/>
             <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_153635052291624">
                 <jpa:xwm/>
                 <jpa:xm/>
@@ -559,7 +560,6 @@
             <jpa:basic attribute-type="String" v="true" name="image" id="_154011069232062"/>
             <jpa:basic attribute-type="String" v="true" name="inArabic" id="_1541079417074108"/>
             <jpa:one-to-many collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_153635052291523" connected-attribute-id="_154011072488464" v="true" name="clinicServices" id="_154011072488465"/>
-            <jpa:one-to-many collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_155431971173655" connected-attribute-id="_155432026984377" v="true" name="offers" id="_155432026984478"/>
             <jpa:id attribute-type="Long" v="true" name="id" id="_153908249841957">
                 <jpa:generated-value strategy="AUTO"/>
             </jpa:id>
@@ -670,12 +670,15 @@
                 <jpa:xm/>
                 <jpa:temporal>DATE</jpa:temporal>
             </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="price" id="_155448420546660"/>
+            <jpa:basic attribute-type="String" v="true" name="details" id="_155448425373861"/>
+            <jpa:basic attribute-type="String" v="true" name="detailsInArabic" id="_155448425892762"/>
             <jpa:many-to-one primaryKey="false" connected-entity-id="_15363502409573" connected-attribute-id="_155431974897263" v="true" xvt="" name="clinic" id="_155431974897262">
                 <jpa:xwm/>
                 <jpa:xm/>
             </jpa:many-to-one>
             <jpa:many-to-one primaryKey="false" connected-entity-id="_153747244152461" connected-attribute-id="_155432025330975" v="true" name="hospital" id="_155432025330874"/>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_153908249838756" connected-attribute-id="_155432026984478" v="true" name="serviceList" id="_155432026984377"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_153635052291523" connected-attribute-id="_1554541155647121" v="true" name="clinicService" id="_1554541155640120"/>
             <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_155431971175356">
                 <jpa:xwm/>
                 <jpa:xm/>
@@ -693,6 +696,15 @@
         </jpa:nq>
         <jpa:nq e="false" name="Offer.findByEnd_date">
             <jpa:query>Select o from Offer o where o.end_date=:end_date</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Offer.findByPrice">
+            <jpa:query>Select o from Offer o where o.price=:price</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Offer.findByDetails">
+            <jpa:query>Select o from Offer o where o.details=:details</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Offer.findByDetailsInArabic">
+            <jpa:query>Select o from Offer o where o.detailsInArabic=:detailsInArabic</jpa:query>
         </jpa:nq>
     </jpa:entity>
     <jpa:snp loc="BEFORE_PACKAGE" e="true">/**
