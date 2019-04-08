@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -40,6 +41,11 @@ public class OfferController implements Serializable {
     private List<ClinicService> clinicServices;
     private Hospital hospital;
     private Clinic clinic;
+    private ClinicService clinicService;
+
+    @PostConstruct
+    public void init() {
+    }
 
     public OfferController() {
     }
@@ -102,46 +108,47 @@ public class OfferController implements Serializable {
     }
 
     public String prepareCreate() {
+        if (clinics != null) {
+            clinics.clear();
+        }
+        if (clinicServices != null) {
+            clinicServices.clear();
+        }
         current = new Offer();
         selectedItemIndex = -1;
         return "Create";
     }
 
     public void clinicChange(ValueChangeEvent e) {
-
+                
         if (clinicServices == null) {
             clinicServices = new ArrayList<>();
         } else {
             clinicServices.clear();
         }
-//        if (!ejbFacade.findServicesByHospitalAndClinic(hospital.getName(), clinic.getCategory().getName()).isEmpty()) {
-//            for (Object[] s : ejbFacade.findServicesByHospitalAndClinic(hospital.getName(), clinic.getCategory().getName())) {
-//                System.out.println("long...................... " + s[0]);
-//                clinicServices.add(clinicServiceFacade.find(s[0]));
-//            }
-//            System.out.println("clinics.................. " + clinicServices);
-////            System.out.println("e.getNewValue()....................... " + en.getNewValue().toString().split(",")[0]);
-////            Clinic clinic = (Clinic) clinicFacade.fin
-//        }
+        
+        if (!ejbFacade.findServicesByHospitalAndClinic(hospital.getName(), e.getNewValue().toString().split(",")[0]).isEmpty()) {
+            for (Object[] s : ejbFacade.findServicesByHospitalAndClinic(hospital.getName(), e.getNewValue().toString().split(",")[0])) {
+                clinicServices.add(clinicServiceFacade.find(s[0]));
+            }
+        }
     }
 
     public void hospitalChange(ValueChangeEvent e) {
 
-        if(clinics != null) {
+        if (clinics != null) {
             clinics.clear();
         }
-        if(clinicServices != null) {
+        if (clinicServices != null) {
             clinicServices.clear();
         }
         hospital = (Hospital) hospitalFacade.findhospitalByName(e.getNewValue().toString());
         if (!hospital.getClinics().isEmpty()) {
             clinics = hospital.getClinics();
             current.setClinic(clinics.get(0));
-//            System.out.println("hospital...................... " + hospital.getName());
-//            System.out.println("current.getClinic()...................... " + current.getClinic());
             if (!current.getClinic().getClinicServices().isEmpty()) {
+                clinicService = current.getClinic().getClinicServices().get(0);
                 clinicServices = current.getClinic().getClinicServices();
-//                System.out.println("clinicServices.get(0)...................... " + clinicServices.get(0));
             }
         }
     }
@@ -159,6 +166,14 @@ public class OfferController implements Serializable {
 
     public String prepareEdit() {
         current = (Offer) getItems().getRowData();
+        if (!current.getHospital().getClinics().isEmpty()) {
+            clinics = current.getHospital().getClinics();
+            current.setClinic(current.getClinic());
+            if (!current.getClinic().getClinicServices().isEmpty()) {
+                clinicService = current.getClinicService();
+                clinicServices = current.getClinic().getClinicServices();
+            }
+        }
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }

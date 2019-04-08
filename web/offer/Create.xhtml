@@ -47,11 +47,11 @@
                     <h:outputLabel value="Details(Arabic): " for="details_arabic" />
                     <h:inputTextarea id="details_arabic" value="#{offerController.selected.detailsInArabic}" title="Details(Arabic)" />
                     <h:outputLabel value="#{bundles.CreateOfferLabel_start_date}" for="start_date" />
-                    <h:inputText id="start_date" value="#{offerController.selected.start_date}" title="#{bundles.CreateOfferTitle_start_date}" >
+                    <h:inputText autocomplete="off" class="datepicker" id="start_date" value="#{offerController.selected.start_date}" title="#{bundles.CreateOfferTitle_start_date}" >
                         <f:convertDateTime pattern="dd/MM/yyyy" />
                     </h:inputText>
                     <h:outputLabel value="#{bundles.CreateOfferLabel_end_date}" for="end_date" />
-                    <h:inputText id="end_date" value="#{offerController.selected.end_date}" title="#{bundles.CreateOfferTitle_end_date}" >
+                    <h:inputText autocomplete="off" class="datepicker"  id="end_date" value="#{offerController.selected.end_date}" title="#{bundles.CreateOfferTitle_end_date}" >
                         <f:convertDateTime pattern="dd/MM/yyyy" />
                     </h:inputText>
                 </h:panelGrid>

@@ -17,28 +17,43 @@
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundles.EditOfferLabel_id}" for="id" />
                     <h:inputText id="id" value="#{offerController.selected.id}" title="#{bundles.EditOfferTitle_id}" />
+                    <h:outputLabel value="#{bundles.CreateOfferLabel_hospital}" for="hospital" />
+                    <h:selectOneMenu id="hospital" valueChangeListener="#{offerController.hospitalChange}"  value="#{offerController.selected.hospital}" title="#{bundles.CreateOfferTitle_hospital}" >
+                        <f:selectItems value="#{hospitalController.itemsAvailableSelectOne}"/>
+                        <f:ajax render="@form" />
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundles.CreateOfferLabel_clinic}" for="clinic" />
+                    <h:selectOneMenu onchange="submit()" valueChangeListener="#{offerController.clinicChange}" id="clinic" value="#{offerController.selected.clinic}" title="#{bundles.CreateOfferTitle_clinic}" >
+                        <f:selectItems value="#{offerController.clinics}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Offer Type: " for="offer_coverage"/>
+                    <h:selectOneRadio id="offer_coverage" value="#{offerController.selected.offerType}" title="Offer type" >
+                        <f:selectItem itemLabel="Specific service" itemValue="specific" />
+                        <f:selectItem itemLabel="Package" itemValue="package" />
+                        <f:selectItem itemLabel="All services" itemValue="all" />
+                    </h:selectOneRadio>
+                    <h:outputLabel value="Services: " for="serviceList" />
+                    <h:selectOneMenu id="serviceList" value="#{offerController.selected.clinicService}" title="#{bundles.CreateOfferTitle_serviceList}" >
+                        <f:selectItems value="#{offerController.clinicServices}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Price: " for="price" />
+                    <h:inputText id="price" value="#{offerController.selected.price}" title="Price" />
                     <h:outputLabel value="#{bundles.EditOfferLabel_discountPrice}" for="discountPrice" />
                     <h:inputText id="discountPrice" value="#{offerController.selected.discountPrice}" title="#{bundles.EditOfferTitle_discountPrice}" />
+                    <h:outputLabel value="Percentage: " for="percentage" />
+                    <h:inputText id="percentage" value="#{offerController.selected.percentage}" title="Percentage" />
+                    <h:outputLabel value="Details: " for="details" />
+                    <h:inputTextarea id="details" value="#{offerController.selected.details}" title="Details" />
+                    <h:outputLabel value="Details(Arabic): " for="details_arabic" />
+                    <h:inputTextarea id="details_arabic" value="#{offerController.selected.detailsInArabic}" title="Details(Arabic)" />
                     <h:outputLabel value="#{bundles.EditOfferLabel_start_date}" for="start_date" />
-                    <h:inputText id="start_date" value="#{offerController.selected.start_date}" title="#{bundles.EditOfferTitle_start_date}" >
+                    <h:inputText autocomplete="off" class="datepicker" id="start_date" value="#{offerController.selected.start_date}" title="#{bundles.EditOfferTitle_start_date}" >
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:inputText>
                     <h:outputLabel value="#{bundles.EditOfferLabel_end_date}" for="end_date" />
-                    <h:inputText id="end_date" value="#{offerController.selected.end_date}" title="#{bundles.EditOfferTitle_end_date}" >
+                    <h:inputText autocomplete="off" class="datepicker" id="end_date" value="#{offerController.selected.end_date}" title="#{bundles.EditOfferTitle_end_date}" >
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:inputText>
-                    <h:outputLabel value="#{bundles.EditOfferLabel_clinic}" for="clinic" />
-                    <h:selectOneMenu id="clinic" value="#{offerController.selected.clinic}" title="#{bundles.EditOfferTitle_clinic}" >
-                        <f:selectItems value="#{clinicController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
-                    <h:outputLabel value="#{bundles.EditOfferLabel_hospital}" for="hospital" />
-                    <h:selectOneMenu id="hospital" value="#{offerController.selected.hospital}" title="#{bundles.EditOfferTitle_hospital}" >
-                        <f:selectItems value="#{hospitalController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
-                    <h:outputLabel value="#{bundles.EditOfferLabel_serviceList}" for="serviceList" />
-                    <h:selectOneMenu id="serviceList" value="#{offerController.selected.serviceList}" title="#{bundles.EditOfferTitle_serviceList}" >
-                        <f:selectItems value="#{serviceListController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
                 </h:panelGrid>
                 <h:commandLink action="#{offerController.update}" value="#{bundles.EditOfferSaveLink}"/>
                 <br />

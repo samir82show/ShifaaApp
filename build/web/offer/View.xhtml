@@ -17,22 +17,28 @@
                 <h:panelGrid columns="2">
                     <h:outputText value="#{bundles.ViewOfferLabel_id}"/>
                     <h:outputText value="#{offerController.selected.id}" title="#{bundles.ViewOfferTitle_id}"/>
+                    <h:outputText value="#{bundles.ViewOfferLabel_hospital}"/>
+                    <h:outputText value="#{offerController.selected.hospital.getName()}" title="#{bundles.ViewOfferTitle_hospital}"/>
+                    <h:outputText value="#{bundles.ViewOfferLabel_clinic}"/>
+                    <h:outputText value="#{offerController.selected.clinic.getCategory().getName()}" title="#{bundles.ViewOfferTitle_clinic}"/>
+                    <h:outputText value="#{bundles.ViewOfferLabel_serviceList}"/>
+                    <h:outputText value="#{offerController.selected.clinicService.getServiceList().getName()}" title="#{bundles.ViewOfferTitle_serviceList}"/>
+                    <h:outputText value="Price: "/>
+                    <h:outputText value="#{offerController.selected.price}" title="#{bundles.ViewOfferTitle_discountPrice}"/>
                     <h:outputText value="#{bundles.ViewOfferLabel_discountPrice}"/>
                     <h:outputText value="#{offerController.selected.discountPrice}" title="#{bundles.ViewOfferTitle_discountPrice}"/>
                     <h:outputText value="#{bundles.ViewOfferLabel_start_date}"/>
                     <h:outputText value="#{offerController.selected.start_date}" title="#{bundles.ViewOfferTitle_start_date}">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
                     </h:outputText>
                     <h:outputText value="#{bundles.ViewOfferLabel_end_date}"/>
                     <h:outputText value="#{offerController.selected.end_date}" title="#{bundles.ViewOfferTitle_end_date}">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
                     </h:outputText>
-                    <h:outputText value="#{bundles.ViewOfferLabel_clinic}"/>
-                    <h:outputText value="#{offerController.selected.clinic}" title="#{bundles.ViewOfferTitle_clinic}"/>
-                    <h:outputText value="#{bundles.ViewOfferLabel_hospital}"/>
-                    <h:outputText value="#{offerController.selected.hospital}" title="#{bundles.ViewOfferTitle_hospital}"/>
-                    <h:outputText value="#{bundles.ViewOfferLabel_serviceList}"/>
-                    <h:outputText value="#{offerController.selected.serviceList}" title="#{bundles.ViewOfferTitle_serviceList}"/>
+                    <h:outputText value="Details: "/>
+                    <h:inputTextarea readonly="true" value="#{offerController.selected.details}" title="#{bundles.ViewOfferTitle_discountPrice}"/>
+                    <h:outputText value="Details(Arabic)"/>
+                    <h:inputTextarea readonly="true" value="#{offerController.selected.detailsInArabic}" title="#{bundles.ViewOfferTitle_discountPrice}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{offerController.destroyAndView}" value="#{bundles.ViewOfferDestroyLink}"/>

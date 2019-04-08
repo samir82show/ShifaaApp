@@ -28,16 +28,52 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
+                                <h:outputText value="#{bundles.ListOfferTitle_hospital}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hospital.getName()}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundles.ListOfferTitle_clinic}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.clinic.getCategory().getName()}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Service"/>
+                            </f:facet>
+                            <h:outputText value="#{item.clinicService.getServiceList().getName()}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Offer Type"/>
+                            </f:facet>
+                            <h:outputText value="#{item.offerType}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Price"/>
+                            </f:facet>
+                            <h:outputText value="#{item.price}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
                                 <h:outputText value="#{bundles.ListOfferTitle_discountPrice}"/>
                             </f:facet>
                             <h:outputText value="#{item.discountPrice}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
+                                <h:outputText value="Percentage"/>
+                            </f:facet>
+                            <h:outputText value="#{item.percentage}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
                                 <h:outputText value="#{bundles.ListOfferTitle_start_date}"/>
                             </f:facet>
                             <h:outputText value="#{item.start_date}">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
                             </h:outputText>
                         </h:column>
                         <h:column>
@@ -45,26 +81,20 @@
                                 <h:outputText value="#{bundles.ListOfferTitle_end_date}"/>
                             </f:facet>
                             <h:outputText value="#{item.end_date}">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
                             </h:outputText>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundles.ListOfferTitle_clinic}"/>
+                                <h:outputText value="Details"/>
                             </f:facet>
-                            <h:outputText value="#{item.clinic}"/>
+                            <h:outputText value="#{item.details}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundles.ListOfferTitle_hospital}"/>
+                                <h:outputText value="Details(Arabic)"/>
                             </f:facet>
-                            <h:outputText value="#{item.hospital}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundles.ListOfferTitle_serviceList}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.serviceList}"/>
+                            <h:outputText value="#{item.detailsInArabic}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
