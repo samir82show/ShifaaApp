@@ -27,7 +27,7 @@
                         <f:selectItems value="#{offerController.clinics}"/>
                     </h:selectOneMenu>
                     <h:outputLabel value="Offer Type: " for="offer_coverage"/>
-                    <h:selectOneRadio id="offer_coverage" value="#{offerController.selected.offerType}" title="Offer type" >
+                    <h:selectOneRadio required="true" requiredMessage="Choose offer type!" id="offer_coverage" value="#{offerController.selected.offerType}" title="Offer type" >
                         <f:selectItem itemLabel="Specific service" itemValue="specific" />
                         <f:selectItem itemLabel="Package" itemValue="package" />
                         <f:selectItem itemLabel="All services" itemValue="all" />
