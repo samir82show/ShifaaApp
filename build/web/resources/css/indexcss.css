@@ -7,7 +7,6 @@ and open the template in the editor.
     Created on : Oct 4, 2018, 7:58:37 PM
     Author     : Nooshi
 */
-<<<<<<< HEAD
 html, body{
     background-color: #445268;
     box-sizing: border-box;
@@ -225,57 +224,3 @@ html, body{
         margin-top: 80px;
     }
 }
-=======
-html{
-    background-color: #fafafa;
-    box-sizing: border-box;
-    overflow: auto;
-    width: 100%;
-    height: auto;
-}
-.header-logo{
-    margin-top: 5px;
-    margin-bottom: 5px;
-    height: 100px;
-    width: 100%;
-    background-color: #013069;
-    margin: 0 auto;
-    text-align: center;
-}
-.header img{
-    height: 90px;
-    width: auto;
-}
-.header{
-    width: 100%;
-    height: auto;
-}
-.header h1{
-    color: #013069;
-    text-align: center;
-}
-.main_div{
-    display: flex;
-    width: 100%;
-    height: auto;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
-}
-
-.container{
-    box-sizing: border-box;
-    margin : 0 5px;
-    padding: 10px;
-    text-align: center; 
-}
-.container a{
-    text-decoration: none;
-    color: #013069; 
-    font-size: 20px;
-}
-.container a:hover {
-    color: #55A6D7;
-    text-decoration: underline ;
-}
->>>>>>> 51c447886b1e8fef74efab90db5a54d86216d1f6

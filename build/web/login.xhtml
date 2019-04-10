@@ -4,7 +4,6 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <title>Secure Login Page</title>
-<<<<<<< HEAD
         <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/indexcss.css" rel="stylesheet" type="text/css"/>
     </h:head>
@@ -21,20 +20,6 @@
                 <h:commandButton value="Login" action="#{userAuthController.login()}" class="login_button"/>
             </h:form>
         </div>
-=======
-    </h:head>
-    <h:body>
-
-        <h:form>
-            <h:panelGrid columns="2">
-                <h:outputLabel value="Username: "/>
-                <h:inputText value="#{userAuthController.selected.email}"/>
-                <h:outputLabel value="Password: "/>
-                <h:inputSecret value="#{userAuthController.selected.password}"/>
-                <h:commandButton value="Login" action="#{userAuthController.login()}"/>
-            </h:panelGrid>
-        </h:form>
->>>>>>> 51c447886b1e8fef74efab90db5a54d86216d1f6
     </h:body>
 </html>
 
