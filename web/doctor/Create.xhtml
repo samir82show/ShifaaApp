@@ -37,13 +37,11 @@
                     </h:selectOneMenu>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{doctorController.create}" value="#{bundle.CreateDoctorSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{doctorController.prepareList}" value="#{bundle.CreateDoctorShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateDoctorIndexLink}"/>
+                <div class="buttons">
+                    <h:commandLink action="#{doctorController.create}" value="#{bundle.CreateDoctorSaveLink}" />
+                    <h:commandLink action="#{doctorController.prepareList}" value="#{bundle.CreateDoctorShowAllLink}" immediate="true"/>
+                    <h:link outcome="/index" value="#{bundle.CreateDoctorIndexLink}"/>
+                </div>
             </h:form>
         </ui:define>
     </ui:composition>

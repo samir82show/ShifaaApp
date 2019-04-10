@@ -36,15 +36,13 @@
                         <f:selectItems value="#{nationalitiesController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
-                <h:commandLink action="#{doctorController.update}" value="#{bundle.EditDoctorSaveLink}"/>
                 <br />
-                <br />
-                <h:link outcome="View" value="#{bundle.EditDoctorViewLink}"/>
-                <br />
-                <h:commandLink action="#{doctorController.prepareList}" value="#{bundle.EditDoctorShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.EditDoctorIndexLink}" />
+                <div class="buttons">
+                    <h:commandLink action="#{doctorController.update}" value="#{bundle.EditDoctorSaveLink}"/>
+                    <h:link outcome="View" value="#{bundle.EditDoctorViewLink}"/>
+                    <h:commandLink action="#{doctorController.prepareList}" value="#{bundle.EditDoctorShowAllLink}" immediate="true"/>
+                    <h:link outcome="/index" value="#{bundle.EditDoctorIndexLink}" />
+                </div>
             </h:form>
         </ui:define>
     </ui:composition>

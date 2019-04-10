@@ -26,18 +26,13 @@
                     <h:outputText value="#{clinicController.selected.category.getName()}" title="#{bundle.ViewClinicTitle_category}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{clinicController.destroyAndView}" value="#{bundle.ViewClinicDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewClinicEditLink}"/>
-                <br />
-                <h:commandLink action="#{clinicController.prepareCreate}" value="#{bundle.ViewClinicCreateLink}" />
-                <br />
-                <h:commandLink action="#{clinicController.prepareList}" value="#{bundle.ViewClinicShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewClinicIndexLink}"/>
-
+                <div class="buttons">
+                    <h:commandLink action="#{clinicController.destroyAndView}" value="#{bundle.ViewClinicDestroyLink}"/>
+                    <h:link outcome="Edit" value="#{bundle.ViewClinicEditLink}"/>
+                    <h:commandLink action="#{clinicController.prepareCreate}" value="#{bundle.ViewClinicCreateLink}" />
+                    <h:commandLink action="#{clinicController.prepareList}" value="#{bundle.ViewClinicShowAllLink}"/>
+                    <h:link outcome="/index" value="#{bundle.ViewClinicIndexLink}"/>
+                </div>
             </h:form>
         </ui:define>
     </ui:composition>

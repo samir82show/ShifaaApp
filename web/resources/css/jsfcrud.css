@@ -4,41 +4,46 @@ root {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    color: #3a4f54;
-    background-color: #dfecf1;
+    color: #445268;
+    background-color: #f2f3f7;
     font-size: small;
+    margin-left: 20px;
+}
+div.container{
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+    background-color: pink;
 }
 
 a {
-    color: #e33b06;
+    color: #55A6D7;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
 }
 
 table {
     empty-cells: show;
+    margin-bottom: 10px;
 }
-
+/*form{
+    border: 1px solid #445268;
+    border-radius: 5px;
+    width: fit-content;
+    height: auto;
+    padding: 10px;
+}*/
 form.jsfcrud_list_form th, td th {
     font-size: x-small;
-    color: #4e6a71;
-    border-top-style: solid;
-    border-bottom-style: solid;
-    border-left-style: solid;
-    border-right-style: solid;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-left-width: 1px;
-    border-right-width: 1px;
-    border-top-color: #b2d5d6;
-    border-bottom-color: #b2d5d6;
-    border-left-color: #90b4bd;
-    border-right-color: #90b4bd;
+    color: #fafafa;
+    border:1px solid #445268;
     letter-spacing: 3px;
     text-align: left;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    padding-left: 6px;
-    padding-right: 6px;
-    background-color: #b2d5d6;
+    padding: 10px;
+    background-color: #445268;
 }
 
 td {
@@ -49,34 +54,34 @@ td {
 
 form.jsfcrud_list_form td, td td {
     border-top-style: solid;
-    border-bottom-style: solid;
-    border-left-style: solid;
-    border-right-style: solid;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-left-width: 1px;
-    border-right-width: 1px;
-    border-top-color: #b2d5d6;
-    border-bottom-color: #b2d5d6;
-    border-left-color: #b2d5d6;
-    border-right-color: #b2d5d6;
+    border: 1px solid #445268;
     vertical-align: baseline;
     padding-bottom: 0px;
 }
 
 tr.jsfcrud_odd_row {
     background-color: #fefeff;
-    color: #4e6a71;
+    color: #445268;
 }
 
 
 tr.jsfcrud_even_row {
     background-color: #eff5fa;
-    color: #4e6a71;
+    color: #445268;
 }
 
 #busyImage {
     position: absolute;
     left: 50%;
     top: 50%;
+}
+.buttons{
+    margin-bottom: 15px;
+}
+.buttons a{
+    background-color: #55A6D7;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+    color: #fff;
 }

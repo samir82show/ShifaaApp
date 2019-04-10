@@ -30,15 +30,13 @@
                         <f:selectItems value="#{categoryController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
-                <h:commandLink action="#{clinicController.update}" value="#{bundle.EditClinicSaveLink}"/>
                 <br />
-                <br />
-                <h:link outcome="View" value="#{bundle.EditClinicViewLink}"/>
-                <br />
-                <h:commandLink action="#{clinicController.prepareList}" value="#{bundle.EditClinicShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.EditClinicIndexLink}" />
+                <div class="buttons">
+                    <h:commandLink action="#{clinicController.update}" value="#{bundle.EditClinicSaveLink}"/>
+                    <h:link outcome="View" value="#{bundle.EditClinicViewLink}"/>
+                    <h:commandLink action="#{clinicController.prepareList}" value="#{bundle.EditClinicShowAllLink}" immediate="true"/>
+                    <h:link outcome="/index" value="#{bundle.EditClinicIndexLink}" />
+                </div>
             </h:form>
         </ui:define>
     </ui:composition>

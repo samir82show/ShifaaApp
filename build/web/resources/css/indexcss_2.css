@@ -1,0 +1,129 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 3, 2019, 7:32:15 PM
+    Author     : Nooshi
+*/
+
+html, body{
+    background-color: #445268;
+    box-sizing: border-box;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+/********************Login Page style*********************************/
+.login_div{
+    width: 300px;
+    height: auto;
+    margin:  auto;
+    margin-top: 150px;
+    padding: 10px;
+    background-color: #f2f3f7;
+    text-align: center;
+    border-radius: 5px;
+    line-height: 30px;
+}
+.login_div img{
+    width: 220px; 
+    height: 69px;
+}
+.login_div form{
+    margin: 5px;
+    padding: 5px;
+}
+.login_div form label{
+    color: #445268;
+}
+.login_div form input[type=text], input[type=password]{
+    width: 100%;
+    height: 20px;
+    border: 1.5px solid #445268;
+    border-radius: 3px;
+}
+.login_div form input:focus{
+    border: 1px solid #55A6D7;
+    box-shadow: 3px 3px 5px #55A6D7;
+}
+.login_button{
+    background-color: #55A6D7;
+    padding: 10px 14px ;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    margin: 0 auto;
+    margin-top: 5px;
+    text-align: center;
+    font-size: 18px;
+    opacity: 0.8;
+}
+.login_button:hover{
+    opacity: 1;
+}
+
+/*************************************************************/
+
+.logo_div{
+    width: 100%;
+    height: 100px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #f2f3f7;
+    box-shadow: 0px 5px 5px #445268;
+    margin-top: 15px;
+}
+.logo_div img{
+    width: 280px;
+    height: auto;
+    vertical-align: middle;
+}
+.console_menu{
+    width: 400px;
+    height: auto;
+    margin: 0 auto;
+    background-color: #f2f3f7;
+    border: 2px solid #445268; 
+    border-radius: 5px;
+    line-height: 8px;
+    margin-top: 30px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .1);
+}
+.console_menu ul{
+    padding: 5px;
+}
+.console_menu ul li{
+    display: block;
+    margin: 5px;
+    padding: 8px;
+    color: #445268;
+    font-size: 18px;
+}
+.console_menu ul li:hover{
+    background-color: #55A6D7;
+    color: white;
+}
+.console_menu ul li a{
+    text-decoration: none;
+    color: #445268;
+}
+.console_menu ul li img{
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: middle;
+    padding-right: 10px;
+}
+.console_menu h2{
+    padding: 8px;
+    color: #445268;
+    font-size: 18px;
+    font-weight: normal;
+    margin-bottom: -5px;
+}
+.sub_menu li:hover{
+    background-color: #55A6D7;
+    color: white;
+}

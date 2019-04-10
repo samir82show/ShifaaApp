@@ -31,15 +31,12 @@
                     </h:selectOneMenu>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{hospitalImageController.create}" value="#{bundle.CreateHospitalImageSaveLink}" />
-                <br />
-                <br />
+                <div class="buttons">
+                    <h:commandLink action="#{hospitalImageController.create}" value="#{bundle.CreateHospitalImageSaveLink}" />
                 <h:commandLink action="#{hospitalImageController.prepareList}" value="#{bundle.CreateHospitalImageShowAllLink}" immediate="true"/>
-                <br />
-                <br />
                 <h:link outcome="/index" value="#{bundle.CreateHospitalImageIndexLink}"/>
+                </div>
             </h:form>
         </ui:define>
     </ui:composition>
-
 </html>

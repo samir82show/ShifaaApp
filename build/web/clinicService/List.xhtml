@@ -63,10 +63,10 @@
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{clinicServiceController.prepareCreate}" value="#{bundle.ListClinicServiceCreateLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListClinicServiceIndexLink}"/>
+                <div class="buttons">
+                    <h:commandLink action="#{clinicServiceController.prepareCreate}" value="#{bundle.ListClinicServiceCreateLink}"/>
+                    <h:link outcome="/index" value="#{bundle.ListClinicServiceIndexLink}"/>
+                </div>
             </h:form>
         </ui:define>
     </ui:composition>

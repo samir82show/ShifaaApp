@@ -27,18 +27,13 @@
                     <h:outputText value="#{clinicServiceController.selected.serviceList.toString()}" title="#{bundle.ViewClinicServiceTitle_serviceList}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{clinicServiceController.destroyAndView}" value="#{bundle.ViewClinicServiceDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewClinicServiceEditLink}"/>
-                <br />
-                <h:commandLink action="#{clinicServiceController.prepareCreate}" value="#{bundle.ViewClinicServiceCreateLink}" />
-                <br />
-                <h:commandLink action="#{clinicServiceController.prepareList}" value="#{bundle.ViewClinicServiceShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewClinicServiceIndexLink}"/>
-
+                <div class="buttons">
+                    <h:commandLink action="#{clinicServiceController.destroyAndView}" value="#{bundle.ViewClinicServiceDestroyLink}"/>
+                    <h:link outcome="Edit" value="#{bundle.ViewClinicServiceEditLink}"/>
+                    <h:commandLink action="#{clinicServiceController.prepareCreate}" value="#{bundle.ViewClinicServiceCreateLink}" />
+                    <h:commandLink action="#{clinicServiceController.prepareList}" value="#{bundle.ViewClinicServiceShowAllLink}"/>
+                    <h:link outcome="/index" value="#{bundle.ViewClinicServiceIndexLink}"/>
+                </div>
             </h:form>
         </ui:define>
     </ui:composition>
