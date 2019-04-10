@@ -24,17 +24,13 @@
                     <h:outputText value="#{hospitalImageController.selected.imageType}" title="Image Type"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{hospitalImageController.destroyAndView}" value="#{bundle.ViewHospitalImageDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewHospitalImageEditLink}"/>
-                <br />
-                <h:commandLink action="#{hospitalImageController.prepareCreate}" value="#{bundle.ViewHospitalImageCreateLink}" />
-                <br />
-                <h:commandLink action="#{hospitalImageController.prepareList}" value="#{bundle.ViewHospitalImageShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewHospitalImageIndexLink}"/>
+                <div class="buttons">
+                    <h:commandLink action="#{hospitalImageController.destroyAndView}" value="#{bundle.ViewHospitalImageDestroyLink}"/>
+                    <h:link outcome="Edit" value="#{bundle.ViewHospitalImageEditLink}"/>
+                    <h:commandLink action="#{hospitalImageController.prepareCreate}" value="#{bundle.ViewHospitalImageCreateLink}" />
+                    <h:commandLink action="#{hospitalImageController.prepareList}" value="#{bundle.ViewHospitalImageShowAllLink}"/>
+                    <h:link outcome="/index" value="#{bundle.ViewHospitalImageIndexLink}"/>
+                </div>
 
             </h:form>
         </ui:define>

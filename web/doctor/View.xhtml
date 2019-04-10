@@ -32,17 +32,13 @@
                     <h:outputText value="#{doctorController.selected.nationalities}" title="#{bundle.ViewDoctorTitle_clinic}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{doctorController.destroyAndView}" value="#{bundle.ViewDoctorDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewDoctorEditLink}"/>
-                <br />
-                <h:commandLink action="#{doctorController.prepareCreate}" value="#{bundle.ViewDoctorCreateLink}" />
-                <br />
-                <h:commandLink action="#{doctorController.prepareList}" value="#{bundle.ViewDoctorShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewDoctorIndexLink}"/>
+                <div class="buttons">
+                    <h:commandLink action="#{doctorController.destroyAndView}" value="#{bundle.ViewDoctorDestroyLink}"/>
+                    <h:link outcome="Edit" value="#{bundle.ViewDoctorEditLink}"/>
+                    <h:commandLink action="#{doctorController.prepareCreate}" value="#{bundle.ViewDoctorCreateLink}" />
+                    <h:commandLink action="#{doctorController.prepareList}" value="#{bundle.ViewDoctorShowAllLink}"/>
+                    <h:link outcome="/index" value="#{bundle.ViewDoctorIndexLink}"/>
+                </div>
 
             </h:form>
         </ui:define>

@@ -81,10 +81,10 @@
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{doctorController.prepareCreate}" value="#{bundle.ListDoctorCreateLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListDoctorIndexLink}"/>
+                <div class="buttons">
+                    <h:commandLink action="#{doctorController.prepareCreate}" value="#{bundle.ListDoctorCreateLink}"/>
+                    <h:link outcome="/index" value="#{bundle.ListDoctorIndexLink}"/>
+                </div>
             </h:form>
         </ui:define>
     </ui:composition>

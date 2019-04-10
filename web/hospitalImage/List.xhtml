@@ -5,6 +5,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.ListHospitalImageTitle}"></h:outputText>
@@ -57,12 +58,13 @@
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{hospitalImageController.prepareCreate}" value="#{bundle.ListHospitalImageCreateLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListHospitalImageIndexLink}"/>
+                <div class="buttons">
+                    <h:commandLink action="#{hospitalImageController.prepareCreate}" value="#{bundle.ListHospitalImageCreateLink}"/>
+                    <h:link outcome="/index" value="#{bundle.ListHospitalImageIndexLink}"/>
+                </div>
             </h:form>
         </ui:define>
     </ui:composition>
+
 
 </html>

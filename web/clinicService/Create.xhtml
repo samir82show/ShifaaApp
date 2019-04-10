@@ -31,13 +31,12 @@
                     </h:selectOneMenu>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{clinicServiceController.create}" value="#{bundle.CreateClinicServiceSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{clinicServiceController.prepareList}" value="#{bundle.CreateClinicServiceShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateClinicServiceIndexLink}"/>
+                <div class="buttons">
+                    <h:commandLink action="#{clinicServiceController.create}" value="#{bundle.CreateClinicServiceSaveLink}" />
+                    <h:commandLink action="#{clinicServiceController.prepareList}" value="#{bundle.CreateClinicServiceShowAllLink}" immediate="true"/>
+                    <h:link outcome="/index" value="#{bundle.CreateClinicServiceIndexLink}"/>
+                </div>
+
             </h:form>
         </ui:define>
     </ui:composition>

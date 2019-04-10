@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Maweed Console</title>
+        <link rel="stylesheet" type="text/css" href="/MaweedConsole/jsfcrud.xhtml" />
+        <!--<h:outputStylesheet name="css/jsfcrud.css"/>-->
+        <h:outputStylesheet name="css/Normalize.css"/>
+        <h:outputStylesheet name="css/indexcss_2.css"/>
+    </h:head>
+    <h:body>
+        <div class="left_nav">
+            <div class="logo_div">
+                <h:graphicImage value="resources/images/main/logo.png" />
+            </div>
+            <div class="left_nav_list">
+                <ul>
+                    <li>
+                        <h:graphicImage value="resources/images/main/dashboard24.png" />
+                        <h:link outcome="/doctor/List" value="Dashboard"/>
+                    </li>
+                    <li>
+                        <h:graphicImage value="resources/images/main/photo24.png" />
+                        <h:link outcome="/hospitalImage/List" value="Hospitals Images"/>
+                    </li>
+                    <li>
+                        <h:graphicImage value="resources/images/main/clinic24.png" />
+                        <h:link outcome="/clinic/List" value="Clinic"/>
+                    </li>
+                    <li>
+                        <h:graphicImage value="resources/images/main/service24.png" />
+                        <h:link outcome="/clinicService/List" value="ClinicService"/>
+                    </li>
+                    <li>
+                        <h:graphicImage value="resources/images/main/doctor.png" />
+                        <h:link outcome="/doctor/List" value="Doctor"/>
+                    </li>
+                    <li>
+                        <h:graphicImage value="resources/images/main/mail24.png" />
+                        <h:link outcome="/doctor/List" value="Mail"/>
+                    </li>
+                    <li>
+                        <h:graphicImage value="resources/images/main/percentage24.png" />
+                        <h:link outcome="/doctor/List" value="Voutcher"/>
+                    </li>
+                    <li>
+                        <h:form >
+                            <h:graphicImage value="resources/images/main/power-off24.png" />
+                            <h:commandLink value="Logout" action="#{userAuthController.logout()}" />  
+                        </h:form>
+                    </li>
+                    <!--<li>
+                    <h:graphicImage value="resources/images/main/pills24.png" />
+                    <h:link outcome="/serviceList/List" value="List of Services"/>
+                </li>-->
+                    <!--<li>
+                    <h:graphicImage value="resources/images/main/group2.png" />
+                    <h:link outcome="/groupAuth/List" value="GroupAuth"/>
+                </li>-->
+                    <!--<li>
+                    <h:graphicImage value="resources/images/main/user24.png" />
+                    <h:link outcome="/guest/List" value="Guest"/>
+                </li>-->
+                    <!--<li>
+                    <h:graphicImage value="resources/images/main/hospital24.png" />
+                    <h:link outcome="/hospital/List" value="Hospital List"/>
+                </li>-->
+                    <!--<li>
+                    <h:graphicImage value="resources/images/main/insurance24.png" />
+                    <h:link outcome="/insurance/List" value="Insurance"/>
+                </li>-->
+                    <!--<li>
+                    <h:graphicImage value="resources/images/main/login24.png" />
+                    <h:link outcome="/userAuth/List" value="HospitalLogin"/>
+                </li>-->
+                    <!--<li>
+                    <h:graphicImage value="resources/images/main/star24.png"/>
+                    <h:link outcome="/hospitalrating/List" value="Rating"/>
+                </li>-->
+                    <!--<li>
+                    <h:graphicImage value="resources/images/main/calendar-day24.png" />
+                    <h:link class="linkStyle" outcome="/appointment/List" value="Appointment"/>
+                </li>-->  
+                    <!--<li>
+                    <h:graphicImage value="resources/images/main/area24.png"/>
+                    <h:link outcome="/area/List" value="Area"/>
+                </li>-->
+
+                    <!--<li>
+                    <h:graphicImage value="resources/images/main/category24.png"/>
+                    <h:link outcome="/category/List" value="Clinics Categories"/>
+                </li>-->
+                </ul>
+
+            </div>
+        </div><!--left div-->
+        <div class="right_div">
+            <div class="header-top">
+                <a href="#" class="notification">
+                    <img src="resources/images/main/envelope.png" alt=""/>
+                    <span class="badge">3</span>
+                </a>
+                <a href="#" class="notification">
+                    <img src="resources/images/main/alert.png" alt=""/>
+                    <span class="badge">15</span>
+                </a>
+            </div>
+            <div class="header">
+                <p>Dashboard</p>
+            </div>
+            <div class="counters_div">
+                <div class="container">
+                    <div class="central_div">
+                        <div class="image">
+                            <img src="resources/images/main/magnifying-glass32.png" alt=""/>
+                        </div>
+                        <div class="info">
+                            <span>133</span>
+                            <p>Page Views</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="central_div">
+                        <div class="image">
+                            <img src="resources/images/main/speech-bubbles-comment-option.png" alt=""/>
+                        </div>
+                        <div class="info">
+                            <span>77</span>
+                            <p>comments</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="central_div">
+                        <div class="image">
+                            <img src="resources/images/main/request32.png" alt=""/>
+                        </div>
+                        <div class="info">
+                            <span>50</span>
+                            <p>appointment requests</p>
+                        </div>
+                    </div>
+                </div>
+            </div><!--counter div -->
+        </div><!--Right div-->
+
+        <!--<h:form>
+            <h:commandLink action="#{appointment.listSetup}" value="Show All Appointment Items"/>
+        </h:form>
+        <h:form>
+            <h:commandLink action="#{appointmentar.listSetup}" value="Show All Appointmentar Items"/>
+        </h:form>
+        <h:form>
+            <h:commandLink action="#{area.listSetup}" value="Show All Area Items"/>
+        </h:form>
+        <h:form>
+            <h:commandLink action="#{category.listSetup}" value="Show All Category Items"/>
+        </h:form>
+        <h:form>
+            <h:commandLink action="#{clinic.listSetup}" value="Show All Clinic Items"/>
+        </h:form>
+        <h:form>
+            <h:commandLink action="#{clinicservice.listSetup}" value="Show All Clinicservice Items"/>
+        </h:form>
+        <h:form>
+            <h:commandLink action="#{daysofweek.listSetup}" value="Show All Daysofweek Items"/>
+        </h:form>
+        <h:form>
+            <h:commandLink action="#{doctor.listSetup}" value="Show All Doctor Items"/>
+        </h:form>
+        <h:form>
+            <h:commandLink action="#{gender.listSetup}" value="Show All Gender Items"/>
+        </h:form>
+        <h:form>
+            <h:commandLink action="#{groupauth.listSetup}" value="Show All Groupauth Items"/>
+        </h:form>
+        <h:form>
+            <h:commandLink action="#{guest.listSetup}" value="Show All Guest Items"/>
+        </h:form>
+        <h:form>
+            <h:commandLink action="#{hospital.listSetup}" value="Show All Hospital Items"/>
+        </h:form>
+        <h:form>
+            <h:commandLink action="#{hospitalimage.listSetup}" value="Show All Hospitalimage Items"/>
+        </h:form>
+        <h:form>
+            <h:commandLink action="#{hospitalrating.listSetup}" value="Show All Hospitalrating Items"/>
+        </h:form>
+        <h:form>
+            <h:commandLink action="#{insurance.listSetup}" value="Show All Insurance Items"/>
+        </h:form>
+        <h:form>
+            <h:commandLink action="#{sequence.listSetup}" value="Show All Sequence Items"/>
+        </h:form>
+        <h:form>
+            <h:commandLink action="#{servicelist.listSetup}" value="Show All Servicelist Items"/>
+        </h:form>
+        <h:form>
+            <h:commandLink action="#{shift.listSetup}" value="Show All Shift Items"/>
+        </h:form>
+        <h:form>
+            <h:commandLink action="#{userauth.listSetup}" value="Show All Userauth Items"/>
+        </h:form>-->
+    </h:body>
+</html>
+
