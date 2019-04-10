@@ -1,0 +1,87 @@
+root { 
+    display: block;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #445268;
+    background-color: #f2f3f7;
+    font-size: small;
+    margin-left: 20px;
+}
+div.container{
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+    background-color: pink;
+}
+
+a {
+    color: #55A6D7;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+
+table {
+    empty-cells: show;
+    margin-bottom: 10px;
+}
+/*form{
+    border: 1px solid #445268;
+    border-radius: 5px;
+    width: fit-content;
+    height: auto;
+    padding: 10px;
+}*/
+form.jsfcrud_list_form th, td th {
+    font-size: x-small;
+    color: #fafafa;
+    border:1px solid #445268;
+    letter-spacing: 3px;
+    text-align: left;
+    padding: 10px;
+    background-color: #445268;
+}
+
+td {
+    vertical-align: top;
+    padding-bottom: 8px;
+    font-size: small;
+}
+
+form.jsfcrud_list_form td, td td {
+    border-top-style: solid;
+    border: 1px solid #445268;
+    vertical-align: baseline;
+    padding-bottom: 0px;
+}
+
+tr.jsfcrud_odd_row {
+    background-color: #fefeff;
+    color: #445268;
+}
+
+
+tr.jsfcrud_even_row {
+    background-color: #eff5fa;
+    color: #445268;
+}
+
+#busyImage {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+.buttons{
+    margin-bottom: 15px;
+}
+.buttons a{
+    background-color: #55A6D7;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+    color: #fff;
+}

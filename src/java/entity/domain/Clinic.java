@@ -43,7 +43,18 @@ public class Clinic implements Serializable {
     @OneToMany(mappedBy = "clinic")
     private List<ClinicService> clinicServices;
 
+    @OneToMany(mappedBy = "clinic")
+    private List<Offer> offers;
+
     public Clinic() {
+    }
+
+    public List<Offer> getOffers() {
+        return offers;
+    }
+
+    public void setOffers(List<Offer> offers) {
+        this.offers = offers;
     }
 
     public String getWorkingDaysHoursArabic() {

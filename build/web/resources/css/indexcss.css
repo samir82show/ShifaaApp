@@ -1,0 +1,226 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 4, 2018, 7:58:37 PM
+    Author     : Nooshi
+*/
+html, body{
+    background-color: #445268;
+    box-sizing: border-box;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+/********************Login Page style*********************************/
+.login_div{
+    width: 300px;
+    height: auto;
+    margin:  auto;
+    margin-top: 150px;
+    padding: 10px;
+    background-color: #f2f3f7;
+    text-align: center;
+    border-radius: 5px;
+    line-height: 30px;
+}
+.login_div img{
+    width: 220px; 
+    height: 69px;
+}
+.login_div form{
+    margin: 5px;
+    padding: 5px;
+}
+.login_div form label{
+    color: #445268;
+}
+.login_div form input[type=text], input[type=password]{
+    width: 100%;
+    height: 20px;
+    border: 1.5px solid #445268;
+    border-radius: 3px;
+}
+.login_div form input:focus{
+    border: 1px solid #55A6D7;
+    box-shadow: 3px 3px 5px #55A6D7;
+}
+.login_button{
+    background-color: #55A6D7;
+    padding: 10px 14px ;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    margin: 0 auto;
+    margin-top: 5px;
+    text-align: center;
+    font-size: 18px;
+    opacity: 0.8;
+}
+.login_button:hover{
+    opacity: 1;
+}
+
+
+/********************Login Page style*********************************/
+
+.header-top{
+    padding-right: 20px;
+    width: auto;
+    height: 70px;
+    background-color: #445268;
+    margin: 0 auto;
+    text-align: center;
+}
+.notification{
+    border: 1px solid #55A6D7;
+    padding: 12px;
+    margin: 15px 5px;
+    float: right;
+    border-radius: 3px;
+    position: relative;
+}
+/*.header-top img{
+    border: 1px solid #55A6D7;
+    padding: 12px;
+    margin: 15px 5px;
+    float: right;
+    border-radius: 3px;
+    position: relative;
+}*/
+.notification:hover{
+    background-color: #55A6D7;
+}
+.notification .badge{
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    padding: 1px 5px;
+    border-radius: 50%;
+    background-color: red;
+    font-size: 14px;
+    color: white;
+}
+.left_nav{
+    width: 15%;
+    min-height: 100%;
+    float: left;
+    background-color: #ffffff;
+    border-right: 5px solid #445268;
+}
+.left_nav img{
+    height: 60px;
+    width: auto;
+    margin: auto;
+    padding-top: 5px;
+}
+.logo_div{
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid #445268;
+    margin: 0 auto;
+    text-align: center;
+}
+.right_div{
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+}
+.header p{
+    width: auto;
+    padding-left: 30px;
+    font-size: 40px;
+    color: #445268;
+    height: auto;
+    background-color: white;
+}
+.header h1{
+    color: #445268;
+    text-align: left;
+}
+.left_nav_list{
+    line-height: 45px;
+    width: 100%;
+    
+}
+.left_nav_list ul{
+    list-style: none;
+    padding: 0px;
+    padding-top: 20px;
+}
+.left_nav_list ul li{
+    margin: 0 auto;
+    width: auto;
+    padding-left: 10px;
+}
+.left_nav_list ul li:hover{
+    background-color: #55A6D7;
+}
+.left_nav_list ul li img{
+    height: 20px;
+    width: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.left_nav_list a{
+    text-decoration: none;
+    font-size: 20px;
+    color: #445268;  
+}
+/***********************Main central div**************************************/
+.counters_div{
+    background-color: #f2f3f7;
+    height: 180px;
+    width: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+}
+.container{
+    display: inline-block;
+    vertical-align: top;
+    width: 20%;
+    padding: 0;
+    border-right: 1px solid #445268;
+    height: 180px;
+    text-transform: uppercase;
+}
+.central_div{
+    height: 80%;
+    width: 80%;
+    margin: 15px auto;
+    display: block;
+    text-align: center;
+    line-height: 18px;
+}
+.image{
+    width: 100%;
+    padding: 10px 0px;
+    text-align: center;
+}
+.info{
+    width: 100%;
+    padding: 10px 0px;
+    text-align: center;
+}
+.info span{
+    font-size: 50px;
+}
+.info p{
+    font-size: 15px;
+    color: #cccccc;
+}
+
+
+/**Media Queries*/
+/* Smartphones (portrait and landscape) --------------------------------- */
+@media screen and (min-width: 320px) and (max-width: 480px){
+    .login_div{
+        margin-top: 80px;
+    }
+}

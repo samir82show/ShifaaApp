@@ -1,6 +1,7 @@
 package entity.domain;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
@@ -8,8 +9,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "ClinicService.findAll", query = "SELECT c FROM ClinicService c")
+    , @NamedQuery(name = "ClinicService.findById", query = "SELECT c FROM ClinicService c WHERE c.id = :id")
+    , @NamedQuery(name = "ClinicService.findServicesByClinic", query = "SELECT c FROM ClinicService c WHERE c.clinic = :clinic")})
 public class ClinicService implements Serializable {
 
     @Id
@@ -24,6 +34,9 @@ public class ClinicService implements Serializable {
 
     @ManyToOne
     private Clinic clinic;
+
+    @OneToMany(mappedBy = "clinicService")
+    private List<Offer> offers;
 
     @ManyToOne
     private ServiceList serviceList;
@@ -98,7 +111,7 @@ public class ClinicService implements Serializable {
 
     @Override
     public String toString() {
-        return "ClinicService{" + "id=" + id + ", price=" + price + ", discount=" + discount + ", clinic=" + clinic + ", serviceList=" + serviceList + '}';
+        return serviceList.getName();
     }
 
 }

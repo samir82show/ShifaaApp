@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewHospitalImageTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewHospitalImageLabel_id}"/>
+                    <h:outputText value="#{hospitalImageController.selected.id}" title="#{bundle.ViewHospitalImageTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewHospitalImageLabel_image}"/>
+                    <img src="#{hospitalImageController.selected.image}" alt="" style="height: 100px; width: 100px;"/>
+                    <h:outputText value="#{bundle.ViewHospitalImageLabel_hospital}"/>
+                    <h:outputText value="#{hospitalImageController.selected.hospital.getName()}" title="#{bundle.ViewHospitalImageTitle_hospital}"/>
+                    <h:outputLabel value="Type of image: " for="imagetype" />
+                    <h:outputText value="#{hospitalImageController.selected.imageType}" title="Image Type"/>
+                </h:panelGrid>
+                <br />
+                <div class="buttons">
+                    <h:commandLink action="#{hospitalImageController.destroyAndView}" value="#{bundle.ViewHospitalImageDestroyLink}"/>
+                    <h:link outcome="Edit" value="#{bundle.ViewHospitalImageEditLink}"/>
+                    <h:commandLink action="#{hospitalImageController.prepareCreate}" value="#{bundle.ViewHospitalImageCreateLink}" />
+                    <h:commandLink action="#{hospitalImageController.prepareList}" value="#{bundle.ViewHospitalImageShowAllLink}"/>
+                    <h:link outcome="/index" value="#{bundle.ViewHospitalImageIndexLink}"/>
+                </div>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
